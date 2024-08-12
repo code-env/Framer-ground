@@ -1,13 +1,39 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import localFont from "next/font/local";
 
 export const metadata: Metadata = {
-  title: "Framer-ground",
-  description: "Framer motion animations",
+  title: {
+    default: "Framer Ground",
+    template: " %s | Framer Ground",
+  },
+  description: "Your Event management software ",
 };
+
+const satoshi = localFont({
+  src: [
+    {
+      path: "../fonts/Satoshi-Light.otf",
+      weight: "100",
+    },
+    {
+      path: "../fonts/Satoshi-Regular.otf",
+      weight: "300",
+    },
+    {
+      path: "../fonts/Satoshi-Medium.otf",
+      weight: "500",
+    },
+    {
+      path: "../fonts/Satoshi-Bold.otf",
+      weight: "700",
+    },
+    {
+      path: "../fonts/Satoshi-Black.otf",
+      weight: "900",
+    },
+  ],
+});
 
 export default function RootLayout({
   children,
@@ -16,9 +42,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} max-w-7xl mx-auto px-20 `}>
-        {children}
-      </body>
+      <body className={satoshi.className}>{children}</body>
     </html>
   );
 }

@@ -29,7 +29,7 @@ export default function TextMorph() {
   };
 
   return (
-    <div className="flex h-[300px] flex-col items-end justify-end pb-4">
+    <div className="flex h-screen flex-col items-end justify-end pb-6 w-[90%] mx-auto">
       <AnimatePresence mode="wait">
         {messages.map((message) => (
           <motion.div
