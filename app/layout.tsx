@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: {
@@ -42,7 +43,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={satoshi.className}>{children}</body>
+      <body className={cn(satoshi.className, "bg")}>{children}</body>
     </html>
   );
 }

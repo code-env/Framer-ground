@@ -37,6 +37,7 @@ const page = () => {
     center: { x: 0, opacity: 1 },
     exit: { x: "100%", opacity: 0 },
   };
+
   const tickVariants = {
     enter: { scale: 0, opacity: 0, x: "-50%" },
     center: { scale: 1, opacity: 1, x: 0 },
