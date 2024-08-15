@@ -2,7 +2,7 @@
 
 import { randomNumberGenerator } from "@/constants";
 import { stagger, useAnimate, animate } from "framer-motion";
-import { Star } from "lucide-react";
+import { Divide, Star } from "lucide-react";
 import React from "react";
 
 type AnimationSequence = Parameters<typeof animate>[0];
@@ -61,36 +61,38 @@ const Button = ({ text, starLength }: { text: string; starLength: number }) => {
     ]);
   };
   return (
-    <div ref={scope}>
-      <button
-        onClick={handleBtnClick}
-        className="border-2 text-2xl px-10 py-1.5 rounded-full transition-colors duration-150 border-blue-500 hover:bg-blue-100 text-blue-500 relative"
-      >
-        <span className="sr-only">{text}</span>
-        <span
-          className="flex items-center justify-center overflow-hidden h-8"
-          aria-hidden
+    <div className="h-screen flex items-center justify-center">
+      <div ref={scope}>
+        <button
+          onClick={handleBtnClick}
+          className="border-2 text-2xl px-10 py-1.5 rounded-full transition-colors duration-150 border-blue-500 hover:bg-blue-100 text-blue-500 relative"
         >
-          {letters.map((letter, index) => (
-            <span
-              data-letter={letter}
-              className="letter inline-block relative h-8 after:h-8 after:absolute after:left-0 after:top-full after:content-[attr(data-letter)] leading-8"
-              key={index}
-            >
-              {letter}
-            </span>
-          ))}
-        </span>
-        <span className="absolute inset-0 block -z-10 pointer-events-none">
-          {Array.from({ length: starLength }).map((_, index) => (
-            <Star
-              className={`w-4 h-4 absolute opacity-0 left-1/2 top-1/2 sparkle-${index}`}
-              fill="blue"
-              key={index}
-            />
-          ))}
-        </span>
-      </button>
+          <span className="sr-only">{text}</span>
+          <span
+            className="flex items-center justify-center overflow-hidden h-8"
+            aria-hidden
+          >
+            {letters.map((letter, index) => (
+              <span
+                data-letter={letter}
+                className="letter inline-block relative h-8 after:h-8 after:absolute after:left-0 after:top-full after:content-[attr(data-letter)] leading-8"
+                key={index}
+              >
+                {letter}
+              </span>
+            ))}
+          </span>
+          <span className="absolute inset-0 block -z-10 pointer-events-none">
+            {Array.from({ length: starLength }).map((_, index) => (
+              <Star
+                className={`w-4 h-4 absolute opacity-0 left-1/2 top-1/2 sparkle-${index}`}
+                fill="blue"
+                key={index}
+              />
+            ))}
+          </span>
+        </button>
+      </div>
     </div>
   );
 };
