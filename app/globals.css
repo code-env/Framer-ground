@@ -73,4 +73,8 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  .justify-center {
+    justify-content: center !important;
+  }
 }

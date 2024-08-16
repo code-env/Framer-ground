@@ -29,30 +29,30 @@ export default function TextMorph() {
   };
 
   return (
-    <div className="flex h-screen flex-col items-end justify-end pb-6 w-[90%] mx-auto">
+    <div className="flex h-screen flex-col items-end justify-end pb-6 w-[80%] mx-auto ">
       <AnimatePresence mode="wait">
         {messages.map((message) => (
           <motion.div
             key={message.id}
             layout="position"
-            className="z-10 mt-2 max-w-[250px] break-words rounded-2xl bg-gray-200 dark:bg-gray-800"
+            className="z-10 mt-2 max-w-[250px] break-words rounded  bg-neutral-600/50"
             layoutId={`container-[${messages.length - 1}]`}
             transition={transitionDebug}
           >
-            <div className="px-3 py-2 text-[15px] leading-[15px] text-gray-900 dark:text-gray-100">
+            <div className="px-3 py-2 text-[15px] leading-[15px] te text-gray-100">
               {message.text}
             </div>
           </motion.div>
         ))}
       </AnimatePresence>
-      <div className="mt-4 flex w-full">
+      <div className="mt-4 flex w-full mx-auto">
         <form onSubmit={handleSubmit} className="flex w-full">
           <input
             type="text"
             onChange={(e) => setNewMessage(e.target.value)}
             value={newMessage}
-            className="py- relative h-9 w-[250px] flex-grow rounded-full border border-gray-200 bg-white px-3 text-[15px] outline-none placeholder:text-gray-400 focus-visible:ring-0 focus-visible:ring-blue-500/20 focus-visible:ring-offset-1
-            dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400 dark:focus-visible:ring-blue-500/20 dark:focus-visible:ring-offset-1 dark:focus-visible:ring-offset-gray-700
+            className="py- relative h-9 w-[250px] flex-grow rounded border text-neutral-200 border-neutral-300/50 px-3 text-[15px] outline-none placeholder:text-gray-400 focus-visible:ring-0 focus-visible:ring-blue-500/20 focus-visible:ring-offset-1
+             bg-neutral-600 dark:text-gray-100 placeholder-gray-400
             "
             placeholder="Type your message"
           />
@@ -72,10 +72,10 @@ export default function TextMorph() {
           </motion.div>
           <button
             type="submit"
-            className="ml-2 flex h-9 w-9 items-center justify-center rounded-full bg-gray-200
+            className="ml-2 flex h-9 w-9 items-center justify-center rounded bg-neutral-600 text-white
             dark:bg-gray-800"
           >
-            <PlusIcon className="h-5 w-5 text-gray-600 dark:text-gray-400" />
+            <PlusIcon className="h-5 w-5" />
           </button>
         </form>
       </div>
