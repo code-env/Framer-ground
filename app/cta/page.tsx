@@ -6,11 +6,13 @@ import React, { useEffect } from "react";
 
 const Buttons = () => {
 const [starcount,setStarcount] = React.useState(0);
+useEffect(() => {
 
-setTimeout(() => {
-
-  setStarcount(randomNumberGenerator(2,5))
-},1000)
+  setTimeout(() => {
+  
+    setStarcount(randomNumberGenerator(2,5))
+  },1000)
+},[starcount])
 
   const randomNumberGenerator = (min: number, max: number) => {
 
