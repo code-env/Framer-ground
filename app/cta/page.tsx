@@ -10,7 +10,7 @@ useEffect(() => {
 
   setTimeout(() => {
   
-    setStarcount(randomNumberGenerator(2,5))
+    setStarcount(randomNumberGenerator(2,50))
   },1000)
 },[starcount])
 
