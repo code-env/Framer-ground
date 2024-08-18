@@ -1,3 +1,5 @@
+"use client"
+
 import Button from "@/components/hand-crafted/button";
 import SmNavbar from "@/components/hand-crafted/sm-navbar";
 import React, { useEffect } from "react";
