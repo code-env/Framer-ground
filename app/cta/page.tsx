@@ -1,9 +1,14 @@
 import Button from "@/components/hand-crafted/button";
 import SmNavbar from "@/components/hand-crafted/sm-navbar";
-import React from "react";
+import React, { useEffect } from "react";
 
 const Buttons = () => {
+const [starcount,setStarcount] = React.useState(0);
 
+setTimeout(() => {
+
+  setStarcount(randomNumberGenerator(2,5))
+},1000)
 
   const randomNumberGenerator = (min: number, max: number) => {
 
@@ -13,7 +18,7 @@ const Buttons = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center flex-col">
-      <Button text="2(Bkm)" starLength={randomNumberGenerator(2,5)} />
+      <Button text="2(Bkm)" starLength={starcount} />
       <SmNavbar />
     </div>
   );
