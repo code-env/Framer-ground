@@ -7,12 +7,12 @@ import React from "react";
 
 type AnimationSequence = Parameters<typeof animate>[0];
 
-const Button = ({ text, starLength }: { text: string; starLength: number }) => {
+const Button = ({ text, starLength }: { text: string; starLength: number, onbclick: () => void}) => {
   const [scope, animate] = useAnimate();
   const letters = text.split("");
 
   const handleBtnClick = () => {
-    const sparkles = Array.from({ length: starLength });
+    const sparkles = Array.from({ length: starLength + onbclick() });
 
     const sparkleAnimation: AnimationSequence = sparkles.map((_, index) => [
       `.sparkle-${index}`,
