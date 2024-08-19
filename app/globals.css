@@ -77,4 +77,8 @@
   .justify-center {
     justify-content: center !important;
   }
+
+  .center {
+    @apply flex items-center justify-center;
+  }
 }

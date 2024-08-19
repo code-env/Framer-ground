@@ -1,8 +1,7 @@
+import Delete from "@/components/hand-crafted/delete";
 import Loading from "@/components/hand-crafted/loading";
 //import TransButton from "@/components/hand-crafted/trans";
 import FirstNavbar from "@/components/navbar/first";
-import LiquidNavbar from "@/components/navbar/liquid";
-import React from "react";
 
 const BtnTrans = () => {
   return (
@@ -11,10 +10,10 @@ const BtnTrans = () => {
         <h1 className="text-7xl font-extrabold text-center text-white mb-52">
           Checkout the navbar <br /> and it's gestures
         </h1>
-        <FirstNavbar />
+        {/* <FirstNavbar /> */}
       </div>
       <Loading />
-      {/* <LiquidNavbar /> */}
+      <Delete />
     </div>
   );
 };
