@@ -81,4 +81,8 @@
   .center {
     @apply flex items-center justify-center;
   }
+
+  .arrange-width {
+    width: calc(100% - 20px);
+  }
 }
