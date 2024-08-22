@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
 import { cn } from "@/lib/utils";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: {
@@ -43,7 +44,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(satoshi.className, "bg")}>{children}</body>
+      <body className={cn(satoshi.className, "bg")}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }

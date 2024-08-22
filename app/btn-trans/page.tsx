@@ -10,7 +10,7 @@ const BtnTrans = () => {
         <h1 className="text-7xl font-extrabold text-center text-white mb-52">
           Checkout the navbar <br /> and it's gestures
         </h1>
-        {/* <FirstNavbar /> */}
+        <FirstNavbar />
       </div>
       <Loading />
       <Delete />
