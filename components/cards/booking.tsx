@@ -90,9 +90,13 @@ const Booking = () => {
 
   return (
     <div className="h-screen center bg-white w-full">
-      <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        version="1.1"
+        className="absolute"
+      >
         <defs>
-          <filter id="fancy-goo">
+          <filter id="goo">
             <feGaussianBlur
               in="SourceGraphic"
               stdDeviation="10"
@@ -110,7 +114,7 @@ const Booking = () => {
       </svg>
       <div
         style={{
-          filter: "url(#fancy-goo)",
+          filter: "url(#goo)",
         }}
       >
         <AnimatePresence>
