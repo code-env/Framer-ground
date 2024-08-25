@@ -11,7 +11,7 @@ import {
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
-const FirstNavbar = () => {
+const ScrollReveal = () => {
   const [isHidden, setIsHidden] = useState(false);
   const [height, setHeight] = useState(0);
   const [mounted, setMounted] = useState(false);
@@ -100,4 +100,4 @@ const FirstNavbar = () => {
   );
 };
 
-export default FirstNavbar;
+export default ScrollReveal;

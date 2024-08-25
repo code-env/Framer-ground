@@ -1,8 +1,8 @@
 "use client";
 
-import { ReactNode, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Plus } from "lucide-react";
+import { ReactNode, useState } from "react";
 
 export const CARDS: Card[] = [
   {
@@ -31,14 +31,14 @@ type Card = {
   description: string;
 };
 
-export function AnimatedCards() {
+const LinearCards = () => {
   const [selectedCard, setSelectedCard] = useState<Card | null>(null);
 
   const [isHorizontal, setIsHorizontal] = useState(true);
 
   return (
     <>
-      <main className="h-screen p-6 md:p-12 overflow-hidden relative">
+      <main className="h-screen center relative w-full">
         <div className="absolute top-20 right-20 flex items-center gap-5">
           <div
             className="h-6 w-8  flex items-center justify-center gap-1 cursor-pointer"
@@ -76,7 +76,7 @@ export function AnimatedCards() {
       <Modal card={selectedCard} onClick={() => setSelectedCard(null)} />
     </>
   );
-}
+};
 
 function Card(props: { card: Card; onClick: () => void }) {
   return (
@@ -163,3 +163,5 @@ export function Button(props: { className?: string; children: ReactNode }) {
     </button>
   );
 }
+
+export default LinearCards;
