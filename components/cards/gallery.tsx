@@ -74,7 +74,7 @@ const GalleryOne = () => {
           transition={{ duration: 0.5, ease: "easeInOut" }}
           className="absolute inset-0 w-full h-screen overflow-hidden"
         >
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="popLayout">
             <motion.div
               key={activeItem.id}
               className="w-full h-screen flex items-center justify-center gap-10 overflow-hidden "
