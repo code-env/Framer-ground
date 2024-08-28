@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { cn } from "@/lib/utils";
 import { Analytics } from "@vercel/analytics/react";
+import Footer from "@/components/shared/footer";
+import LenisProvider from "@/providers/lenis";
 
 export const metadata: Metadata = {
   title: {
@@ -10,6 +12,13 @@ export const metadata: Metadata = {
     template: " %s | Framer Ground",
   },
   description: "Your Event management software ",
+
+  icons: {
+    icon: [
+      { url: "/logo.svg", media: "(prefers-color-scheme: dark)" },
+      { url: "/logo-dark.svg", media: "(prefers-color-scheme: light)" },
+    ],
+  },
 };
 
 const satoshi = localFont({
@@ -43,11 +52,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={cn(satoshi.className, "bg")}>
-        {children}
-        <Analytics />
-      </body>
+    <html lang="en" suppressHydrationWarning>
+      <LenisProvider>
+        <body className={cn(satoshi.className, "")}>
+          {children}
+          <Analytics />
+          <Footer />
+        </body>
+      </LenisProvider>
     </html>
   );
 }
