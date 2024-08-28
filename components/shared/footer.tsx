@@ -1,17 +1,14 @@
 "use client";
 
-import { Github, Linkedin, Twitter } from "lucide-react";
-import Link from "next/link";
-import React from "react";
-import { motion } from "framer-motion";
-import Logo from "./logo";
 import { MarkettingFooterRoutes, MarkettingSocialLinks } from "@/constants";
+import Link from "next/link";
+import Logo from "./logo";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   return (
     <footer className="border-t border-neutral-500/20 bg-black text-white">
-      <div className="container mx-auto px-4 py-12 md:py-24 ">
+      <div className="max-w-7xl w-full mx-auto px-4 py-12 md:py-24 ">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-4">
           <div className="col-span-2 lg:col-span-1">
             <Logo isFooter />

@@ -2,8 +2,11 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { fadeIn, stagger } from "@/constants";
-import { Button } from "@/components/ui/button";
+import { fadeIn, projectUrl, stagger } from "@/constants";
+import { Button, buttonVariants } from "@/components/ui/button";
+import AnimatedArrow from "@/app/(hand-crafted)/icons/animated-arrow";
+import Link from "next/link";
+import { Star } from "lucide-react";
 
 const Hero = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -36,47 +39,21 @@ const Hero = () => {
               Framer Motion.
             </motion.p>
             <motion.div variants={fadeIn} className="space-x-4">
-              <Button>Get Started</Button>
               <Button
-                variant="outline"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
               >
-                <span className="mr-2">Learn More</span>
-
-                <motion.svg
-                  width="15"
-                  height="15"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <motion.path
-                    d="M5 12H19"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{
-                      opacity: isHovered ? 1 : 0,
-                      x: isHovered ? 0 : -10,
-                      width: 20,
-                    }}
-                    transition={{ duration: 0.2 }}
-                  />
-                  <motion.path
-                    d="M12 5L19 12L12 19"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    initial={{ x: 0 }}
-                    animate={{ x: isHovered ? 0 : -7 }}
-                    transition={{ duration: 0.2 }}
-                  />
-                </motion.svg>
+                <span className="mr-2">Get Started</span>
+                <AnimatedArrow isHovered={isHovered} />
               </Button>
+              <Link
+                className={buttonVariants({ variant: "outline" })}
+                href={projectUrl}
+                target="_blank"
+              >
+                <Star className="mr-2 h-4 w-4 " />
+                <span className="mr-2">Star us on GitHub</span>
+              </Link>
             </motion.div>
           </motion.div>
         </div>

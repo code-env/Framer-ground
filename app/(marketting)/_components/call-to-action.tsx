@@ -1,12 +1,16 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import AnimatedArrow from "@/app/(hand-crafted)/icons/animated-arrow";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { LampContainer } from "@/components/ui/lamp";
-import { fadeIn, stagger } from "@/constants";
+import { fadeIn, projectUrl, stagger } from "@/constants";
 import { motion } from "framer-motion";
 import { Github } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 
 const CallToAction = () => {
+  const [isHovered, setIsHovered] = useState(false);
   return (
     <LampContainer>
       <section className="w-full py-12 md:py-24 lg:py-32">
@@ -35,11 +39,21 @@ const CallToAction = () => {
               variants={fadeIn}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <Button size="lg">View Documentation</Button>
-              <Button size="lg" variant="outline">
+              <Button
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+                size="lg"
+              >
+                <span className="mr-2"> View Documentation </span>
+                <AnimatedArrow isHovered={isHovered} />
+              </Button>
+              <Link
+                href={projectUrl}
+                className={buttonVariants({ variant: "outline", size: "lg" })}
+              >
                 <Github className="mr-2 h-5 w-5" />
                 View on GitHub
-              </Button>
+              </Link>
             </motion.div>
           </motion.div>
         </div>

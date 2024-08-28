@@ -126,3 +126,5 @@ export const MarkettingSocialLinks = [
     path: "https://github.com/code-env",
   },
 ];
+
+export const projectUrl = "https://github.com/code-env/framer-ground";
