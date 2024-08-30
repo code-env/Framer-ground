@@ -1,18 +1,61 @@
-import "./globals.css";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { cn } from "@/lib/utils";
 import { Analytics } from "@vercel/analytics/react";
-import Footer from "@/components/shared/footer";
+
+import "./globals.css";
+import { cn } from "@/lib/utils";
+import { siteConfig } from "@/config/site";
 import LenisProvider from "@/providers/lenis";
+import Footer from "@/components/shared/footer";
 
 export const metadata: Metadata = {
   title: {
-    default: "Framer Ground",
-    template: " %s | Framer Ground",
+    default: siteConfig.name,
+    template: `%s - ${siteConfig.name}`,
   },
-  description: "Your Event management software ",
-
+  metadataBase: new URL(siteConfig.url),
+  description: siteConfig.description,
+  keywords: [
+    "Animation",
+    "Interactive",
+    "shadcn ui",
+    "Next.js",
+    "React",
+    "Tailwind CSS",
+    "Framer motion",
+    "Radix UI",
+  ],
+  creator: "Bossadi Zenith",
+  authors: [
+    {
+      name: "bossadizenith",
+      url: "https://bossadizenith.vercel.app",
+    },
+  ],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteConfig.url,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.name,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
+    creator: "@framer-ground",
+  },
+  manifest: `${siteConfig.url}/site.webmanifest`,
   icons: {
     icon: [
       { url: "/logo.svg", media: "(prefers-color-scheme: dark)" },
@@ -53,6 +96,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head />
       <LenisProvider>
         <body className={cn(satoshi.className, "")}>
           {children}

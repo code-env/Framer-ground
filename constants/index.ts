@@ -1,4 +1,5 @@
 import { Icon } from "@/components/shared/icons";
+import { siteConfig } from "@/config/site";
 import { Github, Linkedin, Twitter } from "lucide-react";
 
 export function randomNumberGenerator(min: number, max: number) {
@@ -127,4 +128,4 @@ export const MarkettingSocialLinks = [
   },
 ];
 
-export const projectUrl = "https://github.com/code-env/framer-ground";
+export const projectUrl = siteConfig.links.github;

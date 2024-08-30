@@ -1,3 +1,4 @@
+import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,12 +13,12 @@ const Logo = ({ link, isFooter }: { link?: string; isFooter?: boolean }) => {
       <Image
         className=""
         src="/logo.svg"
-        alt="Framer ground logo"
+        alt={`${siteConfig.name} logo`}
         width={30}
         height={30}
       />
       <p className={cn("font-bold text-xl hidden md:flex", isFooter && "flex")}>
-        Framer ground
+        {siteConfig.name}
       </p>
     </Link>
   );

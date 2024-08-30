@@ -7,7 +7,7 @@ import { stacks } from "@/constants";
 const Stack = () => {
   return (
     <div className="w-full px-10">
-      <div className="max-w-5xl bg-black w-full mx-auto p-10 border border-neutral-500/20 rounded-[30px]">
+      <div className="max-w-5xl bg-black w-full mx-auto p-10 border border-neutral-500/20 rounded-[30px] flex flex-col gap-5">
         <motion.h1
           transition={{
             delay: 0.3,
