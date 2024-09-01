@@ -1,9 +1,64 @@
 import { Combine, RectangleHorizontal, TableCellsSplit } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 type IconProps = React.HTMLAttributes<SVGElement>;
 
 export const Icons = {
+  logo: (props: IconProps) => (
+    <svg viewBox="0 0 132.292 132.292" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <g fill="#d4aa00" transform="translate(.617 -5.527)">
+        <rect
+          fill="#d4aa00"
+          width="15.875"
+          height="89.958"
+          x="-76.052"
+          y="51.638"
+          ry="10.238"
+          transform="scale(-1 1) rotate(17.213)"
+          rx="7.938"
+        />
+        <rect
+          fill="#d4aa00"
+          width="15.875"
+          height="89.958"
+          x="71.653"
+          y="-48.84"
+          ry="7.938"
+          transform="rotate(51.226)"
+          rx="7.938"
+        />
+        <path
+          fill="#d4aa00"
+          d="M100.778 69.553a49.995 49.995 0 0 1-23.928 4.418c-25.89-1.6-35.298-20.516-41.123-20.876a7.937 7.937 0 0 0-8.412 7.432c-.077 1.888.457 3.884 1.635 5.389 11.252 13.618 27.898 22.724 46.92 23.9 11.199.692 20.37-.765 29.912-5.114l7.41-12.201z"
+        />
+      </g>
+      <g fill="#fc0" transform="translate(.617 -5.527)">
+        <rect
+          fill="#fc0"
+          width="15.875"
+          height="89.958"
+          x="-77.96"
+          y="51.678"
+          ry="10.238"
+          transform="scale(-1 1) rotate(17.213)"
+          rx="7.938"
+        />
+        <rect
+          fill="#fc0"
+          width="15.875"
+          height="89.958"
+          x="72.392"
+          y="-50.599"
+          ry="7.938"
+          transform="rotate(51.226)"
+          rx="7.938"
+        />
+        <path
+          fill="#fc0"
+          d="M102.613 69.028a49.995 49.995 0 0 1-23.928 4.418c-25.89-1.601-35.3-20.516-41.124-20.877a7.937 7.937 0 0 0-8.412 7.433c-.077 1.888.457 3.884 1.635 5.388 11.252 13.619 27.898 22.724 46.921 23.9 11.198.693 20.369-.764 29.911-5.114l7.41-12.2z"
+        />
+      </g>
+    </svg>
+  ),
   bento: (props: IconProps) => <TableCellsSplit {...props} />,
   button: (props: IconProps) => <RectangleHorizontal {...props} />,
   widget: (props: IconProps) => <Combine {...props} />,
@@ -64,12 +119,7 @@ export const Icons = {
     </svg>
   ),
   nextJS: (props: IconProps) => (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 180 180"
-      width="18"
-      {...props}
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="18" {...props}>
       <mask
         height="180"
         id=":r8:mask0_408_134"
@@ -87,13 +137,7 @@ export const Icons = {
           d="M149.508 157.52L69.142 54H54V125.97H66.1136V69.3836L139.999 164.845C143.333 162.614 146.509 160.165 149.508 157.52Z"
           fill="url(#:r8:paint0_linear_408_134)"
         ></path>
-        <rect
-          fill="url(#:r8:paint1_linear_408_134)"
-          height="72"
-          width="12"
-          x="115"
-          y="54"
-        ></rect>
+        <rect fill="url(#:r8:paint1_linear_408_134)" height="72" width="12" x="115" y="54"></rect>
       </g>
       <defs>
         <linearGradient
@@ -239,12 +283,7 @@ export const Icons = {
     </svg>
   ),
   framerMotion: (props: IconProps) => (
-    <svg
-      xmlns="http:www.w3.org/2000/svg"
-      viewBox="0 0 14 21"
-      role="presentation"
-      {...props}
-    >
+    <svg xmlns="http:www.w3.org/2000/svg" viewBox="0 0 14 21" role="presentation" {...props}>
       <path d="M0 0h14v7H7zm0 7h7l7 7H7v7l-7-7z" fill="currentColor"></path>
     </svg>
   ),
@@ -257,97 +296,4 @@ export const builtWith: Record<string, React.FC<IconProps>> = {
   NextJS: Icons.nextJS,
   storybook: Icons.storybook,
   "Content Layer": Icons.contentLayer,
-};
-
-const NextJS = ({ className }: IconProps) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={cn(
-      "md:h-10 md:w-10 h-4 w-4 text-neutral-500 flex-shrink-0 stroke-1",
-      className
-    )}
-  >
-    <path d="M9 15v-6l7.745 10.65a9 9 0 1 1 2.255 -1.993"></path>
-    <path d="M15 12v-3"></path>
-  </svg>
-);
-
-const ReactIcon = ({ className }: IconProps) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={cn(
-      "md:h-10 md:w-10 h-4 w-4 text-neutral-500 flex-shrink-0 stroke-1",
-      className
-    )}
-  >
-    <path d="M6.306 8.711c-2.602 .723 -4.306 1.926 -4.306 3.289c0 2.21 4.477 4 10 4c.773 0 1.526 -.035 2.248 -.102"></path>
-    <path d="M17.692 15.289c2.603 -.722 4.308 -1.926 4.308 -3.289c0 -2.21 -4.477 -4 -10 -4c-.773 0 -1.526 .035 -2.25 .102"></path>
-    <path d="M6.305 15.287c-.676 2.615 -.485 4.693 .695 5.373c1.913 1.105 5.703 -1.877 8.464 -6.66c.387 -.67 .733 -1.339 1.036 -2"></path>
-    <path d="M17.694 8.716c.677 -2.616 .487 -4.696 -.694 -5.376c-1.913 -1.105 -5.703 1.877 -8.464 6.66c-.387 .67 -.733 1.34 -1.037 2"></path>
-    <path d="M12 5.424c-1.925 -1.892 -3.82 -2.766 -5 -2.084c-1.913 1.104 -1.226 5.877 1.536 10.66c.386 .67 .793 1.304 1.212 1.896"></path>
-    <path d="M12 18.574c1.926 1.893 3.821 2.768 5 2.086c1.913 -1.104 1.226 -5.877 -1.536 -10.66c-.375 -.65 -.78 -1.283 -1.212 -1.897"></path>
-    <path d="M11.5 12.866a1 1 0 1 0 1 -1.732a1 1 0 0 0 -1 1.732z"></path>
-  </svg>
-);
-
-const Tailwind = ({ className }: IconProps) => (
-  <svg
-    stroke="currentColor"
-    fill="currentColor"
-    strokeWidth="0"
-    viewBox="0 0 24 24"
-    className={cn(
-      "md:h-10 md:w-10 h-4 w-4 text-neutral-500 flex-shrink-0 stroke-[0.5px]",
-      className
-    )}
-    height="1em"
-    width="1em"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path d="M18.5 9.51a4.22 4.22 0 0 1-1.91-1.34A5.77 5.77 0 0 0 12 6a4.72 4.72 0 0 0-5 4 3.23 3.23 0 0 1 3.5-1.49 4.32 4.32 0 0 1 1.91 1.35A5.77 5.77 0 0 0 17 12a4.72 4.72 0 0 0 5-4 3.2 3.2 0 0 1-3.5 1.51zm-13 4.98a4.22 4.22 0 0 1 1.91 1.34A5.77 5.77 0 0 0 12 18a4.72 4.72 0 0 0 5-4 3.23 3.23 0 0 1-3.5 1.49 4.32 4.32 0 0 1-1.91-1.35A5.8 5.8 0 0 0 7 12a4.72 4.72 0 0 0-5 4 3.2 3.2 0 0 1 3.5-1.51z"></path>
-  </svg>
-);
-
-const FramerMotion = ({ className }: IconProps) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={cn(
-      "md:h-10 md:w-10 h-4 w-4 text-neutral-500 flex-shrink-0 stroke-1",
-      className
-    )}
-  >
-    <path d="M12 12l-8 -8v16l16 -16v16l-4 -4"></path>
-    <path d="M20 12l-8 8l-4 -4"></path>
-  </svg>
-);
-
-export const Icon = {
-  FramerMotion,
-  ReactIcon,
-  Tailwind,
-  NextJS,
 };

@@ -55,13 +55,12 @@ export const metadata: Metadata = {
     images: [siteConfig.ogImage],
     creator: "@framer-ground",
   },
-  manifest: `${siteConfig.url}/site.webmanifest`,
   icons: {
-    icon: [
-      { url: "/logo.svg", media: "(prefers-color-scheme: dark)" },
-      { url: "/logo-dark.svg", media: "(prefers-color-scheme: light)" },
-    ],
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
   },
+  manifest: `${siteConfig.url}/site.webmanifest`,
 };
 
 const satoshi = localFont({
