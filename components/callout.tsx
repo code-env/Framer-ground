@@ -8,7 +8,13 @@ interface CalloutProps {
   children?: React.ReactNode;
 }
 
-export function Callout({ title, children, icon, className, ...props }: CalloutProps) {
+export function Callout({
+  title,
+  children,
+  icon,
+  className,
+  ...props
+}: CalloutProps) {
   return (
     <Alert {...props} className={cn("border-muted-foreground/50", className)}>
       {icon && <span className="mr-4 text-2xl">{icon}</span>}

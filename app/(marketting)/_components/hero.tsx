@@ -51,13 +51,15 @@ const Hero = () => {
               Framer Motion.
             </motion.p>
             <motion.div variants={fadeIn} className="space-x-4">
-              <Button
+              <Link
+                href="/docs"
+                className={buttonVariants()}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
               >
                 <span className="mr-2">Get Started</span>
                 <AnimatedArrow isHovered={isHovered} />
-              </Button>
+              </Link>
               <Link
                 className={buttonVariants({ variant: "outline" })}
                 href={projectUrl}

@@ -12,10 +12,9 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { siteConfig } from "@/config/site";
 import { getTableOfContents } from "@/lib/toc";
 import { absoluteUrl, cn } from "@/lib/utils";
-import { ChevronRightIcon, ExternalLinkIcon } from "@radix-ui/react-icons";
+import { ChevronRightIcon, ExternalLinkIcon } from "lucide-react";
 
 import "@/styles/mdx.css";
-import "@/styles/storybook.css";
 
 interface DocPageProps {
   params: {

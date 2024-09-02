@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/react";
 
-import "./globals.css";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/config/site";
 import LenisProvider from "@/providers/lenis";
 import Footer from "@/components/shared/footer";
+import "@/styles/mdx.css";
+import "@/styles/globals.css";
 
 export const metadata: Metadata = {
   title: {

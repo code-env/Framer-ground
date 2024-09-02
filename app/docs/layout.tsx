@@ -1,4 +1,6 @@
 import DocsSidebar from "@/components/shared/docs-sidebar";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { docsConfig } from "@/config/docs";
 import React, { ReactNode } from "react";
 
 const DocsLayout = ({ children }: { children: ReactNode }) => {

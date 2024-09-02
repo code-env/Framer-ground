@@ -15,7 +15,6 @@ interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   description?: string;
 }
 
-// eslint-disable-next-line unused-imports/no-unused-vars
 function CodeView({ children }: { children: React.ReactNode }) {
   const [codeString, setCodeString] = React.useState<string | null>(null);
   const codeRef = React.useRef<HTMLDivElement>(null);
@@ -49,7 +48,11 @@ function CodeView({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function ComponentPreview({ name, className, ...props }: ComponentPreviewProps) {
+export function ComponentPreview({
+  name,
+  className,
+  ...props
+}: ComponentPreviewProps) {
   const [minHeight, setMinHeight] = React.useState<number>(350);
 
   const { resolvedTheme } = useTheme();
@@ -83,7 +86,14 @@ export function ComponentPreview({ name, className, ...props }: ComponentPreview
           }
         >
           <iframe
-            src={`${process.env.NEXT_PUBLIC_STORYBOOK_URL}/iframe.html?globals=backgrounds.grid:!false;theme:${resolvedTheme ?? (typeof localStorage !== "undefined" ? localStorage?.getItem?.("theme") : "")};backgrounds.value:!transparent&viewMode=docs&id=${name}&site:docs=true`}
+            src={`${
+              process.env.NEXT_PUBLIC_STORYBOOK_URL
+            }/iframe.html?globals=backgrounds.grid:!false;theme:${
+              resolvedTheme ??
+              (typeof localStorage !== "undefined"
+                ? localStorage?.getItem?.("theme")
+                : "")
+            };backgrounds.value:!transparent&viewMode=docs&id=${name}&site:docs=true`}
             className="w-full"
             style={{
               height: `${Math.max(100, minHeight)}px`,

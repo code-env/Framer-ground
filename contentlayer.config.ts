@@ -84,7 +84,7 @@ export const Doc = defineDocumentType(() => ({
       required: true,
     },
     date: { type: "date", required: false },
-    publishvisited: {
+    published: {
       type: "boolean",
       default: true,
     },
@@ -108,7 +108,7 @@ export const Doc = defineDocumentType(() => ({
 
 const setupCodeSnippet = () => (tree: any) => {
   visit(tree, (node) => {
-    if (node?.type === "elemreent" && node?.tagName === "pre") {
+    if (node?.type === "element" && node?.tagName === "pre") {
       const [codeEl] = node.children;
       if (codeEl.tagName !== "code") {
         return;
@@ -186,7 +186,7 @@ export default makeSource({
   contentDirPath: "./content",
   documentTypes: [Doc],
   mdx: {
-    remarkPlugins: [remarkGfm, codeImport],
+    remarkPlugins: [remarkGfm],
     rehypePlugins: [
       setupCodeSnippet,
       rehypeSlug,
