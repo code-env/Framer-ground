@@ -14,8 +14,6 @@ import { getTableOfContents } from "@/lib/toc";
 import { absoluteUrl, cn } from "@/lib/utils";
 import { ChevronRightIcon, ExternalLinkIcon } from "lucide-react";
 
-import "@/styles/mdx.css";
-
 interface DocPageProps {
   params: {
     slug: string[];
@@ -159,7 +157,7 @@ export default async function DocPage({ params }: DocPageProps) {
 
           <div className="my-3 text-right">
             <Link
-              href={`https://github.com/codse/animata/edit/main/content/docs/${doc.slugAsParams}.mdx`}
+              href={`https://github.com/code-env/framer-ground/edit/main/content/docs/${doc.slugAsParams}.mdx`}
               target="_blank"
               rel="noreferrer"
               className="text-sm text-secondary-foreground underline"
