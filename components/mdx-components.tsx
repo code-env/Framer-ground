@@ -9,6 +9,7 @@ import Modal from "@/fg/overlay/modal";
 import { Callout } from "@/components/callout";
 import { CodeBlockWrapper } from "@/components/code-block-wrapper";
 import { ComponentExample } from "@/components/component-example";
+import ComponentListItem from "@/components/component-list-item";
 import { ComponentPreview } from "@/components/component-preview";
 import { ComponentSource } from "@/components/component-source";
 import {
@@ -229,6 +230,7 @@ const components = {
       </div>
     );
   },
+  ComponentListItem,
 };
 
 interface MdxProps {

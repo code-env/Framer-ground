@@ -78,4 +78,8 @@
   .arrange-width {
     width: calc(100% - 20px);
   }
+
+  body {
+    scroll-behavior: smooth;
+  }
 }

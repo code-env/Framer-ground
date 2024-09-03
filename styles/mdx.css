@@ -19,6 +19,10 @@
   @apply relative;
 }
 
+figure[data-rehype-pretty-code-figure] {
+  @apply hidden;
+}
+
 [data-rehype-pretty-code-fragment] code,
 [data-rehype-pretty-code-figure] code {
   @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0;

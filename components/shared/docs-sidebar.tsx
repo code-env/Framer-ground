@@ -31,7 +31,7 @@ const DocsSidebar = ({ items }: DocsSidebarNavProps) => {
 
     const node = document.querySelector(`[href="${pathname}"]`);
     if (node) {
-      node.scrollIntoView({ behavior: "instant", block: "nearest" });
+      node.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
   }, [pathname]);
 

@@ -134,20 +134,6 @@ const sidebarNav: SidebarNavItem[] = [
     items: createLinks("button"),
   },
   {
-    icon: "widget",
-    title: "Widget",
-    label: -1 + createLinks("widget").length + "",
-    href: "/docs/widget",
-    items: createLinks("widget"),
-  },
-  {
-    icon: "bento",
-    title: "Bento grid",
-    label: -1 + createLinks("bento-grid").length + "",
-    href: "/docs/bento-grid",
-    items: createLinks("bento-grid"),
-  },
-  {
     title: "Hero",
     items: createLinks("hero"),
   },
@@ -158,12 +144,6 @@ const sidebarNav: SidebarNavItem[] = [
   {
     title: "Carousel",
     items: createLinks("carousel"),
-  },
-  {
-    title: "Skeleton",
-    label: "6",
-    href: "/docs/skeleton",
-    items: createLinks("skeleton"),
   },
 ]
   .filter((category) => Boolean(category.items?.length || category.label))
