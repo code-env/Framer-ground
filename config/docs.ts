@@ -39,11 +39,6 @@ const sidebarNav: SidebarNavItem[] = [
         href: "/docs/setup",
         items: [],
       },
-      {
-        title: "Changelog",
-        href: "/docs/changelog",
-        items: [],
-      },
     ],
   },
   {
@@ -53,31 +48,6 @@ const sidebarNav: SidebarNavItem[] = [
       {
         title: "Overview",
         href: "/docs/contributing",
-        items: [],
-      },
-      {
-        title: "Running locally",
-        href: "/docs/contributing/running-locally",
-        items: [],
-      },
-      {
-        title: "Adding components",
-        href: "/docs/contributing/components",
-        items: [],
-      },
-      {
-        title: "Folder structure",
-        href: "/docs/contributing/folder-structure",
-        items: [],
-      },
-      {
-        title: "Guidelines",
-        href: "/docs/contributing/guidelines",
-        items: [],
-      },
-      {
-        title: "Best practices",
-        href: "/docs/contributing/best-practices",
         items: [],
       },
     ],

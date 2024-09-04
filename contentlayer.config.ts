@@ -186,7 +186,6 @@ export default makeSource({
   contentDirPath: "./content",
   documentTypes: [Doc],
   mdx: {
-    //@ts-ignore
     remarkPlugins: [remarkGfm, codeImport],
     rehypePlugins: [
       setupCodeSnippet,

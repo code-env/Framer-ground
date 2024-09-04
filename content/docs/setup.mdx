@@ -1,0 +1,81 @@
+---
+title: Setup
+date: 2024-07-08
+description: Make your project animation ready with Framer ground.
+---
+
+You don't need to install it as a dependency instead you can simply copy and paste the code, as shadcn/ui, into your project. However, you still need to install the other dependency that the code needs.
+
+## Requirements
+
+1. **TailwindCSS**: We use TailwindCSS for styling. See the [TailwindCSS documentation](https://tailwindcss.com/docs/installation) for more information.
+
+2. **Framer Motion** (Optionally required): Some complex animations require Framer Motion. See the [Framer Motion documentation](https://www.framer.com/api/motion/) for more information.
+
+3. **Lucide Icons** or **Radix Icon** (Optional): Some components use [Lucide Icons](https://lucide.dev/guide/packages/lucide-react) or [Radix Icons](https://radix-ui.com/icons). You can use any other icon library or SVG icons as well.
+
+## Setting up
+
+### Folder structure
+
+<Callout className="mt-2">
+  This is optional but recommended. You can paste the components where ever you
+  want however make sure to update the paths in the code if you are not using
+  the same structure.
+</Callout>
+
+The project assumes that you have the following structure:
+
+```
+/
+  /components
+  /ui
+```
+
+where `/` is the root of your project, `/components` is where you keep your components and the project has been set up using paths in the `tsconfig.json` file.
+
+```json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  }
+}
+```
+
+The root of your project can be anything (like `src` or `app`), but the `components` folder should be at the root level.
+
+### Install basic dependencies
+
+Install the required dependencies, if you haven't already:
+
+```bash
+npm install tailwind-merge clsx lucide-react tailwindcss-animate
+```
+
+Add `tailwindcss-animate` to the `plugins` array in your `tailwind.config.js` file:
+
+```js
+module.exports = {
+  plugins: [require("tailwindcss-animate")],
+};
+```
+
+### Create utils.ts file
+
+Create `utils.ts` file in the `libs` folder and paste the following code:
+
+```ts
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+## Copying the code
+
+1. If you are copying the dependency installation or file creation command make sure to use the copy button as it provides multiple options to copy the code.
