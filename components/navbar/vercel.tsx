@@ -33,12 +33,12 @@ const Vercel = () => {
     },
   ];
 
-  const handleMoundeEnter = () => {
+  const handleMouseEnter = (event: React.MouseEvent<HTMLLIElement>) => {
     if (!ref.current) return;
 
-    const { width } = ref.current.getBoundingClientRect();
+    const { width } = event.currentTarget.getBoundingClientRect();
 
-    const left = ref.current.offsetLeft;
+    const left = event.currentTarget.offsetLeft;
     setState({
       width,
       opacity: 1,
@@ -61,7 +61,7 @@ const Vercel = () => {
               return (
                 <li
                   ref={ref}
-                  onMouseEnter={handleMoundeEnter}
+                  onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                   key={index}
                   className="h-full flex relative items-center justify-center px-5 z-10 cursor-pointer mix-blend-difference"
