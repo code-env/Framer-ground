@@ -64,7 +64,7 @@ const SmNavbar = () => {
   };
 
   return (
-    <div className="h-screen flex items-center justify-center bg-white w-full">
+    <div className="h-screen flex items-center justify-center bg-muted w-full">
       <motion.div
         whileHover={{
           scale: isOpen ? 1 : 0.95,

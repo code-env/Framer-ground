@@ -38,7 +38,7 @@ const LinearCards = () => {
 
   return (
     <>
-      <main className="h-screen center relative w-full">
+      <main className="h-screen center relative w-full bg-[#222]">
         <div className="absolute top-20 right-20 flex items-center gap-5">
           <div
             className="h-6 w-8  flex items-center justify-center gap-1 cursor-pointer"

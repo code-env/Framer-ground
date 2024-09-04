@@ -9,6 +9,7 @@ import GalleryTwo from "@/components/cards/gallery-two";
 import LinearCards from "@/components/cards/linear";
 import SmNavbar from "@/components/cards/sm-navbar";
 import Words from "@/components/cards/words";
+import Add from "@/components/cards/add";
 
 const Cards = () => {
   return (
@@ -22,6 +23,7 @@ const Cards = () => {
       <Words />
       <GalleryTwo />
       <CreditCards />
+      <Add />
     </div>
   );
 };

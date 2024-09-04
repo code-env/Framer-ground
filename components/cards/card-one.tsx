@@ -60,7 +60,7 @@ const CardOne = () => {
               key={index}
               src={image.src}
               alt={image.title}
-              className="h-32 absolute w-32 object-cover border-8 border-white rounded-xl"
+              className="h-32 absolute w-32 object-cover border-8 border-white rounded-3xl"
               style={{
                 rotate: image.tilt,
                 right: index === 2 ? index * -10 : index * 10,

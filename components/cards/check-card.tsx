@@ -35,7 +35,7 @@ const CheckCard = () => {
   };
 
   return (
-    <div className="h-screen center bg-white/90 w-full">
+    <div className="h-screen center bg-muted w-full">
       <motion.div className="bg-white w-60 items-center rounded-lg flex p-5 ">
         <Checkbox isChecked={checked} setIsChecked={setCheced} />
         <div className="px-5 overflow-hidden">

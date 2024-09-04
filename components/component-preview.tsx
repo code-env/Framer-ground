@@ -15,6 +15,7 @@ interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   description?: string;
 }
 
+// eslint-disable-next-line unused-imports/no-unused-vars
 function CodeView({ children }: { children: React.ReactNode }) {
   const [codeString, setCodeString] = React.useState<string | null>(null);
   const codeRef = React.useRef<HTMLDivElement>(null);
