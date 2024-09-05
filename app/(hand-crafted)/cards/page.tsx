@@ -10,6 +10,7 @@ import LinearCards from "@/components/cards/linear";
 import SmNavbar from "@/components/cards/sm-navbar";
 import Words from "@/components/cards/words";
 import Add from "@/components/cards/add";
+import PianoVisualization from "@/components/cards/piano";
 
 const Cards = () => {
   return (
@@ -24,6 +25,7 @@ const Cards = () => {
       <GalleryTwo />
       <CreditCards />
       <Add />
+      <PianoVisualization />
     </div>
   );
 };

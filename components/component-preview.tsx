@@ -6,6 +6,7 @@ import { useTheme } from "next-themes";
 import { CopyButton } from "@/components/copy-button";
 import { Icons } from "@/components/icons";
 import { cn } from "@/lib/utils";
+import { Index } from "@/config";
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string;
@@ -55,11 +56,29 @@ export function ComponentPreview({
 }: ComponentPreviewProps) {
   const [minHeight, setMinHeight] = React.useState<number>(350);
 
-  const { resolvedTheme } = useTheme();
+  const Preview = React.useMemo(() => {
+    const Component = Index[name]?.component;
+
+    if (!Component) {
+      return (
+        <div className="h-full w-full flex items-center justify-center">
+          <p className="text-sm text-muted-foreground">
+            Component{" "}
+            <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm">
+              {name}
+            </code>{" "}
+            not found in registry.
+          </p>
+        </div>
+      );
+    }
+
+    return <Component />;
+  }, [name]);
 
   React.useEffect(() => {
     const eventListener = (event: MessageEvent) => {
-      if (event.data.type === "animata-set-height") {
+      if (event.data.type === "fg-set-height") {
         setMinHeight(event.data.height);
       }
     };
@@ -72,7 +91,7 @@ export function ComponentPreview({
   return (
     <div className={cn("group relative", className)} {...props}>
       <div
-        className={cn("preview relative w-full max-w-full !overflow-hidden")}
+        className={cn("preview relative w-full max-w-full border rounded-xl")}
         style={{
           height: `${Math.max(100, minHeight)}px`,
         }}
@@ -85,20 +104,7 @@ export function ComponentPreview({
             </div>
           }
         >
-          <iframe
-            src={`${
-              process.env.NEXT_PUBLIC_STORYBOOK_URL
-            }/iframe.html?globals=backgrounds.grid:!false;theme:${
-              resolvedTheme ??
-              (typeof localStorage !== "undefined"
-                ? localStorage?.getItem?.("theme")
-                : "")
-            };backgrounds.value:!transparent&viewMode=docs&id=${name}&site:docs=true`}
-            className="w-full"
-            style={{
-              height: `${Math.max(100, minHeight)}px`,
-            }}
-          />
+          {Preview}
         </React.Suspense>
       </div>
     </div>
