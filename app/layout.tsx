@@ -8,6 +8,7 @@ import LenisProvider from "@/providers/lenis";
 import Footer from "@/components/shared/footer";
 import "@/styles/mdx.css";
 import "@/styles/globals.css";
+import { ThemeProvider } from "@/components/providers";
 
 export const metadata: Metadata = {
   title: {
@@ -99,9 +100,11 @@ export default function RootLayout({
       <head />
       <LenisProvider>
         <body className={cn(satoshi.className, "")}>
-          {children}
-          <Analytics />
-          <Footer />
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            {children}
+            <Analytics />
+            <Footer />
+          </ThemeProvider>
         </body>
       </LenisProvider>
     </html>

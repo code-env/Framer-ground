@@ -1,0 +1,48 @@
+---
+title: Reveal
+description: Scroll to reveal the navbar or hover to reveal the navbar content
+author: code-env
+---
+
+<ComponentPreview name="reveal-navbar" />
+
+## Installation
+
+<Steps>
+
+<Step>Create your utils file</Step>
+
+### Create utils.ts file
+
+Create `utils.ts` file in the `libs` folder and paste the following code:
+
+```ts
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+<Step>Run the following command</Step>
+
+It will create a new file `reveal.tsx` inside the `components/navbars/reveal.tsx` directory.
+
+```bash
+mkdir -p components/navbar && touch components/navbar/reveal.tsx
+```
+
+<Step>Paste the code</Step>{" "}
+
+Open the newly created file and paste the following code:
+
+```jsx file=<rootDir>/fg/navbar/reveal.tsx
+
+```
+
+</Steps>
+
+## Credits
+
+Built by [Bossadi Zenith](https://github.com/code-env)

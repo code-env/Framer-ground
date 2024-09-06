@@ -39,8 +39,8 @@ const Hero = () => {
                   className="w-full object-cover grayscale hover:grayscale-0 duration-150 transition-all cursor-pointer"
                 />
               </div>
-              nk the animations on <br className="hidden lg:block" /> your
-              websites
+              nk the animated <br className="hidden lg:block" /> components on
+              your websites
             </motion.h1>
             <motion.p
               variants={fadeIn}

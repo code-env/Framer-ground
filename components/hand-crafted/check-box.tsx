@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { motion } from "framer-motion";
 
 interface CheckboxProps {
   isChecked: boolean;
-  setIsChecked: (prev: boolean) => void;
+  setIsChecked: Dispatch<SetStateAction<boolean>>;
 }
 
 const Checkbox: React.FC<CheckboxProps> = ({ isChecked, setIsChecked }) => {

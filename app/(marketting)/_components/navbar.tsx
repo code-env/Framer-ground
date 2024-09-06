@@ -48,7 +48,7 @@ const MarkettingNavbar = () => {
             y: "0",
           },
         }}
-        className="px-4 lg:px-6 h-16 flex items-center fixed top-5 left-0 right-0 z-50 mx-auto lg:w-full w-[90%] lg:max-w-5xl bg-black/50 backdrop-blur border border-neutral-500/20 rounded-lg"
+        className="px-2.5 h-16 flex items-center fixed top-5 left-0 right-0 z-50 mx-auto lg:w-full w-[90%] lg:max-w-5xl bg-black/50 backdrop-blur border border-neutral-500/20 rounded-lg"
       >
         <Logo />
         <nav className="hidden md:flex items-center space-x-6 mx-auto text-white">
@@ -68,7 +68,8 @@ const MarkettingNavbar = () => {
             target="_blank"
             className={buttonVariants({
               variant: "outline",
-              className: "hidden md:flex",
+              className:
+                "hidden md:flex bg-white text-black hover:bg-white/90 hover:text-black/90",
             })}
           >
             <Star className="mr-2 h-4 w-4 " />
@@ -108,7 +109,7 @@ const MarkettingNavbar = () => {
                 target="_blank"
                 className={buttonVariants({
                   variant: "outline",
-                  className: "text-black",
+                  className: "text-black bg-white",
                 })}
               >
                 <Star className="mr-2 h-4 w-4 " />

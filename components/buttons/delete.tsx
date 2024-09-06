@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
+import { Check, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const Delete = () => {
@@ -67,7 +67,7 @@ const Delete = () => {
                 borderRadius: "50%",
               }}
               animate={{
-                x: 100,
+                x: 130,
                 scale: 1,
               }}
               exit={{
@@ -82,6 +82,34 @@ const Delete = () => {
               onClick={handleCancelClick}
             >
               <X className="w-4 h-4" />
+            </motion.button>
+          )}
+        </AnimatePresence>
+        <AnimatePresence>
+          {!isActive && (
+            <motion.button
+              whileHover={{ scale: 0.9 }}
+              initial={{
+                x: 0,
+                scale: 0.7,
+                borderRadius: "50%",
+              }}
+              animate={{
+                x: -130,
+                scale: 1,
+              }}
+              exit={{
+                x: 0,
+                scale: 0.7,
+              }}
+              transition={{
+                duration: 0.4,
+                ease: "easeInOut",
+              }}
+              className={cn("h-10 w-10 rounded-full bg-black center")}
+              onClick={handleCancelClick}
+            >
+              <Check className="w-4 h-4" />
             </motion.button>
           )}
         </AnimatePresence>

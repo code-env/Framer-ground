@@ -56,7 +56,7 @@ export default function ComponentListItem({
       />
       <div
         key={`component-list-item-${copyId}-${forceUpdate}`}
-        className="flex max-h-56 h0f flex-col items-center justify-center px-4 pb-4"
+        className="flex max-h-56 h-full flex-col items-center justify-center px-4 pb-4 !relative"
       >
         {children}
         {Component && (

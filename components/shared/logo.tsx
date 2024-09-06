@@ -11,13 +11,25 @@ const Logo = ({ link, isFooter }: { link?: string; isFooter?: boolean }) => {
       href={link ? link : "/"}
     >
       <Image
-        className=""
+        className="block dark:hidden"
+        src="/logo-dark.svg"
+        alt={`${siteConfig.name} logo`}
+        width={30}
+        height={30}
+      />
+      <Image
+        className="hidden dark:block"
         src="/logo.svg"
         alt={`${siteConfig.name} logo`}
         width={30}
         height={30}
       />
-      <p className={cn("font-bold text-xl hidden md:flex", isFooter && "flex")}>
+      <p
+        className={cn(
+          "font-bold text-xl hidden md:flex text-black dark:text-white",
+          isFooter && "flex"
+        )}
+      >
         {siteConfig.name}
       </p>
     </Link>

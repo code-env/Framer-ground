@@ -24,7 +24,7 @@ const CallToAction = () => {
           >
             <motion.h2
               variants={fadeIn}
-              className="text-3xl font-bold tracking-tighter sm:text-5xl text-background"
+              className="text-3xl font-bold tracking-tighter sm:text-5xl text-white"
             >
               Start Building with Framer-ground
             </motion.h2>

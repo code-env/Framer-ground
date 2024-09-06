@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
+import { Check, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const Delete = () => {
@@ -49,14 +49,12 @@ const Delete = () => {
         <motion.button
           whileHover={{ scale: 0.9 }}
           className={cn(
-            "h-10 rounded-md px-10 transition-all z-10 flex center absolute bg-black duration-500",
-            !isActive && "bg-black"
+            "h-10 rounded-md px-10 transition-all z-10 flex center absolute bg-primary text-primary-foreground duration-500"
           )}
           onClick={handleDeleteClick}
         >
           Delete
         </motion.button>
-
         <AnimatePresence>
           {!isActive && (
             <motion.button
@@ -67,7 +65,7 @@ const Delete = () => {
                 borderRadius: "50%",
               }}
               animate={{
-                x: 100,
+                x: 130,
                 scale: 1,
               }}
               exit={{
@@ -78,10 +76,42 @@ const Delete = () => {
                 duration: 0.4,
                 ease: "easeInOut",
               }}
-              className={cn("h-10 w-10 rounded-full bg-black center")}
+              className={cn(
+                "h-10 w-10 rounded-full bg-primary text-muted-foreground center"
+              )}
               onClick={handleCancelClick}
             >
               <X className="w-4 h-4" />
+            </motion.button>
+          )}
+        </AnimatePresence>{" "}
+        <AnimatePresence>
+          {!isActive && (
+            <motion.button
+              whileHover={{ scale: 0.9 }}
+              initial={{
+                x: 0,
+                scale: 0.7,
+                borderRadius: "50%",
+              }}
+              animate={{
+                x: -130,
+                scale: 1,
+              }}
+              exit={{
+                x: 0,
+                scale: 0.7,
+              }}
+              transition={{
+                duration: 0.4,
+                ease: "easeInOut",
+              }}
+              className={cn(
+                "h-10 w-10 rounded-full bg-primary text-muted-foreground center"
+              )}
+              onClick={handleCancelClick}
+            >
+              <Check className="w-4 h-4" />
             </motion.button>
           )}
         </AnimatePresence>

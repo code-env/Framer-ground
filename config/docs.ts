@@ -50,6 +50,11 @@ const sidebarNav: SidebarNavItem[] = [
         href: "/docs/contributing",
         items: [],
       },
+      {
+        title: "Running locally",
+        href: "/docs/contributing/running-locally",
+        items: [],
+      },
     ],
   },
   {
@@ -77,8 +82,8 @@ const sidebarNav: SidebarNavItem[] = [
     items: createLinks("container"),
   },
   {
-    title: "Card",
-    items: createLinks("card"),
+    title: "Cards",
+    items: createLinks("cards"),
   },
   {
     title: "Icon",
@@ -97,11 +102,23 @@ const sidebarNav: SidebarNavItem[] = [
     items: createLinks("overlay"),
   },
   {
-    icon: "button",
+    icon: "buttons",
     title: "Button",
     label: -1 + createLinks("button").length + "",
     href: "/docs/button",
     items: createLinks("button"),
+  },
+  {
+    title: "Navbars",
+    label: createLinks("navbars").length + "",
+    href: "/docs/navbars/liquid",
+    items: createLinks("navbars"),
+  },
+  {
+    title: "Gallery",
+    label: createLinks("gallery").length + "",
+    href: "/docs/gallery/one",
+    items: createLinks("gallery"),
   },
   {
     title: "Hero",

@@ -9,7 +9,7 @@ const Github = () => {
   return (
     <div className="center h-screen">
       <button
-        className="bg-primary hover:bg-primary/85 text-white font-bold py-2 px-4 rounded inline-flex items-center"
+        className="bg-primary hover:bg-primary/95 text-primary-foreground font-bold py-2 px-4 rounded inline-flex items-center"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >

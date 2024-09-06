@@ -14,6 +14,7 @@ interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   extractedClassNames?: string;
   align?: "center" | "start" | "end";
   description?: string;
+  height?: number;
 }
 
 function CodeView({ children }: { children: React.ReactNode }) {
@@ -52,9 +53,10 @@ function CodeView({ children }: { children: React.ReactNode }) {
 export function ComponentPreview({
   name,
   className,
+  height,
   ...props
 }: ComponentPreviewProps) {
-  const [minHeight, setMinHeight] = React.useState<number>(350);
+  const [minHeight] = React.useState<number>(350);
 
   const Preview = React.useMemo(() => {
     const Component = Index[name]?.component;
@@ -76,24 +78,12 @@ export function ComponentPreview({
     return <Component />;
   }, [name]);
 
-  React.useEffect(() => {
-    const eventListener = (event: MessageEvent) => {
-      if (event.data.type === "fg-set-height") {
-        setMinHeight(event.data.height);
-      }
-    };
-    window.addEventListener("message", eventListener);
-    return () => {
-      window.removeEventListener("message", eventListener);
-    };
-  }, []);
-
   return (
     <div className={cn("group relative", className)} {...props}>
       <div
         className={cn("preview relative w-full max-w-full border rounded-xl")}
         style={{
-          height: `${Math.max(100, minHeight)}px`,
+          height: `${Math.max(100, height ? minHeight + height : minHeight)}px`,
         }}
       >
         <React.Suspense

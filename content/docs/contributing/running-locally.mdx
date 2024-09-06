@@ -1,0 +1,69 @@
+---
+title: Running Locally
+date: 2024-09-05
+description: Set up your local environment to run Framer-ground.
+---
+
+Framer-ground is built using Next.js, TailwindCSS and Framer-motion. To run Framer-ground locally, you need to have Node.js installed on your machine. You can follow the steps below to set up your local environment.
+
+## Getting Started
+
+Please follow these simple steps to get a local copy up and running.
+
+### Prerequisites
+
+Here is what you need to be able to run Framer-ground.
+
+- Node.js (Version: >=18.x)
+- pnpm _(recommended)_
+- Basic understanding of Framer motion animation library
+
+## Development
+
+### Setup
+
+1. Clone the repo into a public GitHub repository (or fork https://github.com/code-env/Framer-ground/fork).
+
+   ```sh
+   git clone https://github.com/code-env/Framer-ground.git
+   ```
+
+2. Go to the project folder
+
+   ```sh
+   cd Framer-ground
+   ```
+
+3. Install packages with pnpm
+
+   ```sh
+   pnpm install
+   ```
+
+4. Set up your `.env` file
+
+   - Duplicate `.env.example` to `.env`
+
+5. Setup Node
+
+   If your Node version does not meet the project's requirements as instructed by the docs, "nvm" (Node Version Manager) allows using Node at the version required by the project:
+
+   ```sh
+   nvm use
+   ```
+
+   You first might need to install the specific version and then use it:
+
+   ```sh
+   nvm install && nvm use
+   ```
+
+   You can install nvm from [here](https://github.com/nvm-sh/nvm).
+
+6. Start the development server
+
+   ```sh
+   pnpm dev
+   ```
+
+7. Open [http://localhost:3000](http://localhost:3000) in the browser to see the result.

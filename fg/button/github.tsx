@@ -9,11 +9,11 @@ const Github = () => {
   return (
     <div className="h-full w-full center">
       <button
-        className="bg-primary hover:bg-primary/85 text-white font-bold py-2 px-4 rounded inline-flex items-center"
+        className="py-2 px-4 rounded flex items-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <span className="mr-2">Learn More</span>
+        <span>Learn More</span>
         <motion.svg
           width="15"
           height="15"
