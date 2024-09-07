@@ -51,8 +51,8 @@ const HelloWorld = () => {
   }, []);
 
   return (
-    <div className="center h-full bg-white w-full flex-col">
-      <div className="relativ cursor-pointer center bg-red-50 p-10 border-4 rounded-[25px] flex-col gap-10">
+    <div className="center h-full  w-full flex-col">
+      <div className="relativ cursor-pointer center bg-primary p-10 border-4 rounded-[25px] flex-col gap-10">
         <div className="relative h-32 w-32">
           {images.map((image, index) => (
             <motion.img
@@ -76,7 +76,7 @@ const HelloWorld = () => {
           ))}
         </div>
         <div className="mt-10 flex flex-col gap-5">
-          <h1 className="font-semibold text-3xl text-center">
+          <h1 className="font-semibold text-3xl text-center text-primary-foreground">
             Share this wishlist with your <br /> group
           </h1>
           <p className="text-xl text-muted-foreground text-center">
@@ -85,7 +85,7 @@ const HelloWorld = () => {
           </p>
         </div>
         <button
-          className="bg-primary text-primary-foreground hover:bg-primary/90 w-full h-11 rounded-md px-8"
+          className="bg-secondary text-secondary-foreground hover:bg-secondary/90 w-full h-11 rounded-md px-8"
           onClick={() => {
             setAnimate(false);
             setFrontImage(null);

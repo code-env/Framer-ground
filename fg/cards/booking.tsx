@@ -341,7 +341,7 @@ const Booking = () => {
               animate={{
                 height: 50,
               }}
-              className="bg-primary/50 rounded-lg max-w-[50px] min-w-[50px] flex items-center justify-center"
+              className="bg-primary bg-black rounded-lg max-w-[50px] min-w-[50px] flex items-center justify-center"
             >
               <div className="h-4 rounded w-4 bg-white dark:bg-black rotate-45" />
             </motion.div>

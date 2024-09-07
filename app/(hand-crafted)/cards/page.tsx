@@ -11,6 +11,8 @@ import SmNavbar from "@/components/cards/sm-navbar";
 import Words from "@/components/cards/words";
 import Add from "@/components/cards/add";
 import PianoVisualization from "@/components/cards/piano";
+import Vercel from "@/components/cards/vercel";
+import Drop from "@/components/cards/drop";
 
 const Cards = () => {
   return (
@@ -26,6 +28,8 @@ const Cards = () => {
       <CreditCards />
       <Add />
       <PianoVisualization />
+      <Vercel />
+      <Drop />
     </div>
   );
 };

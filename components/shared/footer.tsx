@@ -11,7 +11,7 @@ const Footer = () => {
       <div className="max-w-7xl w-full mx-auto px-4 py-12 md:py-24 ">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-4">
           <div className="col-span-2 lg:col-span-1">
-            <Logo isFooter />
+            <Logo isFooter home />
             <p className="mt-4 text-sm text-muted-foreground">
               Elevate your web projects with fine, small animated components.
             </p>

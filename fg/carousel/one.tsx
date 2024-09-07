@@ -11,7 +11,7 @@ import image6 from "@/public/image6.jpg";
 import image7 from "@/public/image7.jpg";
 import image8 from "@/public/image8.jpg";
 
-const MouseMove = () => {
+const One = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
@@ -67,7 +67,7 @@ const MouseMove = () => {
   };
 
   return (
-    <div className="relative h-screen center">
+    <div className="relative h-full w-full center">
       <CustomCursor
         containerRef={containerRef}
         onClickLeft={handlePrev}
@@ -75,7 +75,7 @@ const MouseMove = () => {
       />
       <div
         ref={containerRef}
-        className="w-[1000px] h-[600px] border-4 rounded-3xl flex items-center text-white/90 justify-center borderwhie mx-auto mt-10 overflow-hidden relative"
+        className="w-[90%] h-[600px] border-4 rounded-3xl flex items-center text-white/90 justify-center borderwhie mx-auto mt-10 overflow-hidden relative"
       >
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
@@ -94,6 +94,7 @@ const MouseMove = () => {
               fill
               src={images[currentIndex].src}
               alt={images[currentIndex].alt}
+              placeholder="blur"
               className="object-cover object-top"
             />
           </motion.div>
@@ -199,7 +200,7 @@ const CustomCursor: React.FC<CustomCursorProps> = ({
           >
             <motion.div
               whileTap={{ scale: 0.8 }}
-              className="flex items-center justify-center w-[50px] h-[50px] bg-white text-background rounded-full"
+              className="flex items-center justify-center w-[50px] h-[50px] bg-primary text-primary-foreground rounded-full"
               animate={{
                 rotate: rotation ? 180 : 0,
                 transition: {
@@ -217,4 +218,4 @@ const CustomCursor: React.FC<CustomCursorProps> = ({
   );
 };
 
-export default MouseMove;
+export default One;

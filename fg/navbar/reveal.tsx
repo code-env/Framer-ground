@@ -98,7 +98,9 @@ const Reveal = () => {
           )}
         </AnimatePresence>
       </motion.nav>
-      <h1 className="font-semibold text-xl">The navbar is up</h1>
+      <h1 className="font-semibold text-xl">
+        The navbar is up. Hover or scroll to reveal
+      </h1>
     </div>
   );
 };
