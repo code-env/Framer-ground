@@ -1,3 +1,4 @@
+import Checkout from "@/components/buttons/checkout";
 import Delete from "@/components/buttons/delete";
 import Github from "@/components/buttons/github";
 import Two from "@/components/buttons/two";
@@ -9,6 +10,7 @@ const Buttons = () => {
       <Delete />
       <Two text="User" />
       <Github />
+      <Checkout />
     </div>
   );
 };

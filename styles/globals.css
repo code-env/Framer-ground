@@ -70,6 +70,15 @@
   .justify-center {
     justify-content: center !important;
   }
+  .step {
+    counter-increment: step;
+  }
+
+  .step:before {
+    @apply absolute inline-flex h-9 w-9 items-center justify-center rounded-full border-4 border-background bg-muted text-center -indent-px font-mono text-base font-medium;
+    @apply ml-[-50px] mt-[-4px];
+    content: counter(step);
+  }
 
   .center {
     @apply flex items-center justify-center;

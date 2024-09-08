@@ -65,10 +65,13 @@ const NotchTwo = () => {
 
   const [clicked, setClicked] = useState(false);
   return (
-    <div className="h-full center border-y w-full">
+    <div className="h-full center w-full">
       <div className="h-3/4 w-3/4 flex items-end justify-center">
         <motion.div
-          animate={{ height: clicked ? 600 : 60, width: clicked ? 600 : 300 }}
+          animate={{
+            height: clicked ? "100%" : 60,
+            width: clicked ? 600 : 300,
+          }}
           className=" rounded-[30px] overflow-hidden border bg-black dark:bg-white"
         >
           <AnimatePresence onExitComplete={() => setClicked(false)}>

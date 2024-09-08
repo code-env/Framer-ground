@@ -1,0 +1,55 @@
+---
+title: Checkout
+description: Checkout button effect when the customer hovers the checkout button.
+author: code-env
+---
+
+<ComponentPreview name="checkout-button" />
+
+## Installation
+
+<Steps>
+
+<Step>Run the following command</Step>
+
+It will create a new file `checkout.tsx` inside the `components/buttons/checkout.tsx` directory.
+
+```bash
+mkdir -p components/buttons && touch components/buttons/checkout.tsx
+```
+
+<Step>Paste the code</Step>{" "}
+
+Open the newly created file and paste the following code:
+
+```jsx jsx file=<rootDir>/fg/button/checkout.tsx
+
+```
+
+<Step>Usage</Step>
+
+In the directory you want to use, do the following:
+
+```jsx {1} {8}
+import Checkout from "@/components/buttons/checkout";
+
+const MyButtons = () => {
+  return (
+    <div>
+      {/* your other content*/}
+
+      <Checkout text="Checkout" />
+
+      {/* your other content*/}
+    </div>
+  );
+};
+
+export default MyButtons;
+```
+
+</Steps>
+
+## Credits
+
+Built by [Bossadi Zenith](https://github.com/code-env)

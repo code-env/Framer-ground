@@ -13,6 +13,14 @@ export const Index: Record<string, any> = {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/button/delete")),
   },
+  "sparkles-button": {
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/fg/button/sparkles")),
+  },
+  "checkout-button": {
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/fg/button/checkout")),
+  },
   "vercel-navbar": {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/navbar/vercel")),
@@ -56,6 +64,10 @@ export const Index: Record<string, any> = {
   "strike-cards": {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/cards/strike")),
+  },
+  "overview-cards": {
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/fg/cards/overview")),
   },
   "carousel-one": {
     registryDependencies: undefined,

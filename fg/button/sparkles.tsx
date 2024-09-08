@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 type AnimationSequence = Parameters<typeof animate>[0];
 
-const One = ({ text }: { text: string }) => {
+const Sparkles = ({ text = "Nothing" }: { text: string }) => {
   const [starCount, setStarCount] = useState(0);
   useEffect(() => {
     setTimeout(() => {
@@ -70,11 +70,11 @@ const One = ({ text }: { text: string }) => {
     ]);
   };
   return (
-    <div className="h-screen flex items-center justify-center">
+    <div className="h-full center">
       <div ref={scope}>
         <button
           onClick={handleBtnClick}
-          className="border-2 text-2xl px-10 py-1.5 rounded-full transition-colors duration-150 border-blue-500 hover:bg-blue-100 text-blue-500 relative"
+          className="border-2 text-2xl px-10 py-1.5 rounded-full transition-colors duration-150 border-border  relative"
         >
           <span className="sr-only">{text}</span>
           <span
@@ -84,7 +84,7 @@ const One = ({ text }: { text: string }) => {
             {letters.map((letter, index) => (
               <span
                 data-letter={letter}
-                className="letter inline-block relative h-8 after:h-8 after:absolute after:left-0 after:top-full after:content-[attr(data-letter)] leading-8"
+                className="letter inline-block relative h-8 after:h-8 after:absolute after:left-0 after:top-full after:content-[attr(data-letter)] leading-8 text-base"
                 key={index}
               >
                 {letter}
@@ -106,4 +106,4 @@ const One = ({ text }: { text: string }) => {
   );
 };
 
-export default One;
+export default Sparkles;

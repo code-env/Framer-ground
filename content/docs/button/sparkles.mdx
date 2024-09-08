@@ -1,0 +1,55 @@
+---
+title: Sparkles
+description: Sparkles effect on the button when it's been clicked.
+author: code-env
+---
+
+<ComponentPreview name="sparkles-button" />
+
+## Installation
+
+<Steps>
+
+<Step>Run the following command</Step>
+
+It will create a new file `sparkles.tsx` inside the `components/buttons/sparkles.tsx` directory.
+
+```bash
+mkdir -p components/buttons && touch components/buttons/sparkles.tsx
+```
+
+<Step>Paste the code</Step>{" "}
+
+Open the newly created file and paste the following code:
+
+```jsx jsx file=<rootDir>/fg/button/sparkles.tsx
+
+```
+
+<Step>Usage</Step>
+
+In the directory you want to use, do the following:
+
+```jsx
+import Sparkles from "@/components/buttons/sparkles";
+
+const MyButtons = () => {
+  return (
+    <div>
+      {/* your other content*/}
+
+      <Sparkles text="Nothing" />
+
+      {/* your other content*/}
+    </div>
+  );
+};
+
+export default MyButtons;
+```
+
+</Steps>
+
+## Credits
+
+Built by [Bossadi Zenith](https://github.com/code-env)

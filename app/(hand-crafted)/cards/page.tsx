@@ -13,6 +13,7 @@ import Add from "@/components/cards/add";
 import PianoVisualization from "@/components/cards/piano";
 import Vercel from "@/components/cards/vercel";
 import Drop from "@/components/cards/drop";
+import Overview from "@/components/cards/overview";
 
 const Cards = () => {
   return (
@@ -30,6 +31,7 @@ const Cards = () => {
       <PianoVisualization />
       <Vercel />
       <Drop />
+      <Overview />
     </div>
   );
 };
