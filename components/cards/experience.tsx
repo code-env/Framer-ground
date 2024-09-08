@@ -21,8 +21,8 @@ const content = [
   },
   {
     name: "Good",
-    height: 100,
-    width: 100,
+    height: 150,
+    width: 150,
     background: "#3DA35D",
     rotate: 180,
   },
@@ -45,73 +45,79 @@ const Experience = () => {
   };
 
   return (
-    <div
-      className="h-screen flex flex-col gap-20 justify-center items-center transition duration-300"
-      style={{
-        background: activeContent.background,
-      }}
-    >
-      <div className="h-[600px] w-full flex items-center flex-col  gap-20">
-        <h1 className="font-semibold text-3xl">
-          How was your shopping experience?
-        </h1>
-        <div className=" flex items-center flex-col">
-          <div className="flex gap-5">
-            <motion.div
-              animate={{
-                height: activeContent.height,
-                width: activeContent.width,
-              }}
-              className="transition duration-300 bg-black rounded-full"
-            />
-            <motion.div
-              animate={{
-                height: activeContent.height,
-                width: activeContent.width,
-              }}
-              className="transition duration-300 bg-black rounded-full"
-            />
+    <div className="h-screen w-full center">
+      <div
+        className="w-full h-full flex flex-col items-center justify-center"
+        style={{
+          background: activeContent.background,
+        }}
+      >
+        <div className="h-[600px] w-full flex items-center flex-col  gap-20">
+          <h1 className="font-semibold text-3xl">
+            How was your shopping experience?
+          </h1>
+          <div className=" flex items-center flex-col">
+            <div className="flex gap-5">
+              <motion.div
+                animate={{
+                  height: activeContent.height,
+                  width: activeContent.width,
+                }}
+                className="transition duration-300 bg-black rounded-full"
+              />
+              <motion.div
+                animate={{
+                  height: activeContent.height,
+                  width: activeContent.width,
+                }}
+                className="transition duration-300 bg-black rounded-full"
+              />
+            </div>
+            <Icon rotate={activeContent.rotate} />
           </div>
-          <Icon rotate={activeContent.rotate} />
+          <motion.h2
+            key={index}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            variants={textVariants}
+            transition={{ duration: 0 }}
+            className="font-bold text-7xl transition duration-300 delay-300"
+          >
+            {activeContent.name}
+          </motion.h2>
         </div>
-        <motion.h2
-          key={index} // Use key to force re-render
-          initial="enter"
-          animate="center"
-          exit="exit"
-          variants={textVariants}
-          transition={{ duration: 0 }}
-          className="font-bold text-7xl transition duration-300 delay-300"
-        >
-          {activeContent.name}
-        </motion.h2>
-      </div>
-      <div className="w-1/2 h-10 gap-10 items-center justify-between flex relative">
-        {Array.from({ length: 3 }).map((_, i) => {
-          return (
-            <motion.button
-              onClick={() => setIndex(i)}
-              key={i}
-              className="h-10 w-10 rounded-full bg-black z-50 text-white flex items-center justify-center"
-            >
-              <AnimatePresence>
-                {i === index && (
-                  <motion.div
-                    key={i}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                    variants={tickVariants}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Check className="w-4 h-4" />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.button>
-          );
-        })}
-        <div className="absolute h-2 w-full top-0 bottom-0 left-0 bg-black z-10 my-auto" />
+        <div className="w-1/2 h-10 gap-10 items-center justify-between flex relative">
+          {Array.from({ length: 3 }).map((_, i) => {
+            return (
+              <motion.button
+                onClick={() => setIndex(i)}
+                key={i}
+                className="rounded-full bg-black z-50 text-white flex items-center justify-center"
+                animate={{
+                  height: index === i ? 60 : 40,
+                  width: index === i ? 60 : 40,
+                }}
+              >
+                <AnimatePresence>
+                  {i === index && (
+                    <motion.div
+                      key={i}
+                      initial="enter"
+                      animate="center"
+                      exit="exit"
+                      variants={tickVariants}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Check className="w-4 h-4" />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.button>
+            );
+          })}
+          <div className="absolute h-2 w-full top-0 bottom-0 left-0 bg-black z-10 my-auto" />
+        </div>
       </div>
     </div>
   );

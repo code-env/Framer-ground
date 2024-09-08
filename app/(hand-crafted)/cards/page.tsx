@@ -14,6 +14,8 @@ import PianoVisualization from "@/components/cards/piano";
 import Vercel from "@/components/cards/vercel";
 import Drop from "@/components/cards/drop";
 import Overview from "@/components/cards/overview";
+import Hightlights from "@/components/cards/heightlights";
+import Experience from "@/components/cards/experience";
 
 const Cards = () => {
   return (
@@ -32,6 +34,8 @@ const Cards = () => {
       <Vercel />
       <Drop />
       <Overview />
+      <Hightlights />
+      <Experience />
     </div>
   );
 };
