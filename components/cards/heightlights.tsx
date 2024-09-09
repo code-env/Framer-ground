@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 
 const Hightlights = () => {
   const [index, setIndex] = useState(0);
+
   return (
     <div className="h-screen center w-full bg-background">
       <div className="h-[1000px] w-[1000px]  rounded-3xl flex overflow-hidden">
@@ -39,7 +40,7 @@ const Hightlights = () => {
         {/* the second layer */}
         <div className="flex-[0.5] h-full flex flex-col bg-background">
           <div className="flex-1 rounded-2xl bg-gradient-to-b from-background to-muted via-background rounded-t-none" />
-          <div className="flex-[0.5] p-2 ">
+          <div className="flex-[0.5] p-2">
             {/* the middle square */}
             <div className="w-[200px] h-[200px] border rounded-2xl center overflow-hidden relative">
               <div className="w-[80%] h-[80%] border rounded-full center">
@@ -69,7 +70,28 @@ const Hightlights = () => {
                   index === 4 && "-bottom-2 -right-2"
                 )}
               />
+              <svg
+                width="140"
+                height="140"
+                viewBox="0 0 130 130"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className={cn(
+                  "absolute inset-0 m-auto opacity-0 transition-all duration-300 rounded-full",
+                  index > 0 && "opacity-100"
+                )}
+                style={{
+                  transform: `rotate(${(index === 4 && 10) || (index === 2 && -270) || (index === 1 && 180) || (index === 3 && 270)}deg)`,
+                  // animation: "spin 2s linear infinite",
+                }}
+              >
+                <path
+                  d="M130 65C130 79.4936 125.156 93.5715 116.238 104.996C107.319 116.421 94.8383 124.538 80.7782 128.056L75.8039 108.177C85.4314 105.768 93.9776 100.21 100.084 92.387C106.191 84.5639 109.508 74.9243 109.508 65H130Z"
+                  fill="#EF4444"
+                />
+              </svg>
             </div>
+
             {/* end of middle square */}
           </div>
           <div className="flex-1  rounded-2xl bg-gradient-to-t from-background to-muted via-background rounded-b-none" />

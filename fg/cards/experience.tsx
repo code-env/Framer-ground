@@ -10,21 +10,21 @@ const content = [
     height: 100,
     width: 100,
     background: "#EF626C",
-    rotate: 0,
+    rotate: 180,
   },
   {
     name: "Not Bad",
     height: 30,
     width: 100,
     background: "#FFE381",
-    rotate: 0,
+    rotate: 180,
   },
   {
     name: "Good",
     height: 150,
     width: 150,
     background: "#3DA35D",
-    rotate: 180,
+    rotate: 0,
   },
 ];
 
@@ -67,7 +67,9 @@ const Experience = () => {
               className="transition duration-300 bg-primary rounded-full"
             />
           </div>
-          <Icon rotate={activeContent.rotate} />
+          <div className="mt-10">
+            <Icon rotate={activeContent.rotate} />
+          </div>
         </div>
         <motion.h2
           key={index}
@@ -119,33 +121,19 @@ const Experience = () => {
 function Icon({ rotate }: { rotate: number }) {
   return (
     <motion.svg
-      width="100"
-      height="100"
-      viewBox="0 0 32 32"
+      width="89"
+      height="27"
+      viewBox="0 0 89 27"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg"
       animate={{ rotate }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.3 }}
+      xmlns="http://www.w3.org/2000/svg"
+      className="text-primary-foreground"
     >
-      <g clipPath="url(#clip0_20_2)">
-        <path
-          d="M7.35705 17.6052C7.90257 15.8627 8.34037 14.312 9.80858 13.2265C11.2768 12.141 13.0533 11.5489 14.8834 11.535C16.7135 11.5211 18.5033 12.0862 19.9963 13.1493C21.4893 14.2123 22.2714 15.8713 22.8571 17.6052"
-          stroke="#3DA35D"
-          strokeWidth="5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </g>
-      <defs>
-        <clipPath id="clip0_20_2">
-          <rect
-            width="22.4789"
-            height="23.144"
-            fill="white"
-            transform="translate(31.8913 13.4238) rotate(125.452)"
-          />
-        </clipPath>
-      </defs>
+      <path
+        d="M88.6062 5.75162C83.2588 12.2265 76.5801 17.4742 69.024 21.1381C61.468 24.8021 53.2116 26.7962 44.8162 26.9852C36.4208 27.1741 28.0832 25.5534 20.3699 22.2331C12.6566 18.9129 5.74863 13.9709 0.115372 7.74314L6.26321 2.18218C11.0982 7.52742 17.0273 11.7691 23.6476 14.6188C30.2678 17.4686 37.424 18.8597 44.6297 18.6975C51.8354 18.5354 58.9218 16.8237 65.4071 13.679C71.8925 10.5343 77.6248 6.03022 82.2144 0.472867L88.6062 5.75162Z"
+        fill="green"
+      />
     </motion.svg>
   );
 }
