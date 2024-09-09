@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 
 const Add = () => {
   const [isActive, setIsActive] = useState(false);
+
   const variants = {
     initial: {
       width: 50,
@@ -22,12 +23,8 @@ const Add = () => {
     },
   };
   return (
-    <div className="h-screen relative w-full">
-      <div className="absolute top-20 left-0 right-0 mx-auto w-[500px]">
-        <motion.button className="h-[50px] rounded-full w-[50px] center">
-          {/* <Plus className="h-5 w-5" />
-          <span>New site</span> */}
-        </motion.button>
+    <div className="h-screen relative w-full center">
+      <div className="h-[500px] w-[400px] flex items-start relative">
         <motion.div
           variants={variants}
           initial="initial"
@@ -40,12 +37,22 @@ const Add = () => {
             damping: 20,
           }}
           className={cn(
-            "border-dashed absolute top-0 rounded-[25px] border-black/90 border overflow-hidden cursor-pointer",
+            "border-dashed rounded-[25px] border-black/90 border overflow-hidden cursor-pointer relative",
             {
               "cursor-default": isActive,
             }
           )}
-        ></motion.div>
+        >
+          <motion.button
+            className={cn(
+              "h-[50px] rounded-full w-[50px] center cursor-pointer pointer-events-none absolute right-0 transition-all duration-300",
+              isActive && "right-0 rotate-45 pointer-events-auto"
+            )}
+            onClick={() => setIsActive(false)}
+          >
+            <Plus className="h-5 w-5" />
+          </motion.button>
+        </motion.div>
       </div>
     </div>
   );
