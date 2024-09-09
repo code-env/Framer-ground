@@ -121,6 +121,12 @@ const sidebarNav: SidebarNavItem[] = [
     items: createLinks("gallery"),
   },
   {
+    title: "Inputs",
+    label: createLinks("inputs").length + "",
+    href: "/docs/inputs/iMessage",
+    items: createLinks("inputs"),
+  },
+  {
     title: "Hero",
     items: createLinks("hero"),
   },
