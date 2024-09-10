@@ -73,12 +73,20 @@ export const Index: Record<string, any> = {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/cards/experience")),
   },
-  "carousel-one": {
+  "one-carousel": {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/carousel/one")),
+  },
+  "swipe-carousel": {
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/fg/carousel/swipe")),
   },
   "iMessage-inputs": {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/inputs/iMessage")),
+  },
+  "password-strength-inputs": {
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/fg/inputs/password-strength")),
   },
 };

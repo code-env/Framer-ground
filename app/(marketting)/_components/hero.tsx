@@ -1,15 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { fadeIn, projectUrl, stagger } from "@/constants";
-import { Button, buttonVariants } from "@/components/ui/button";
-import AnimatedArrow from "@/app/(hand-crafted)/icons/animated-arrow";
-import Link from "next/link";
 import { Star } from "lucide-react";
 import Image from "next/image";
-import think from "@/public/think.jpg";
+import Link from "next/link";
+import { useState } from "react";
+
+import AnimatedArrow from "@/app/(hand-crafted)/icons/animated-arrow";
+import { buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
+import { fadeIn, projectUrl, stagger } from "@/constants";
+import think from "@/public/think.jpg";
 
 const Hero = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -28,19 +29,22 @@ const Hero = () => {
           >
             <motion.h1
               variants={fadeIn}
-              className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 py-3"
+              className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl flex gap-3 2xl:text-8xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 py-3"
             >
-              Reth{""}
-              <div className="relative inline-flex md:w-8 2xl:w-10 md:h-12 w-7 h-8 xl:h-16 2xl:h-20 rounded-full overflow-hidden">
-                <Image
-                  src={think}
-                  alt={`${siteConfig.name} thinking image`}
-                  fill
-                  className="w-full object-cover grayscale hover:grayscale-0 duration-150 transition-all cursor-pointer"
-                />
-              </div>
-              nk the animated <br className="hidden lg:block" /> components on
-              your websites
+              <span>Copy.</span>
+              <span>Paste.</span>
+              <span>
+                An
+                <div className="relative inline-flex md:w-8 2xl:w-10 md:h-12 w-7 h-8 xl:h-16 2xl:h-20 rounded-full overflow-hidden">
+                  <Image
+                    src={think}
+                    alt={`${siteConfig.name} thinking image`}
+                    fill
+                    className="w-full object-cover grayscale hover:grayscale-0 duration-150 transition-all cursor-pointer"
+                  />
+                </div>
+                mate.
+              </span>
             </motion.h1>
             <motion.p
               variants={fadeIn}

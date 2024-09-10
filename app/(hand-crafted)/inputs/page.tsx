@@ -1,4 +1,5 @@
 import Apple from "@/components/inputs/apple";
+import PasswordStrength from "@/components/inputs/password-strength";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -10,6 +11,7 @@ const Inputs = () => {
   return (
     <div className="min-h-screen">
       <Apple />
+      <PasswordStrength />
     </div>
   );
 };
