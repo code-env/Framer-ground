@@ -49,7 +49,7 @@ const PasswordStrength = () => {
   }, [value, passwordLength]);
 
   return (
-    <div className="h-full w-full center border-t">
+    <div className="h-full w-full center">
       <div className="max-w-lg mx-auto w-full center flex-col gap-4">
         <motion.div
           animate={scaleControls}
