@@ -2,8 +2,15 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { HamburgerMenuIcon } from "@radix-ui/react-icons";
-import { Layout, MessageCircle, X } from "lucide-react";
+import {
+  Layout,
+  MessageCircle,
+  X,
+  Menu,
+  PackageOpen,
+  Archive,
+  Target,
+} from "lucide-react";
 
 const items = [
   {
@@ -50,40 +57,78 @@ const items = [
   },
 ];
 
+const Icons = [
+  {
+    name: "Icons 1",
+    icon: MessageCircle,
+  },
+  {
+    name: "Icons 2",
+    icon: PackageOpen,
+  },
+  {
+    name: "Icons 3",
+    icon: Archive,
+  },
+  {
+    name: "Icons 4",
+    icon: Target,
+  },
+  {
+    name: "Icons 5",
+    icon: Menu,
+  },
+];
+
 const NotchTwo = () => {
-  const presence = {
-    enter: {
-      opacity: 0,
-    },
-    center: {
-      opacity: 1,
-    },
-    exit: {
-      opacity: 0,
-    },
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const containerVariants = {
+    collapsed: { height: 60, width: 300 },
+    expanded: { height: "100%", width: 600 },
   };
 
-  const [clicked, setClicked] = useState(false);
+  const contentVariants = {
+    collapsed: { opacity: 0 },
+    expanded: { opacity: 1, transition: { delay: 0.3 } },
+  };
+
+  const iconsContainerVariants = {
+    collapsed: { y: 0 },
+    expanded: { y: "100%", transition: { delay: 0.2 } },
+  };
+
+  const iconVariants = {
+    collapsed: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.05 },
+    }),
+    expanded: (i: number) => ({
+      opacity: 0,
+      y: 20,
+      transition: { delay: i * 0.05 },
+    }),
+  };
+
   return (
     <div className="h-full center w-full">
       <div className="h-3/4 w-3/4 flex items-end justify-center">
         <motion.div
-          animate={{
-            height: clicked ? "100%" : 60,
-            width: clicked ? 600 : 300,
-          }}
-          className=" rounded-[30px] overflow-hidden border bg-black dark:bg-white"
+          initial="collapsed"
+          animate={isExpanded ? "expanded" : "collapsed"}
+          variants={containerVariants}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className=" rounded-[30px] overflow-hidden border bg-black dark:bg-white relative"
         >
-          <AnimatePresence onExitComplete={() => setClicked(false)}>
-            {clicked && (
+          <AnimatePresence>
+            {isExpanded && (
               <motion.div
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{
-                  duration: 0.2,
-                }}
-                variants={presence}
+                key="content"
+                initial="collapsed"
+                animate="expanded"
+                exit="collapsed"
+                variants={contentVariants}
                 className="text-white mt-6 px-10 flex flex-col gap-8"
               >
                 <motion.div className="flex items-center justify-between">
@@ -91,7 +136,7 @@ const NotchTwo = () => {
                     Vercel toolbar
                   </div>
                   <div
-                    onClick={() => setClicked((prev) => !prev)}
+                    onClick={() => setIsExpanded(false)}
                     className="border-muted-foreground/80 text-neutral-400 cursor-pointer
                    hover:bg-neutral-700/80 transition-all duration-300 border center h-10 w-10 rounded-full"
                   >
@@ -110,14 +155,13 @@ const NotchTwo = () => {
                     <p className="text-muted-foreground">{item.name}</p>
                     <motion.ul className="flex flex-col gap-2">
                       {item.items.map((item) => (
-                        <motion.li
-                          animate={{ opacity: clicked ? 1 : 0 }}
+                        <li
                           className="flex items-center gap-2 text-xl text-primary-foreground "
                           key={item.name}
                         >
                           <item.icon className="h-5 w-5" />
                           <span>{item.name}</span>
-                        </motion.li>
+                        </li>
                       ))}
                     </motion.ul>
                   </div>
@@ -125,13 +169,27 @@ const NotchTwo = () => {
               </motion.div>
             )}
           </AnimatePresence>
+
           <motion.div
-            className="h-[60px]   w-[60px] flex items-center justify-center cursor-pointer self-end mx-auto"
-            animate={{ y: clicked ? "1000%" : 0 }}
-            onClick={() => setClicked((prev) => !prev)}
-            transition={{ duration: 0.3 }}
+            variants={iconsContainerVariants}
+            className="h-[60px] flex items-center w-fit gap-2 justify-between px-10 cursor-pointer absolute bottom-0 left-0 right-0 mx-auto"
+            onClick={() => setIsExpanded(true)}
           >
-            <HamburgerMenuIcon className="h-5 w-5 text-primary-foreground" />
+            {Icons.map((item, index) => {
+              // some code here
+              const isLast = Icons[Icons.length - 1];
+
+              return (
+                <motion.div
+                  key={index}
+                  custom={index}
+                  variants={iconVariants}
+                  className="h-10 w-10 center"
+                >
+                  <item.icon className={`h-5 w-5 text-primary-foreground`} />
+                </motion.div>
+              );
+            })}
           </motion.div>
         </motion.div>
       </div>
