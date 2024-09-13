@@ -16,6 +16,7 @@ import Drop from "@/components/cards/drop";
 import Overview from "@/components/cards/overview";
 import Hightlights from "@/components/cards/heightlights";
 import Experience from "@/components/cards/experience";
+import Nothing from "@/components/cards/nothing";
 
 const Cards = () => {
   return (
@@ -36,6 +37,7 @@ const Cards = () => {
       <Overview />
       <Hightlights />
       <Experience />
+      <Nothing />
     </div>
   );
 };

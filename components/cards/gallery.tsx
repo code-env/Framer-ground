@@ -82,7 +82,7 @@ const GalleryOne = () => {
               layout
             >
               <motion.div
-                layoutId={`card-${activeItem.id}`}
+                layoutId={`galler-one-${activeItem.id}`}
                 className="w-[400px] h-[400px] rounded-3xl center font-bold text-5xl cursor-pointer overflow-hidden z-10"
                 onClick={() => setActiveItem(null)}
               >
@@ -130,7 +130,7 @@ const Gallery = (props: {
       className={cn(
         "rounded-2xl cursor-pointer text-3xl center overflow-hidden relative"
       )}
-      layoutId={`card-${props.item.id}`}
+      layoutId={`galler-one-${props.item.id}`}
       onClick={props.onClick}
     >
       <motion.img

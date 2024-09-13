@@ -1,0 +1,55 @@
+---
+title: Second brain
+description: Second brain button effect when the customer hovers the second brain button.
+author: code-env
+---
+
+<ComponentPreview name="second-brain-button" />
+
+## Installation
+
+<Steps>
+
+<Step>Run the following command</Step>
+
+It will create a new file `second-brain.tsx` inside the `components/buttons/second-brain.tsx` directory.
+
+```bash
+mkdir -p components/buttons && touch components/buttons/second-brain.tsx
+```
+
+<Step>Paste the code</Step>{" "}
+
+Open the newly created file and paste the following code:
+
+```jsx jsx file=<rootDir>/fg/button/second-brain.tsx
+
+```
+
+<Step>Usage</Step>
+
+In the directory you want to use, do the following:
+
+```jsx {1} {8}
+import Second-brain from "@/components/buttons/second-brain";
+
+const MyButtons = () => {
+  return (
+    <div>
+      {/* your other content*/}
+
+      <SecondBrain text="Second-brain" />
+
+      {/* your other content*/}
+    </div>
+  );
+};
+
+export default MyButtons;
+```
+
+</Steps>
+
+## Credits
+
+Built by [Bossadi Zenith](https://github.com/code-env)

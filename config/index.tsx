@@ -21,6 +21,10 @@ export const Index: Record<string, any> = {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/button/checkout")),
   },
+  "second-brain-button": {
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/fg/button/second-brain")),
+  },
   "vercel-navbar": {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/navbar/vercel")),

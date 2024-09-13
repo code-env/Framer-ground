@@ -99,7 +99,7 @@ const GalleryTwo: React.FC = () => {
               layout
             >
               <motion.div
-                layoutId={`card-${activeItem.id}`}
+                layoutId={`gallery-two-${activeItem.id}`}
                 className="w-[600px] h-[400px] bg-black/50 rounded-3xl text-white/50 center font-bold text-5xl cursor-pointer overflow-hidden"
                 onClick={() => setActiveItem(null)}
               >
@@ -148,7 +148,7 @@ const Gallery = (props: {
         "bg-black/50 rounded-2xl cursor-pointer text-white/50 text-3xl center overflow-hidden",
         props.isSmall ? "w-[100px]" : "w-full"
       )}
-      layoutId={`card-${props.item.id}`}
+      layoutId={`gallery-two-${props.item.id}`}
       onClick={props.onClick}
     >
       <motion.img
