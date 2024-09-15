@@ -92,7 +92,7 @@ function Card({ item, cards, setCards, index }: CardProps) {
         opacity,
         rotate,
         x,
-        transition: ".125s transform",
+        transition: "0.125s transform",
         gridRow: 1,
         gridColumn: 1,
         zIndex: cards.length - index,
