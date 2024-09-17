@@ -73,6 +73,10 @@ export const Index: Record<string, any> = {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/cards/overview")),
   },
+  "overview-stacked-cards": {
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/fg/cards/overview-stacked")),
+  },
   "experience-cards": {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/cards/experience")),

@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Framer ground",
-  url: "https://framer-ground.vercel.app",
-  ogImage: "https://framer-ground.vercel.app/og.png",
+  url: "https://ground.bossadizenith.me",
+  ogImage: "https://ground.bossadizenith.me/og.png",
   description:
     "Hand-crafted animated framer motion components that you can copy and paste into your apps. Free & Open Source.",
   links: {
