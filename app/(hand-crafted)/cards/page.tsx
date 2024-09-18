@@ -18,6 +18,7 @@ import Hightlights from "@/components/cards/heightlights";
 import Experience from "@/components/cards/experience";
 import Nothing from "@/components/cards/nothing";
 import OverviewStackeds from "@/components/cards/overview-stacked";
+import Pill from "@/components/cards/pill";
 
 const Cards = () => {
   return (
@@ -40,6 +41,7 @@ const Cards = () => {
       <Experience />
       <Nothing />
       <OverviewStackeds />
+      <Pill />
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import Apple from "@/components/inputs/apple";
+import GoogleInput from "@/components/inputs/google";
 import PasswordStrength from "@/components/inputs/password-strength";
 import { Metadata } from "next";
 
@@ -12,6 +13,7 @@ const Inputs = () => {
     <div className="min-h-screen">
       <Apple />
       <PasswordStrength />
+      <GoogleInput label="Email address" />
     </div>
   );
 };
