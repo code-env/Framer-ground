@@ -105,7 +105,7 @@ const Pill = () => {
             <motion.span
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.1 }}
             >
               <Icon
                 className="h-5 w-5"
@@ -152,7 +152,9 @@ const Pill = () => {
         <div className="flex h-8 items-center gap-2 relative justify-center">
           {items.map((item, index) => (
             <motion.li
-              ref={(el) => (itemRefs.current[index] = el)}
+              ref={(el) => {
+                itemRefs.current[index] = el;
+              }}
               onMouseEnter={() => handleMouseEnter(index)}
               onMouseLeave={handleMouseLeave}
               onClick={() => setActive(index)}
@@ -163,7 +165,6 @@ const Pill = () => {
                   "text-white": active === index,
                 }
               )}
-              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.2 }}
             >
