@@ -13,6 +13,7 @@ import { siteConfig } from "@/config/site";
 import { getTableOfContents } from "@/lib/toc";
 import { absoluteUrl, cn } from "@/lib/utils";
 import { ChevronRightIcon, ExternalLinkIcon } from "lucide-react";
+import BreadcrumbComponent from "@/components/shared/breadcrumb";
 
 interface DocPageProps {
   params: {
@@ -88,11 +89,7 @@ export default async function DocPage({ params }: DocPageProps) {
     <main className="relative py-6 lg:gap-10 lg:py-20 xl:grid xl:grid-cols-[1fr_150px]">
       <div className="mx-auto w-full min-w-0">
         <div className="mb-4 flex items-center space-x-1 text-sm text-muted-foreground">
-          <div className="overflow-hidden text-ellipsis whitespace-nowrap">
-            Docs
-          </div>
-          <ChevronRightIcon className="h-4 w-4" />
-          <div className="font-medium text-foreground">{doc.title}</div>
+          <BreadcrumbComponent url={doc.url} />
         </div>
         <div className="space-y-2">
           <h1 className={cn("scroll-m-20 text-4xl font-bold tracking-tight")}>

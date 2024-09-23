@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // contentlayer.config.ts
+import path from "path";
 import {
   ComputedFields,
   defineDocumentType,
@@ -14,6 +15,7 @@ import { codeImport } from "remark-code-import";
 import remarkGfm from "remark-gfm";
 import { BlogPosting, WithContext } from "schema-dts";
 import { visit } from "unist-util-visit";
+import { getHighlighter, loadTheme } from "@shikijs/compat";
 
 const computedFields: ComputedFields = {
   url: {
@@ -54,7 +56,7 @@ const computedFields: ComputedFields = {
           name: doc.author,
           url: `https://twitter.com/${doc.author}`,
         },
-      } as WithContext<BlogPosting>),
+      }) as WithContext<BlogPosting>,
   },
 };
 
@@ -155,9 +157,8 @@ const postProcess = () => (tree: any) => {
 
           const filename = path.split("/").pop() ?? "";
           const dir = path.replace("/" + filename, "");
-          pre.properties[
-            "__windows__"
-          ] = `mkdir "${dir}" && type null > ${path}`;
+          pre.properties["__windows__"] =
+            `mkdir "${dir}" && type null > ${path}`;
           pre.properties["__unix__"] = `mkdir -p ${dir} && touch ${path}`;
         }
 
@@ -194,7 +195,9 @@ export default makeSource({
         // @ts-expect-error - `rehypePrettyCode` is not typed
         rehypePrettyCode,
         {
-          theme: "github-dark",
+          theme: {
+            dark: "one-dark-pro",
+          },
           onVisitLine(node: any) {
             // Prevent lines from collapsing in `display: grid` mode, and allow empty
             // lines to be copy/pasted

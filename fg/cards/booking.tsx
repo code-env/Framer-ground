@@ -80,7 +80,6 @@ const Booking = () => {
         setIsOpen(false);
       }, 2000);
     } catch (error: any) {
-      console.log(error.message);
     } finally {
       setLoading(false);
     }

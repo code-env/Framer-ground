@@ -90,7 +90,7 @@ const Pill = () => {
 
   return (
     <div className="h-screen flex items-center justify-center border-t w-full">
-      <div className="flex flex-col gap-10">
+      <div className="flex flex-col gap-10 bg-black size-96 center">
         <motion.div
           layout
           className="flex cursor-pointer items-center justify-between gap-x-2 overflow-hidden border-[1px] border-[#E5E5E5] bg-white pl-[10px] pr-2 w-fit mx-auto text-[#0A0A0A] shadow-sm dark:border-[#171717] dark:bg-[#0A0A0A] dark:text-[#fafafa] h-10 rounded-full"

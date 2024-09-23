@@ -63,6 +63,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -70,6 +71,7 @@
   .justify-center {
     justify-content: center !important;
   }
+
   .step {
     counter-increment: step;
   }
@@ -86,9 +88,5 @@
 
   .arrange-width {
     width: calc(100% - 20px);
-  }
-
-  body {
-    scroll-behavior: smooth;
   }
 }

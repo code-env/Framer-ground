@@ -22,7 +22,7 @@ import Pill from "@/components/cards/pill";
 
 const Cards = () => {
   return (
-    <div className="min-h-screen flex-col center overflow-x-clip">
+    <div className="min-h-screen flex-col center overflow-x-hidden">
       <CardOne />
       <CheckCard />
       <Booking />

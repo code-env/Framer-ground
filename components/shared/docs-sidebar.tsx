@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
+import { motion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 import { SidebarNavItem } from "@/types";
-
 import { Icons } from "./icons";
 
 export interface DocsSidebarNavProps {
@@ -31,7 +31,7 @@ const DocsSidebar = ({ items }: DocsSidebarNavProps) => {
 
     const node = document.querySelector(`[href="${pathname}"]`);
     if (node) {
-      node.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      node.scrollIntoView({ behavior: "instant", block: "nearest" });
     }
   }, [pathname]);
 
@@ -56,12 +56,8 @@ const DocsSidebar = ({ items }: DocsSidebarNavProps) => {
         const specialHeaderCount = 2; // Getting started & contributing;
 
         return (
-          <div key={index}>
-            <Link
-              href={item.href ?? (item.items?.[0].href as string)}
-              className="cursor-pointer"
-              onClick={toggle}
-            >
+          <div key={index} className="z-0 ">
+            <div className="cursor-pointer z-50" onClick={toggle}>
               <h4 className="mb-1 flex items-center gap-1 rounded-md py-1 pr-2 text-sm font-semibold">
                 {Icon ? (
                   <Icon className="w-4" />
@@ -83,10 +79,10 @@ const DocsSidebar = ({ items }: DocsSidebarNavProps) => {
                     </span>
                   )}
               </h4>
-            </Link>
+            </div>
             {!!item?.items?.length && (
               <div
-                className={cn("pb-3 pl-3", {
+                className={cn("pb-3 pl-3 relative", {
                   hidden: !isOpen,
                 })}
               >
@@ -109,21 +105,80 @@ interface DocsSidebarNavItemsProps {
   items: SidebarNavItem[];
   pathname: string | null;
 }
+type NavState = {
+  opacity: number;
+  top: number;
+  height: number;
+};
 
 export function DocsSidebarNavItems({
   items,
   pathname,
 }: DocsSidebarNavItemsProps) {
+  const [hoverState, setHoverState] = useState<NavState>({
+    opacity: 0,
+    top: 0,
+    height: 0,
+  });
+  const [activeState, setActiveState] = useState<NavState>({
+    opacity: 1,
+    top: 0,
+    height: 0,
+  });
+  const [active, setActive] = useState<string | null>(null); // Now a string (title or href)
+  const [isHovering, setIsHovering] = useState(false);
+
+  const itemRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+
+  useEffect(() => {
+    const currentIndex = items.findIndex(
+      (item) => item.href === pathname || item.title === active
+    );
+
+    if (itemRefs.current[currentIndex]) {
+      const { offsetTop, offsetHeight } = itemRefs.current[currentIndex];
+      setActiveState({
+        opacity: 1,
+        top: offsetTop,
+        height: offsetHeight,
+      });
+    }
+  }, [active, pathname, items]);
+
+  const handleMouseEnter = (index: number) => {
+    if (!itemRefs.current[index]) return;
+    const { offsetTop, offsetHeight } = itemRefs.current[index];
+    setHoverState({
+      opacity: 1,
+      top: offsetTop,
+      height: offsetHeight,
+    });
+    setIsHovering(true);
+  };
+
+  const handleMouseLeave = () => {
+    setHoverState((prev) => ({
+      ...prev,
+      opacity: 0,
+    }));
+    setIsHovering(false);
+  };
+
   return items?.length ? (
     <div className="grid grid-flow-row auto-rows-max text-sm">
       {items.map((item, index) =>
         item.href && !item.disabled ? (
           <Link
             key={index}
+            ref={(el) => {
+              itemRefs.current[index] = el;
+            }}
             href={item.href}
+            onMouseEnter={() => handleMouseEnter(index)}
+            onMouseLeave={handleMouseLeave}
+            onClick={() => setActive(item.href || item.title)}
             className={cn(
-              "group flex w-full items-center rounded-md border border-transparent px-2 py-1 capitalize hover:underline",
-              item.disabled && "cursor-not-allowed opacity-60",
+              "group flex w-full items-center rounded-md border border-transparent px-2 py-1 capitalize z-10",
               pathname === item.href
                 ? "bg-muted font-normal text-foreground"
                 : "text-muted-foreground"
@@ -155,6 +210,21 @@ export function DocsSidebarNavItems({
           </span>
         )
       )}
+      <motion.div
+        animate={isHovering ? hoverState : activeState}
+        className="absolute bg-muted rounded z-0 h-full"
+        transition={{
+          duration: 0.3,
+          type: "spring",
+          stiffness: 300,
+          damping: 30,
+        }}
+        style={{
+          top: hoverState.top,
+          height: hoverState.height,
+          width: "100%",
+        }}
+      />
     </div>
   ) : null;
 }

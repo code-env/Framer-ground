@@ -1,5 +1,6 @@
 import { Icon } from "@/components/shared/icons";
 import { siteConfig } from "@/config/site";
+import { DiscordLogoIcon } from "@radix-ui/react-icons";
 import { Github, Linkedin, Twitter } from "lucide-react";
 
 export function randomNumberGenerator(min: number, max: number) {
@@ -125,6 +126,11 @@ export const MarkettingSocialLinks = [
     name: "Github",
     icon: Github,
     path: "https://github.com/code-env",
+  },
+  {
+    name: "Discord",
+    icon: DiscordLogoIcon,
+    path: "https://discord.gg/BE3TPK8jVH",
   },
 ];
 

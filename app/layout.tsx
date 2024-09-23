@@ -4,11 +4,14 @@ import { Analytics } from "@vercel/analytics/react";
 
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/config/site";
-import LenisProvider from "@/providers/lenis";
+import GlobalProvider from "@/providers/global";
 import Footer from "@/components/shared/footer";
 import "@/styles/mdx.css";
 import "@/styles/globals.css";
 import { ThemeProvider } from "@/components/providers";
+import Navbar from "@/components/shared/navbar";
+import { CommandMenuProvider } from "@/context/command-menu";
+import { CommandMenu } from "@/components/ui/command-menu";
 
 export const metadata: Metadata = {
   title: {
@@ -98,15 +101,19 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
-      <LenisProvider>
-        <body className={cn(satoshi.className, "")}>
+      <GlobalProvider>
+        <body className={cn(satoshi.className, "z-0")}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            {children}
+            <CommandMenuProvider>
+              <Navbar />
+              {children}
+              <Footer />
+              <CommandMenu />
+            </CommandMenuProvider>
             <Analytics />
-            <Footer />
           </ThemeProvider>
         </body>
-      </LenisProvider>
+      </GlobalProvider>
     </html>
   );
 }
