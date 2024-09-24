@@ -7,12 +7,13 @@ import {
   useAnimationControls,
 } from "framer-motion";
 import React, { useState, useEffect } from "react";
-import { LucideEyeOff } from "lucide-react";
+import { LucideEye, LucideEyeOff } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const PasswordStrength = () => {
   const [value, setValue] = useState("");
   const passwordLength = useMotionValue(value.length);
+  const [showPassword, setShowPassword] = useState(false); // To toggle password visibility
   const background = useTransform(
     passwordLength,
     [0, 3, 6, 8],
@@ -50,7 +51,11 @@ const PasswordStrength = () => {
 
   return (
     <div className="h-full w-full center">
-      <div className="max-w-lg mx-auto w-full center flex-col gap-4">
+      <motion.div
+        layout
+        transition={{ duration: 0.1, ease: "easeInOut" }}
+        className="max-w-lg mx-auto w-full center flex-col gap-4"
+      >
         <motion.div
           animate={scaleControls}
           className="w-full h-20 rounded-lg bg-muted p-2 relative z-0 overflow-hidden"
@@ -59,10 +64,25 @@ const PasswordStrength = () => {
             <input
               onChange={(e) => setValue(e.target.value)}
               placeholder="Enter your password"
-              type="password"
+              type={showPassword ? "text" : "password"}
               className="h-full w-full outline-none border-none px-5 pr-12 z-10 text-muted-foreground"
-            />
-            <LucideEyeOff className="my-auto absolute right-5 top-0 bottom-0 text-muted-foreground" />
+            />{" "}
+            <button
+              className="my-auto absolute right-5 top-0 bottom-0 size-10 center border rounded"
+              onClick={() => setShowPassword((prev) => !prev)}
+            >
+              {showPassword ? (
+                <LucideEye
+                  onClick={() => setShowPassword(false)} // Hide password
+                  className="size-4 cursor-pointer text-muted-foreground"
+                />
+              ) : (
+                <LucideEyeOff
+                  onClick={() => setShowPassword(true)} // Show password
+                  className="size-4 cursor-pointer text-muted-foreground"
+                />
+              )}
+            </button>
             <motion.div
               style={{
                 background,
@@ -75,7 +95,7 @@ const PasswordStrength = () => {
         <p className="text-muted-foreground">
           {words[value.length > 8 ? words.length - 1 : value.length]}
         </p>
-      </div>
+      </motion.div>
     </div>
   );
 };

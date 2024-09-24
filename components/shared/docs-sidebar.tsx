@@ -165,7 +165,7 @@ export function DocsSidebarNavItems({
   };
 
   return items?.length ? (
-    <div className="grid grid-flow-row auto-rows-max text-sm">
+    <div className="grid grid-flow-row auto-rows-max text-sm gap-1 relative">
       {items.map((item, index) =>
         item.href && !item.disabled ? (
           <Link
@@ -212,7 +212,7 @@ export function DocsSidebarNavItems({
       )}
       <motion.div
         animate={isHovering ? hoverState : activeState}
-        className="absolute bg-muted rounded z-0 h-full"
+        className="absolute bg-muted rounded z-0 h-full  left-0"
         transition={{
           duration: 0.3,
           type: "spring",

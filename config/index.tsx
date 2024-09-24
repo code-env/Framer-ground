@@ -29,6 +29,10 @@ export const Index: Record<string, any> = {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/navbar/vercel")),
   },
+  "vercel-navbar-vertical": {
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/fg/navbar/vercel-vertical")),
+  },
   "liquid-navbar": {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/navbar/liquid")),
@@ -96,5 +100,9 @@ export const Index: Record<string, any> = {
   "password-strength-inputs": {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/inputs/password-strength")),
+  },
+  "password-strength-zod-inputs": {
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/fg/inputs/password-strength-zod")),
   },
 };

@@ -28,8 +28,6 @@ type Groups = Array<{
 
 export function CommandMenu() {
   const { showCommandMenu, setShowCommandMenu } = useProvider();
-  console.log("showCommandMenu: ", showCommandMenu);
-
   const router = useRouter();
 
   useEffect(() => {

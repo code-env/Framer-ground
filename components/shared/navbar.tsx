@@ -54,7 +54,7 @@ const Navbar = () => {
     <header
       className={cn(
         "fixed w-full z-40 h-16 top-0 left-0 right-0 backdrop-blur-lg border-b border-transparent",
-        isScrolled && "bg-black/80 border-border/40"
+        isScrolled && "bg-black/80 border-border/40 text-white"
       )}
     >
       <nav className="mx-auto max-w-[1350px] px-4 flex items-center justify-between gap-6 h-full">
