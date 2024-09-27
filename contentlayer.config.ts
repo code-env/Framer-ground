@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // contentlayer.config.ts
-import path from "path";
 import {
   ComputedFields,
   defineDocumentType,
@@ -15,7 +14,6 @@ import { codeImport } from "remark-code-import";
 import remarkGfm from "remark-gfm";
 import { BlogPosting, WithContext } from "schema-dts";
 import { visit } from "unist-util-visit";
-import { getHighlighter, loadTheme } from "@shikijs/compat";
 
 const computedFields: ComputedFields = {
   url: {

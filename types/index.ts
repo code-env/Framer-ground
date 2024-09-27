@@ -1,3 +1,5 @@
+import { StaticImageData } from "next/image";
+
 export interface NavItem {
   title: string;
   href?: string;
@@ -20,3 +22,26 @@ export type DashboardConfig = {
   mainNav: MainNavItem[];
   sidebarNav: SidebarNavItem[];
 };
+
+export type NavState = {
+  opacity: number;
+  top: number;
+  height: number;
+};
+
+export interface Template {
+  category: string;
+  description: string;
+  title: string;
+  slug: string;
+  url: string;
+  label: string;
+  disabled?: boolean;
+  preview: StaticImageData;
+  stack: string[];
+}
+
+export interface GroupedTemplates {
+  category: string;
+  elements: Template[];
+}

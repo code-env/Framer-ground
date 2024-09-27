@@ -49,7 +49,7 @@ const Pill = () => {
       name: "Engine",
       icon: Cloud,
       text: "Check",
-      description: "optimal Engine Health",
+      description: "Optimal engine health",
       color: "#FF58AE",
       bg: "#260D1A",
     },
@@ -90,53 +90,62 @@ const Pill = () => {
 
   return (
     <div className="h-screen flex items-center justify-center border-t w-full">
-      <div className="flex flex-col gap-10 bg-black size-96 center">
+      <div className="w-[500px] flex flex-col items-center justify-center gap-y-10 overflow-hidden rounded-none border-y-[1px] border-preview-border-light bg-preview-light p-4 py-32 shadow-sm dark:border-preview-border-dark dark:bg-black sm:rounded-xl sm:border">
         <motion.div
           layout
           className="flex cursor-pointer items-center justify-between gap-x-2 overflow-hidden border-[1px] border-[#E5E5E5] bg-white pl-[10px] pr-2 w-fit mx-auto text-[#0A0A0A] shadow-sm dark:border-[#171717] dark:bg-[#0A0A0A] dark:text-[#fafafa] h-10 rounded-full"
           transition={{
-            duration: 0.3,
+            duration: 0.2,
             type: "spring",
             stiffness: 300,
             damping: 30,
           }}
+          animate={{ width: "auto" }}
         >
-          <motion.p className="flex items-center gap-2" layout>
-            <motion.span
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.1 }}
-            >
+          <div className="flex w-auto items-center justify-between gap-2 overflow-hidden">
+            <div className="flex items-center justify-center gap-2">
               <Icon
-                className="h-5 w-5"
+                className="size-4"
                 style={{
                   color: items[active].color,
                 }}
               />
-            </motion.span>
-            <motion.span
-              className="w-auto translate-x-0 translate-y-0 select-none font-openrunde text-sm font-medium"
-              data-ninja-font="openrunde_medium_normal_t3blb"
-              layout
-            >
-              {items[active].name}
-            </motion.span>
-          </motion.p>
-          <AnimatePresence>
-            {isClicked && (
-              <motion.p
-                className="text-xs text-[#0A0A0A] dark:text-[#fafafa]"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.2 }}
+              <motion.span
+                className="w-auto translate-x-0 translate-y-0 select-none font-openrunde text-sm font-medium"
+                data-ninja-font="openrunde_medium_normal_t3blb"
+                layout
+                transition={{
+                  duration: 0.3,
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 30,
+                }}
               >
-                {items[active].description}
-              </motion.p>
+                {items[active].name}
+              </motion.span>
+            </div>
+            {isClicked && (
+              <AnimatePresence>
+                <motion.div
+                  className="flex w-auto items-center justify-center gap-x-2 overflow-hidden"
+                  style={{
+                    opacity: 1,
+                    willChange: "auto",
+                    filter: "none",
+                  }}
+                >
+                  <span className="select-none font-openrunde text-sm font-medium text-[#999]">
+                    ·
+                  </span>
+                  <span className="translate-x-0 translate-y-0 select-none text-nowrap font-openrunde text-sm font-medium text-[#999]">
+                    {items[active].description}
+                  </span>
+                </motion.div>
+              </AnimatePresence>
             )}
-          </AnimatePresence>
+          </div>
           <motion.button
-            className="rounded-full py-1 px-3 text-sm trancking-tighter"
+            className="rounded-full py-1 px-3 text-sm tracking-tighter"
             style={{
               color: items[active].color,
               backgroundColor: items[active].bg,
@@ -157,7 +166,10 @@ const Pill = () => {
               }}
               onMouseEnter={() => handleMouseEnter(index)}
               onMouseLeave={handleMouseLeave}
-              onClick={() => setActive(index)}
+              onClick={() => {
+                setIsClicked(false);
+                setActive(index);
+              }}
               key={index}
               className={cn(
                 "h-full flex relative items-center justify-center px-3 z-10 cursor-pointer list-none",

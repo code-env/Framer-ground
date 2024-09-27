@@ -11,6 +11,7 @@ import Logo from "@/components/shared/logo";
 import { cn } from "@/lib/utils";
 import MoodToogle from "../mode-toggle";
 import { useProvider } from "@/context/command-menu";
+import { siteConfig } from "@/config/site";
 
 const Navbar = () => {
   const { setShowCommandMenu } = useProvider();
@@ -54,7 +55,9 @@ const Navbar = () => {
     <header
       className={cn(
         "fixed w-full z-40 h-16 top-0 left-0 right-0 backdrop-blur-lg border-b border-transparent",
-        isScrolled && "bg-black/80 border-border/40 text-white"
+        {
+          "bg-background/80 border-border/40": isScrolled,
+        }
       )}
     >
       <nav className="mx-auto max-w-[1350px] px-4 flex items-center justify-between gap-6 h-full">
@@ -101,7 +104,7 @@ const Navbar = () => {
             </span>
           </div>
           <Link
-            href="https://github.com/code-env/framer-ground"
+            href={siteConfig.links.github}
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-md duration-150 hover:text-primary"
@@ -109,7 +112,7 @@ const Navbar = () => {
             <Icons.gitHub className="fill-secondary w-4 h-4" />
           </Link>
           <Link
-            href="https://x.com/bossadizenith"
+            href={siteConfig.links.twitter}
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-md duration-150 fill-primary"

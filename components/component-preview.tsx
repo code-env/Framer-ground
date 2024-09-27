@@ -1,12 +1,11 @@
 "use client";
 
 import * as React from "react";
-import { useTheme } from "next-themes";
 
 import { CopyButton } from "@/components/copy-button";
 import { Icons } from "@/components/icons";
-import { cn } from "@/lib/utils";
 import { Index } from "@/config";
+import { cn } from "@/lib/utils";
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string;
@@ -81,7 +80,9 @@ export function ComponentPreview({
   return (
     <div className={cn("group relative", className)} {...props}>
       <div
-        className={cn("preview relative w-full max-w-full border rounded-xl")}
+        className={cn(
+          "preview relative w-full max-w-full border rounded-xl p-2"
+        )}
         style={{
           height: `${Math.max(100, height ? minHeight + height : minHeight)}px`,
         }}

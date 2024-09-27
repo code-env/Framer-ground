@@ -8,7 +8,8 @@ import AnimatedArrow from "@/app/(hand-crafted)/icons/animated-arrow";
 import { Icons } from "@/components/icons";
 import { buttonVariants } from "@/components/ui/button";
 import { LampContainer } from "@/components/ui/lamp";
-import { fadeIn, projectUrl, stagger } from "@/constants";
+import { siteConfig } from "@/config/site";
+import { fadeIn, stagger } from "@/constants";
 
 const CallToAction = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -25,7 +26,7 @@ const CallToAction = () => {
           >
             <motion.h2
               variants={fadeIn}
-              className="text-3xl font-bold tracking-tighter sm:text-5xl text-white"
+              className="text-3xl font-bold tracking-tighter sm:text-5xl"
             >
               Start Building with Framer-ground
             </motion.h2>
@@ -46,11 +47,11 @@ const CallToAction = () => {
                 onMouseLeave={() => setIsHovered(false)}
                 className={buttonVariants({ size: "lg" })}
               >
-                <span className="mr-2"> View Documentation </span>
+                <span className="mr-2"> View Documentation</span>
                 <AnimatedArrow isHovered={isHovered} />
               </Link>
               <Link
-                href={projectUrl}
+                href={siteConfig.links.github}
                 className={buttonVariants({ variant: "outline", size: "lg" })}
               >
                 <Icons.gitHub className="mr-2 h-4 w-4" />

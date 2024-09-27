@@ -1,19 +1,19 @@
+import { allDocs } from "contentlayer/generated";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { allDocs } from "contentlayer/generated";
 import Balancer from "react-wrap-balancer";
+import { ExternalLinkIcon } from "lucide-react";
 
 import { Mdx } from "@/components/mdx-components";
 import { DocsPager } from "@/components/pager";
+import BreadcrumbComponent from "@/components/shared/breadcrumb";
 import { DashboardTableOfContents } from "@/components/toc";
 import { badgeVariants } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { siteConfig } from "@/config/site";
 import { getTableOfContents } from "@/lib/toc";
 import { absoluteUrl, cn } from "@/lib/utils";
-import { ChevronRightIcon, ExternalLinkIcon } from "lucide-react";
-import BreadcrumbComponent from "@/components/shared/breadcrumb";
 
 interface DocPageProps {
   params: {

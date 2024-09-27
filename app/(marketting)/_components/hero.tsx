@@ -15,10 +15,10 @@ import think from "@/public/think.jpg";
 const Hero = () => {
   const [isHovered, setIsHovered] = useState(false);
   return (
-    <div className="h-[800px] w-full bg-black  bg-grid-white/10 relative flex items-center justify-center">
-      <div className="absolute pointer-events-none inset-0 flex items-center justify-center  bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+    <div className="h-[800px] w-full bg-background dark:bg-grid-neutral-500/10 bg-grid-neutral-500/10 relative flex items-center justify-center">
+      <div className="absolute pointer-events-none inset-0 flex items-center justify-center  bg-background [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
 
-      <div className="h-40 w-full absolute bottom-0 bg-gradient-to-b from-transparent via-black/50  to-black" />
+      <div className="h-40 w-full absolute bottom-0 bg-gradient-to-b from-transparent via-background/90 to-background" />
       <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
         <div className="container px-4 md:px-6">
           <motion.div
@@ -29,7 +29,7 @@ const Hero = () => {
           >
             <motion.h1
               variants={fadeIn}
-              className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl flex gap-3 2xl:text-8xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 py-3"
+              className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl flex gap-3 2xl:text-8xl gradient-text py-3 dark:from-neutral-200 dark:to-neutral-500"
             >
               <span>Copy.</span>
               <span>Paste.</span>

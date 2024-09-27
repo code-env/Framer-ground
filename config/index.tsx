@@ -1,3 +1,6 @@
+import { bossadizenith } from "@/public/templates";
+import { Template } from "@/types";
+import { StaticImageData } from "next/image";
 import React from "react";
 
 export const config = {
@@ -77,6 +80,10 @@ export const Index: Record<string, any> = {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/cards/overview")),
   },
+  "pill-cards": {
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/fg/cards/pill")),
+  },
   "overview-stacked-cards": {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/cards/overview-stacked")),
@@ -106,3 +113,16 @@ export const Index: Record<string, any> = {
     component: React.lazy(() => import("@/fg/inputs/password-strength-zod")),
   },
 };
+
+export const Templates: Template[] = [
+  {
+    category: "portfolio",
+    description: "A simple developer portfolio",
+    title: "Developer portfolio",
+    slug: "bossadi-zenith",
+    preview: bossadizenith,
+    url: "https://bossadizenith.me",
+    label: "new",
+    stack: ["React", "Nextjs", "Typescript", "Framer motion", "Eslint"],
+  },
+];

@@ -7,7 +7,7 @@ import { ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
-import { SidebarNavItem } from "@/types";
+import { NavState, SidebarNavItem } from "@/types";
 import { Icons } from "./icons";
 
 export interface DocsSidebarNavProps {
@@ -105,11 +105,6 @@ interface DocsSidebarNavItemsProps {
   items: SidebarNavItem[];
   pathname: string | null;
 }
-type NavState = {
-  opacity: number;
-  top: number;
-  height: number;
-};
 
 export function DocsSidebarNavItems({
   items,

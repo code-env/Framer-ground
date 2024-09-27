@@ -89,4 +89,8 @@
   .arrange-width {
     width: calc(100% - 20px);
   }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-b from-neutral-700 to-neutral-900;
+  }
 }
