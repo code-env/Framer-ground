@@ -1,7 +1,9 @@
+import React from "react";
+
 import Nothing from "@/components/carousel/another";
 import MouseMove from "@/components/carousel/mouse-move";
+import Spinner from "@/components/carousel/spinner";
 import Swipe from "@/components/carousel/swipe";
-import React from "react";
 
 const Carousel = () => {
   return (
@@ -9,6 +11,7 @@ const Carousel = () => {
       <MouseMove />
       <Swipe />
       <Nothing />
+      <Spinner />
     </div>
   );
 };

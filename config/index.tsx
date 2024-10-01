@@ -52,6 +52,10 @@ export const Index: Record<string, any> = {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/gallery/two")),
   },
+  "radial-gallery": {
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/fg/gallery/radial")),
+  },
   "booking-cards": {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/cards/booking")),
