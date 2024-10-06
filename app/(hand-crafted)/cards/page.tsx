@@ -19,6 +19,9 @@ import Experience from "@/components/cards/experience";
 import Nothing from "@/components/cards/nothing";
 import OverviewStackeds from "@/components/cards/overview-stacked";
 import Pill from "@/components/cards/pill";
+import CreateNew from "@/components/buttons/create-new";
+import Birthday from "@/components/cards/birthday";
+import Wheel from "@/components/cards/wheel";
 
 const Cards = () => {
   return (
@@ -42,6 +45,9 @@ const Cards = () => {
       <Nothing />
       <OverviewStackeds />
       <Pill />
+      <CreateNew />
+      <Birthday />
+      <Wheel />
     </div>
   );
 };

@@ -93,4 +93,25 @@
   .gradient-text {
     @apply bg-clip-text text-transparent bg-gradient-to-b from-neutral-700 to-neutral-900;
   }
+
+  .bar {
+    overflow-x: auto; /* Allows horizontal scrolling */
+    scrollbar-width: thin; /* For Firefox, makes the scrollbar thinner */
+    scrollbar-color: transparent transparent; /* For Firefox, custom scrollbar colors */
+  }
+
+  /* For WebKit browsers (Chrome, Safari, Edge) */
+  .bar::-webkit-scrollbar {
+    height: 8px; /* Adjust scrollbar height for horizontal scrolling */
+  }
+
+  .bar::-webkit-scrollbar-track {
+    background: transparent; /* The track is transparent */
+  }
+
+  .bar::-webkit-scrollbar-thumb {
+    @apply bg-primary; /* The scrollbar thumb color (more visible) */
+    border-radius: 10px; /* Rounds the edges of the scrollbar */
+    border: 2px solid transparent;
+  }
 }
