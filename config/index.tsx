@@ -28,6 +28,10 @@ export const Index: Record<string, any> = {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/button/second-brain")),
   },
+  "create-new-button": {
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/fg/button/create-new")),
+  },
   "vercel-navbar": {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/navbar/vercel")),
@@ -87,6 +91,10 @@ export const Index: Record<string, any> = {
   "pill-cards": {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/cards/pill")),
+  },
+  "birthday-cards": {
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/fg/cards/birthday")),
   },
   "overview-stacked-cards": {
     registryDependencies: undefined,

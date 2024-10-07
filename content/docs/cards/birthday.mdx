@@ -1,0 +1,58 @@
+---
+title: Birthday
+description: Birthdays are things we can't live without. Display all birthdays of friends
+author: code-env
+---
+
+<ComponentPreview name="birthday-cards" height={300} />
+
+## Installation
+
+<Steps>
+
+<Step>Run the following command</Step>
+
+It will create a new file `birthday.tsx` inside the `components/cards/birthday.tsx` directory.
+
+```bash
+mkdir -p components/cards && touch components/cards/birthday.tsx
+```
+
+<Step>Add this snippet to your `globals.css` file</Step>
+
+```css
+.bar {
+  overflow-x: auto; /* Allows horizontal scrolling */
+  scrollbar-width: thin; /* For Firefox, makes the scrollbar thinner */
+  scrollbar-color: transparent transparent; /* For Firefox, custom scrollbar colors */
+}
+
+/* For WebKit browsers (Chrome, Safari, Edge) */
+.bar::-webkit-scrollbar {
+  height: 8px; /* Adjust scrollbar height for horizontal scrolling */
+}
+
+.bar::-webkit-scrollbar-track {
+  background: transparent; /* The track is transparent */
+}
+
+.bar::-webkit-scrollbar-thumb {
+  @apply bg-primary; /* The scrollbar thumb color (more visible) */
+  border-radius: 10px; /* Rounds the edges of the scrollbar */
+  border: 2px solid transparent;
+}
+```
+
+<Step>Paste the code</Step>{" "}
+
+Open the newly created file and paste the following code:
+
+```jsx file=<rootDir>/fg/cards/birthday.tsx
+
+```
+
+</Steps>
+
+## Credits
+
+Built by [Bossadi Zenith](https://github.com/code-env)

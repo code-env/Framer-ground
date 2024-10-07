@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 type AnimationSequence = Parameters<typeof animate>[0];
 
-const Sparkles = ({ text = "Nothing" }: { text: string }) => {
+const Sparkles = ({ text = "Click me" }: { text: string }) => {
   const [starCount, setStarCount] = useState(0);
   useEffect(() => {
     setTimeout(() => {
