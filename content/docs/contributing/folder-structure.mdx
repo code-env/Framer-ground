@@ -1,0 +1,28 @@
+---
+title: Folder structure
+date: 2024-10-07
+description: Learn about the folder structure of Ground.
+---
+
+## Core Folders
+
+- `components/`: Contains all the components used across the site.
+- `fg/`: Contains all the animations ready and tested to be shipped for production.
+- `content/`: Contains the documentation pages.
+- `public/`: Contains the static files.
+- `app/`: Contains the main Next.js app.
+- `app/(hand-crafted)/`: contains pages of testing environment.
+
+You will mostly be working in the `ground` and `content/docs` folders while creating new animations and documentation pages.
+
+## other components
+
+<Callout className="mt-2">
+  `Note`: In the components folder, there're other folders like `buttons`,
+  `cards`, `carousel`, `forms`, `grid`, `hand-crafted`, `inputs`, `navbar`,
+  `scroll`. All these folders are used as testing environment before shipping
+  them out to production. So if you have any animation you'll want to create,
+  first create a file in one of the corresponding categories above. Then when
+  you're done with the file, you can then now copy the code to the `contennt/`
+  directory and select same category.
+</Callout>

@@ -48,7 +48,7 @@ const Add = () => {
   const isHovered = status === "hovered";
 
   return (
-    <div className="h-screen center border-y border-red-500">
+    <div className="h-screen center border-y border-red-500 w-full">
       <AnimatePresence>
         {isOpen || isHovered ? (
           <motion.div

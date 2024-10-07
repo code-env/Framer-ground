@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "shadcn:add": "pnpm dlx shadcn add",
-    "fg:new": "node ./scripts/create-new.js"
+    "ground:new": "node ./scripts/create-new.js"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "^1.2.2",

@@ -21,3 +21,7 @@ I would like to thank [Lndev](https://ui.lndev.me), who was a fundamental inspir
 ### Future plans
 
 I was very excited to develop this project, it's a great pleasure for me to be working on this, I intend to continue and add more and more components and for other like me back then to add micro animations to their website.
+
+### For contributions
+
+Visit our [contributing guide](https://ground.bossadizenith.me/docs/contributing) to learn how to contribute. _So easy_ that you just run a command to get started.

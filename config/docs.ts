@@ -55,6 +55,26 @@ const sidebarNav: SidebarNavItem[] = [
         href: "/docs/contributing/running-locally",
         items: [],
       },
+      {
+        title: "Adding components",
+        href: "/docs/contributing/components",
+        items: [],
+      },
+      {
+        title: "Folder structure",
+        href: "/docs/contributing/folder-structure",
+        items: [],
+      },
+      {
+        title: "Guidelines",
+        href: "/docs/contributing/guidelines",
+        items: [],
+      },
+      {
+        title: "Best practices",
+        href: "/docs/contributing/best-practices",
+        items: [],
+      },
     ],
   },
   {

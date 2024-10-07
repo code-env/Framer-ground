@@ -71,7 +71,11 @@ const Nothing = () => {
                 )}
                 layoutId={`box-4`}
               >
-                4
+                <img
+                  src="/others/photo-4.jpg"
+                  alt="nothing image"
+                  className="size-full object-cover"
+                />
               </motion.div>
             </motion.div>
           ))}
@@ -89,18 +93,19 @@ const Nothing = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
               >
-                {elements.map(({ id, bg }, index) => (
+                {elements.map(({ id, bg, img }, index) => (
                   <motion.div
                     key={index}
                     className={cn(
                       "rounded-2xl cursor-pointer center overflow-hidden border h-full"
                     )}
-                    style={{
-                      backgroundColor: bg,
-                    }}
                     layoutId={`box-${id}`}
                   >
-                    {id}
+                    <img
+                      src={img}
+                      alt="nothing image"
+                      className="size-full object-cover"
+                    />
                   </motion.div>
                 ))}
                 <motion.div
@@ -109,7 +114,11 @@ const Nothing = () => {
                   )}
                   layoutId={`box-4`}
                 >
-                  4
+                  <img
+                    src="/others/photo-4.jpg"
+                    alt="nothing image"
+                    className="size-full object-cover"
+                  />
                 </motion.div>
               </motion.div>
             </AnimatePresence>
@@ -124,7 +133,7 @@ const Gallery = (props: { item: Element; index?: number }) => {
   return (
     <motion.div
       className={cn(
-        "rounded-2xl center border h-[80%] w-[80%] origin-bottom overflow-hidden"
+        "rounded-2xl center border h-[80%] w-[80%] max-h-[222px] origin-bottom overflow-hidden"
       )}
       layoutId={`box-${props.item.id}`}
       animate={{
@@ -136,7 +145,7 @@ const Gallery = (props: { item: Element; index?: number }) => {
         backgroundColor: props.item.bg,
       }}
     >
-      {props.item.id}
+      <img src={props.item.img} className="size-full object-cover" />
     </motion.div>
   );
 };
