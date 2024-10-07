@@ -36,7 +36,7 @@ const Sparkles = ({ text = "Click me" }: { text: string }) => {
         at: "<",
       },
     ]);
-    const sparkesFadeOut: AnimationSequence = sparkles.map((_, index) => [
+    const sparklesFadeOut: AnimationSequence = sparkles.map((_, index) => [
       `.stars-${index}`,
       {
         opacity: 0,
@@ -47,7 +47,7 @@ const Sparkles = ({ text = "Click me" }: { text: string }) => {
         at: "<",
       },
     ]);
-    const sparcleReset: AnimationSequence = sparkles.map((_, index) => [
+    const sparkleReset: AnimationSequence = sparkles.map((_, index) => [
       `.stars-${index}`,
       {
         x: 0,
@@ -60,13 +60,13 @@ const Sparkles = ({ text = "Click me" }: { text: string }) => {
     ]);
 
     animate([
-      ...sparcleReset,
+      ...sparkleReset,
       [".letter", { y: -32 }, { duration: 0.2, delay: stagger(0.05) }],
       ["button", { scale: 0.8 }, { duration: 0.1, at: "<" }],
       ["button", { scale: 1 }, { duration: 0.1 }],
       ...sparkleAnimation,
       [".letter", { y: 0 }, { duration: 0.00000000001 }],
-      ...sparkesFadeOut,
+      ...sparklesFadeOut,
     ]);
   };
   return (
