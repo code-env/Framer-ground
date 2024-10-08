@@ -40,14 +40,14 @@ const PasswordStrength = () => {
     setPercentage(val > 100 ? 100 : val);
     passwordLength.set(value.length);
 
-    //for the scaling down and up of the input
+    // for the scaling down and up of the input
     if (value.length === 8) {
       scaleControls.start({
         scale: [1, 0.9, 1.1, 1],
         transition: { duration: 0.5 },
       });
     }
-  }, [value, passwordLength]);
+  }, [value, passwordLength, scaleControls]);
 
   return (
     <div className="h-screen w-full center border-t">

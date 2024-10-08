@@ -97,12 +97,12 @@ const PasswordStrength = () => {
               {showPassword ? (
                 <LucideEye
                   onClick={() => setShowPassword(false)} // Hide password
-                  className="size-4 cursor-pointer text-muted-foreground"
+                  className="size-4 cursor-pointer text-muted-foreground pointer-events-none"
                 />
               ) : (
                 <LucideEyeOff
                   onClick={() => setShowPassword(true)} // Show password
-                  className="size-4 cursor-pointer text-muted-foreground"
+                  className="size-4 cursor-pointer text-muted-foreground pointer-events-none"
                 />
               )}
             </button>
