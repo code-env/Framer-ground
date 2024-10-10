@@ -22,6 +22,7 @@ import Pill from "@/components/cards/pill";
 import CreateNew from "@/components/buttons/create-new";
 import Birthday from "@/components/cards/birthday";
 import Wheel from "@/components/cards/wheel";
+import CircularMenu from "@/components/cards/menu";
 
 const Cards = () => {
   return (
@@ -48,6 +49,7 @@ const Cards = () => {
       <CreateNew />
       <Birthday />
       <Wheel />
+      <CircularMenu />
     </div>
   );
 };

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Grip, Plus } from "lucide-react";
+import { Grip, Plus, X } from "lucide-react";
 
 interface Birthday {
   name: string;
@@ -245,6 +245,8 @@ const getCurrentMonth = () => {
   return date.getMonth(); // 0 = January, 1 = February, ..., 11 = December
 };
 
+const transition = { type: "spring", bounce: 0, duration: 0.4 };
+
 const Month = ({
   month,
   index,
@@ -274,17 +276,21 @@ const Month = ({
         {firstThree.map((item, index) => (
           <div
             key={index}
-            className="size-10 center dark:bg-neutral-300 border border-border/50 bg-neutral-800 rounded-full text-muted-foreground -ml-2 font-bold text-sm"
+            style={{
+              width: 40,
+              height: 40,
+            }}
+            className="size-10 center rounded-full text-muted-foreground -ml-2 font-bold text-sm"
           >
             <img
               src={item.image}
               alt={item.name}
-              className="rounded-full w-10 h-10"
+              className="rounded-full size-10"
             />
           </div>
         ))}
         {remainingBirthdays > 0 && (
-          <div className="size-10 center rounded-full text-muted-foreground -ml-2 dark:bg-neutral-300 border border-border/50 bg-neutral-800 font-bold text-sm">
+          <div className="size-10 center rounded-full text-muted-foreground -ml-2 dark:bg-neutral-300  bg-neutral-800 font-bold text-sm">
             <span>
               <Plus className="size-4" />
             </span>{" "}
@@ -293,6 +299,89 @@ const Month = ({
         )}
       </div>
     </motion.div>
+  );
+};
+
+interface HeaderProps {
+  isOpen: boolean;
+  onOpen: () => void;
+}
+
+const Header = ({ isOpen, onOpen }: HeaderProps) => {
+  const toggleMenu = () => {
+    onOpen();
+  };
+
+  const variants = {
+    initial: {
+      opacity: 0,
+      y: -10,
+    },
+    enter: {
+      opacity: 1,
+      y: 0,
+    },
+    exit: {
+      opacity: 0,
+      y: -10,
+    },
+  };
+
+  return (
+    <div className="flex items-center justify-between p-4">
+      <motion.p className="text-3xl font-semibold">
+        <AnimatePresence mode="wait">
+          {isOpen ? (
+            <motion.span
+              key="2025" // Unique key for "2025"
+              variants={variants}
+              initial="initial"
+              animate="enter"
+              exit="exit"
+              transition={{
+                duration: 0.3, // You can adjust the timing
+              }}
+            >
+              2025
+            </motion.span>
+          ) : (
+            <motion.span
+              key="Birthday" // Unique key for "Birthday"
+              variants={variants}
+              initial="initial"
+              animate="enter"
+              exit="exit"
+              transition={{
+                duration: 0.3,
+              }}
+            >
+              Birthday
+            </motion.span>
+          )}
+        </AnimatePresence>
+      </motion.p>
+
+      <button
+        className="size-12 p-2 center gap-2 cursor-pointer bg-primary text-primary-foreground rounded-full flex-col"
+        onClick={toggleMenu}
+      >
+        {Array.from({ length: 2 }).map((_, index) => {
+          const rotateAngle = index % 2 === 0 ? 45 : -45;
+          const changeY = index % 2 === 0 ? 5.5 : -5.5;
+
+          return (
+            <motion.span
+              key={index}
+              animate={{
+                rotate: isOpen ? rotateAngle : 0,
+                y: isOpen ? changeY : 0,
+              }}
+              className="w-8 !h-[3px] bg-primary-foreground"
+            />
+          );
+        })}
+      </button>
+    </div>
   );
 };
 
@@ -362,7 +451,7 @@ const Birthday = () => {
   };
 
   return (
-    <div className="size-full center">
+    <div className="h-full w-full center bg-primary">
       <AnimatePresence>
         {isOpen ? (
           <motion.div
@@ -370,20 +459,15 @@ const Birthday = () => {
             layoutId="wrapper"
             style={{ borderRadius: 22, height: 430, width: 500 }}
           >
-            <div className="flex items-center justify-between p-4">
-              <motion.p layoutId="bt" className="text-3xl font-semibold">
-                2025
-              </motion.p>
-              <Grip
-                className="cursor-pointer"
-                onClick={() => setStatus("idle")}
-              />
-            </div>
-            <div className="grid grid-cols-3 gap-4 overflow-x-clip bar px-4">
+            <Header isOpen={isOpen} onOpen={() => setStatus("idle")} />
+            <motion.div
+              layoutId="birthdays-container"
+              className="grid grid-cols-3 gap-4 overflow-x-clip bar px-4"
+            >
               {months.map((month, index) => (
                 <Month key={month.id} month={month} index={index} />
               ))}
-            </div>
+            </motion.div>
           </motion.div>
         ) : (
           <motion.div
@@ -391,21 +475,16 @@ const Birthday = () => {
             className="p-4 bg-primary text-primary-foreground flex flex-col gap-5"
             style={{ borderRadius: 22, width: 500, height: 510 }}
           >
-            <div className="flex items-center justify-between p-4">
-              <motion.p layoutId="bt" className="text-3xl font-semibold">
-                Birthday
-              </motion.p>
-              <Grip
-                className="cursor-pointer"
-                onClick={() => setStatus("open")}
-              />
-            </div>
+            <Header isOpen={isOpen} onOpen={() => setStatus("open")} />
             <div className="relative">
-              <div className="flex overflow-x-scroll bar gap-4 px-4">
+              <motion.div
+                layoutId="birthdays-container"
+                className="flex overflow-x-scroll bar gap-4 px-4"
+              >
                 {months.map((month, index) => (
                   <Month key={month.id} month={month} index={index} />
                 ))}
-              </div>
+              </motion.div>
               <div className="h-full w-10 bg-gradient-to-r from-primary to-transparent absolute top-0 left-0" />
               <div className="h-full w-10 bg-gradient-to-l from-primary to-transparent absolute top-0 right-0" />
             </div>
@@ -415,7 +494,7 @@ const Birthday = () => {
                 <AnimatePresence>
                   {upcomingBirthdays.map((birthday, index) => (
                     <motion.div
-                      className="dark:bg-neutral-300 bg-neutral-800 hover:bg-neutral-800/80 p-2 rounded-xl flex gap-2 cursor-pointer hover:dark:bg-neutral-300/80 text-primary-foreground"
+                      className="hover:bg-neutral-800/80 dark:bg-neutral-200 bg-neutral-800 p-2 rounded-xl flex gap-2 cursor-pointer hover:dark:bg-neutral-300/80 text-primary-foreground"
                       key={index}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -426,7 +505,7 @@ const Birthday = () => {
                     >
                       <motion.div
                         layoutId={`profile-${birthday.name}`}
-                        className="size-10 rounded-full bg-neutral-600 min-w-10"
+                        className="size-10 rounded-full min-w-10"
                       >
                         <img
                           src={birthday.image}
@@ -434,17 +513,23 @@ const Birthday = () => {
                           className="rounded-full w-10 h-10"
                         />
                       </motion.div>
-                      <motion.div
-                        layoutId={`profile-info-${birthday.name}`}
-                        className="flex justify-between flex-1"
-                      >
+                      <motion.div className="flex justify-between items-center flex-1">
                         <p className="flex flex-col">
-                          <span>{birthday.name}</span>
-                          <span className="text-xs">
+                          <motion.span
+                            layoutId={`profile-name-${birthday.name}`}
+                          >
+                            {birthday.name}
+                          </motion.span>
+                          <motion.span
+                            layoutId={`profile-dob-${birthday.name}`}
+                            className="text-xs"
+                          >
                             {formatDate(birthday.dateOfBirth)}
-                          </span>
+                          </motion.span>
                         </p>
-                        <p>{calculateAge(birthday.dateOfBirth)}y</p>
+                        <motion.p layoutId={`profile-age-${birthday.name}`}>
+                          {calculateAge(birthday.dateOfBirth)}y
+                        </motion.p>
                       </motion.div>
                     </motion.div>
                   ))}
@@ -454,16 +539,27 @@ const Birthday = () => {
                 {selected !== null && (
                   <motion.div
                     layoutId={`birthday-${selected.name}`}
-                    className="absolute -left-4 h-[calc(100%_+16px)] w-[calc(100%_+32px)] rounded-[22px] dark:bg-neutral-300 bg-neutral-800 p-4 flex flex-col gap-5 text-primary-foreground"
+                    className="absolute -left-4 h-[calc(100%_+16px)] w-[calc(100%_+32px)] rounded-[22px] p-4 center flex-col gap-5 text-primary-foreground dark:bg-neutral-200 bg-neutral-800"
                   >
-                    <div
-                      className="absolute top-2 left-0 right-0 w-20 rounded-full h-2 bg-primary cursor-pointer mx-auto"
+                    <motion.button
+                      layout
                       onClick={() => setSelected(null)}
-                    />
-                    <div className="flex gap-2 items-center">
+                      initial={{ opacity: 0, x: -20, y: 10 }}
+                      animate={{ opacity: 1, x: 0, y: 0 }}
+                      exit={{ opacity: 0, x: -20, y: 10 }}
+                      transition={{ ...transition, delay: 0.15 }}
+                      whileTap={{
+                        scale: 0.9,
+                        transition: { ...transition, duration: 0.2 },
+                      }}
+                      className="size-8  absolute top-5 right-5"
+                    >
+                      <X className="size-6 text-tight text-primary-foreground" />
+                    </motion.button>
+                    <div className="gap-2 center flex-col">
                       <motion.div
                         layoutId={`profile-${selected.name}`}
-                        className="size-16 rounded-full bg-neutral-600 min-w-10"
+                        className="size-20 rounded-full min-w-10"
                       >
                         <img
                           src={selected.image}
@@ -473,27 +569,33 @@ const Birthday = () => {
                       </motion.div>
                       <motion.div
                         layoutId={`profile-info-${selected.name}`}
-                        className="flex justify-between flex-1"
+                        className="flex flex-col gap-2 flex-1"
                       >
-                        <p className="flex flex-col">
-                          <span className="font-semibold text-2xl">
+                        <p className="flex flex-col text-center">
+                          <motion.span
+                            layoutId={`profile-name-${selected.name}`}
+                            className="font-semibold text-2xl"
+                          >
                             {selected.name}
-                          </span>
-                          <span className="text-base">
+                          </motion.span>
+                          <motion.span
+                            layoutId={`profile-dob-${selected.name}`}
+                            className="text-base"
+                          >
                             {formatDate(selected.dateOfBirth)} .{" "}
-                            <span className="text-sm text-neutral-500">
-                              in {getRemainingDays(selected.dateOfBirth)} days
-                            </span>
-                          </span>
+                            <motion.span className="text-xs">
+                              {getRemainingDays(selected.dateOfBirth)} days
+                            </motion.span>
+                          </motion.span>
                         </p>
-                        <p className="text-2xl font-semibold">
-                          {calculateAge(selected.dateOfBirth)}y
-                        </p>
+                        <motion.p
+                          layoutId={`profile-age-${selected.name}`}
+                          className="text-2xl font-semibold"
+                        >
+                          {calculateAge(selected.dateOfBirth)}years old
+                        </motion.p>
                       </motion.div>
                     </div>
-                    <p className="text-xs uppercase font-semibold">
-                      gift ideas
-                    </p>
                   </motion.div>
                 )}
               </AnimatePresence>
