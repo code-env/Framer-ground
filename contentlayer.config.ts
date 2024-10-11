@@ -14,6 +14,7 @@ import { codeImport } from "remark-code-import";
 import remarkGfm from "remark-gfm";
 import { BlogPosting, WithContext } from "schema-dts";
 import { visit } from "unist-util-visit";
+import { siteConfig } from "./config/site";
 
 const computedFields: ComputedFields = {
   url: {
@@ -48,13 +49,13 @@ const computedFields: ComputedFields = {
         dateModified: doc.date,
         description: doc.summary || doc.description,
         image: doc.image,
-        url: `https://animata.design/${doc._raw.flattenedPath}`,
+        url: `${siteConfig.url}/${doc._raw.flattenedPath}`,
         author: {
           "@type": "Person",
           name: doc.author,
           url: `https://twitter.com/${doc.author}`,
         },
-      }) as WithContext<BlogPosting>,
+      } as WithContext<BlogPosting>),
   },
 };
 
@@ -155,8 +156,9 @@ const postProcess = () => (tree: any) => {
 
           const filename = path.split("/").pop() ?? "";
           const dir = path.replace("/" + filename, "");
-          pre.properties["__windows__"] =
-            `mkdir "${dir}" && type null > ${path}`;
+          pre.properties[
+            "__windows__"
+          ] = `mkdir "${dir}" && type null > ${path}`;
           pre.properties["__unix__"] = `mkdir -p ${dir} && touch ${path}`;
         }
 

@@ -10,7 +10,7 @@ type Element = {
   img: string;
 };
 
-const Nothing = () => {
+const HoverGallery = () => {
   const [isHovering, setIsHovering] = useState(false);
   const items = [
     {
@@ -42,7 +42,7 @@ const Nothing = () => {
   ];
 
   return (
-    <div className="h-screen center">
+    <div className="size-full center">
       <motion.div
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
@@ -143,4 +143,4 @@ const Gallery = (props: { item: Element; index?: number }) => {
   );
 };
 
-export default Nothing;
+export default HoverGallery;

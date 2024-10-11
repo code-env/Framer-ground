@@ -129,6 +129,12 @@ const sidebarNav: SidebarNavItem[] = [
     items: createLinks("button"),
   },
   {
+    title: "Menu",
+    label: createLinks("menu").length + "",
+    href: "/docs/menu",
+    items: createLinks("menu"),
+  },
+  {
     title: "Navbars",
     label: createLinks("navbars").length + "",
     href: "/docs/navbars/liquid",

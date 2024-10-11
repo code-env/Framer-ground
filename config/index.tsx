@@ -60,6 +60,10 @@ export const Index: Record<string, any> = {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/gallery/radial")),
   },
+  "hover-gallery": {
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/fg/gallery/hover")),
+  },
   "booking-cards": {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/cards/booking")),
@@ -104,6 +108,14 @@ export const Index: Record<string, any> = {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/cards/experience")),
   },
+  "piano-cards": {
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/fg/cards/piano")),
+  },
+  "frequency-cards": {
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/fg/cards/frequency")),
+  },
   "one-carousel": {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/carousel/one")),
@@ -111,6 +123,10 @@ export const Index: Record<string, any> = {
   "swipe-carousel": {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/carousel/swipe")),
+  },
+  "perspective-carousel": {
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/fg/carousel/perspective")),
   },
   "iMessage-inputs": {
     registryDependencies: undefined,
@@ -123,6 +139,10 @@ export const Index: Record<string, any> = {
   "password-strength-zod-inputs": {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/inputs/password-strength-zod")),
+  },
+  "circular-menu": {
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/fg/menu/circular")),
   },
 };
 
