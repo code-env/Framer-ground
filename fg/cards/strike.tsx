@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Checkbox from "@/components/hand-crafted/check-box";
 
 const CheckCard = () => {
-  const [checked, setCheced] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   const variants = {
     initial: {
@@ -37,10 +37,10 @@ const CheckCard = () => {
   return (
     <div className="h-full center w-full">
       <motion.div className="bg-muted w-60 items-center rounded-lg flex p-5 ">
-        <Checkbox isChecked={checked} setIsChecked={setCheced} />
+        <Checkbox isChecked={checked} setIsChecked={setChecked} />
         <div className="px-5 overflow-hidden">
           <div className="relative">
-            <span>Post on Linkedin</span>
+            <span className="cursor-pointer" onClick={()=>setChecked(!checked)}>Post on Linkedin</span>
             <AnimatePresence>
               {checked && (
                 <motion.span
@@ -48,7 +48,7 @@ const CheckCard = () => {
                   initial="initial"
                   animate="animate"
                   exit="exit"
-                  className="absolute left-0 bg-white w-full top-0 bottom-0 my-auto rounded-full
+                  className="absolute left-0 bg-white w-full top-0 bottom-0 my-auto rounded-full pointer-events-none
                 "
                 />
               )}
