@@ -4,15 +4,19 @@ import Vercel from "@/components/navbar/vercel";
 import NotchBar from "@/components/navbar/notch-bar";
 import React from "react";
 import Chevron from "@/components/navbar/chevron";
+import DimensionNavbar from "@/components/navbar/dimension";
 
 const Navbars = () => {
   return (
     <div>
-      <ScrollReveal />
-      <LiquidMorph />
+      {/* <ScrollReveal /> */}
+      <DimensionNavbar />
+      {/* <LiquidMorph />
       <Vercel />
       <NotchBar />
-      <Chevron />
+      <Chevron /> */}
+
+      <div className="h-[300vh]"></div>
     </div>
   );
 };

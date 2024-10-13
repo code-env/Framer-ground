@@ -23,6 +23,8 @@ import CreateNew from "@/components/buttons/create-new";
 import Birthday from "@/components/cards/birthday";
 import Wheel from "@/components/cards/wheel";
 import CircularMenu from "@/components/cards/menu";
+import Loading from "@/components/cards/loading";
+import Call from "@/components/cards/call";
 
 const Cards = () => {
   return (
@@ -50,6 +52,8 @@ const Cards = () => {
       <Birthday />
       <Wheel />
       <CircularMenu />
+      <Loading />
+      <Call />
     </div>
   );
 };

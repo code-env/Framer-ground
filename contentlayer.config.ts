@@ -16,6 +16,14 @@ import { BlogPosting, WithContext } from "schema-dts";
 import { visit } from "unist-util-visit";
 import { siteConfig } from "./config/site";
 
+// Get theme from localStorage
+const getThemeFromLocalStorage = () => {
+  if (typeof window !== "undefined") {
+    return localStorage.getItem("theme") || "light"; // Default to 'light' theme
+  }
+  return "light"; // Default to 'light' on SSR (Server-Side Rendering)
+};
+
 const computedFields: ComputedFields = {
   url: {
     type: "string",
@@ -195,9 +203,8 @@ export default makeSource({
         // @ts-expect-error - `rehypePrettyCode` is not typed
         rehypePrettyCode,
         {
-          theme: {
-            dark: "one-dark-pro",
-          },
+          theme: "github-dark",
+
           onVisitLine(node: any) {
             // Prevent lines from collapsing in `display: grid` mode, and allow empty
             // lines to be copy/pasted

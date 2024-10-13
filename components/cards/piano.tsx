@@ -75,7 +75,7 @@ const PianoVisualization: React.FC = () => {
         onPlay={setupAudio}
         controls
         className="mb-20"
-        autoPlay
+        // autoPlay
       />
 
       <div className="flex items-end h-60">
