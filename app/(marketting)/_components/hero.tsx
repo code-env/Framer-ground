@@ -12,7 +12,7 @@ import { siteConfig } from "@/config/site";
 import { fadeIn, projectUrl, stagger } from "@/constants";
 import think from "@/public/think.jpg";
 
-const Hero = () => {
+const Hero = ({ stars }: { stars: string }) => {
   const [isHovered, setIsHovered] = useState(false);
   return (
     <div className="h-[800px] w-full bg-background dark:bg-grid-neutral-500/10 bg-grid-neutral-500/10 relative flex items-center justify-center">
@@ -70,7 +70,7 @@ const Hero = () => {
                 target="_blank"
               >
                 <Star className="mr-2 h-4 w-4 " />
-                <span className="mr-2">Star us on GitHub</span>
+                <span className="mr-2">{stars} Stars on GitHub</span>
               </Link>
             </motion.div>
           </motion.div>

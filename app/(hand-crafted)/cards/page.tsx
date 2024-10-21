@@ -25,10 +25,14 @@ import Wheel from "@/components/cards/wheel";
 import CircularMenu from "@/components/cards/menu";
 import Loading from "@/components/cards/loading";
 import Call from "@/components/cards/call";
+import Calendar from "@/components/cards/calendar";
+import CalendarSubscriptions from "@/components/cards/calendar-subcriptions";
 
 const Cards = () => {
   return (
     <div className="min-h-screen flex-col center overflow-x-hidden">
+      <CalendarSubscriptions />
+      <Calendar />
       <CardOne />
       <CheckCard />
       <Booking />

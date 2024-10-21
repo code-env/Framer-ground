@@ -119,7 +119,7 @@ const Call = () => {
     ));
 
   return (
-    <div className="h-screen relative w-full center border-t border bg-muted">
+    <div className="size-full rounded-lg relative w-full center border-t border bg-muted">
       <motion.div
         className="flex gap-5 flex-col cursor-pointer bg-white dark:bg-black shadow-md text-primary-foreground p-5 tracking-tight overflow-hidden"
         aria-expanded={isOpen}
