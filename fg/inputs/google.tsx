@@ -14,8 +14,8 @@ interface GoogleInputProps {
 
 const GoogleInput: React.FC<GoogleInputProps> = ({
   id = "googleInput",
-  label,
-  type = "text",
+  label = "Email Address",
+  type = "email",
 }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [inputValue, setInputValue] = useState("");
@@ -30,7 +30,7 @@ const GoogleInput: React.FC<GoogleInputProps> = ({
   };
 
   return (
-    <div className="relative h-screen center w-full border-t">
+    <div className="size-full center w-full">
       <div className="relative w-full  max-w-xl mx-auto">
         <Input
           type={type}
