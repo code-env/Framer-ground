@@ -27,10 +27,12 @@ import Loading from "@/components/cards/loading";
 import Call from "@/components/cards/call";
 import Calendar from "@/components/cards/calendar";
 import CalendarSubscriptions from "@/components/cards/calendar-subcriptions";
+import Options from "@/components/cards/option";
 
 const Cards = () => {
   return (
     <div className="min-h-screen flex-col center overflow-x-hidden">
+      <Options />
       <CalendarSubscriptions />
       <Calendar />
       <CardOne />

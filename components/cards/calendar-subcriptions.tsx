@@ -411,8 +411,8 @@ function Day({
         </motion.div>
       </HoverCardTrigger>
       {date.subscription && (
-        <HoverCardContent className="p-0">
-          <div className="p-4 bg-neutral-100 dark:bg-neutral-800 rounded-lg">
+        <HoverCardContent className="p-0 ">
+          <div className="p-4">
             <h3 className="font-bold text-lg">{date.subscription.name}</h3>
             <div className="flex items-center gap-2 mt-2">
               {date.subscription.companies.map((company, index) => (
@@ -441,15 +441,15 @@ function Modal(props: { active: boolean; onClick: () => void }) {
   });
 
   // Get the total number of subscriptions for scaling
-  const maxSubscriptions = sortedDays[0]?.subscription?.companies.length || 1; // Avoid division by zero
+  const maxSubscriptions = sortedDays[0]?.subscription?.companies.length || 1;
   const totalSubscriptions = sortedDays.reduce(
     (acc, day) => acc + (day.subscription?.companies.length || 0),
     0
-  ); // Total number of subscriptions
+  );
 
   const radius = 200; // Radius of the circle
-  const centerX = 250; // Center X for the circle
-  const centerY = 250; // Center Y for the circle
+  const centerX = 250;
+  const centerY = 250;
 
   const angleStep = (2 * Math.PI) / sortedDays.length;
 
@@ -459,7 +459,7 @@ function Modal(props: { active: boolean; onClick: () => void }) {
   }));
 
   function generateGradient(companies: Company[]) {
-    return `url(#gradient-${companies[0].name})`; // Using the first company's name for a unique ID
+    return `url(#gradient-${companies[0].name})`; // Use the first company's name for a unique ID
   }
 
   return (
@@ -510,57 +510,63 @@ function Modal(props: { active: boolean; onClick: () => void }) {
                   stroke="none"
                   strokeWidth={20}
                 />
-                {sortedDays.map((day, index) => {
-                  const subscriptionCount =
-                    day.subscription?.companies.length || 0;
 
-                  // Calculate the proportion of the circle this day should cover
-                  const proportion = subscriptionCount / totalSubscriptions;
-                  const angle = proportion * 2 * Math.PI; // Proportional angle
+                <AnimatePresence>
+                  {sortedDays.map((day, index) => {
+                    const subscriptionCount =
+                      day.subscription?.companies.length || 0;
 
-                  // Calculate the start and end angles for the path
-                  const startAngle = sortedDays
-                    .slice(0, index)
-                    .reduce(
-                      (acc, d) =>
-                        acc +
-                        ((d.subscription?.companies.length || 0) /
-                          totalSubscriptions) *
-                          2 *
-                          Math.PI,
-                      0
+                    // Calculate the proportion of the circle this day should cover
+                    const proportion = subscriptionCount / totalSubscriptions;
+                    const angle = proportion * 2 * Math.PI;
+
+                    // Calculate the start and end angles for the path
+                    const startAngle = sortedDays
+                      .slice(0, index)
+                      .reduce(
+                        (acc, d) =>
+                          acc +
+                          ((d.subscription?.companies.length || 0) /
+                            totalSubscriptions) *
+                            2 *
+                            Math.PI,
+                        0
+                      );
+                    const endAngle = startAngle + angle;
+
+                    const startX = centerX + radius * Math.cos(startAngle);
+                    const startY = centerY + radius * Math.sin(startAngle);
+                    const endX = centerX + radius * Math.cos(endAngle);
+                    const endY = centerY + radius * Math.sin(endAngle);
+
+                    const pathLength = radius * (endAngle - startAngle);
+
+                    return (
+                      <AnimatePresence key={index}>
+                        <g>
+                          <motion.path
+                            d={`M ${startX} ${startY} A ${radius} ${radius} 0 0 1 ${endX} ${endY}`}
+                            fill="none"
+                            stroke="white"
+                            strokeWidth={30}
+                            strokeLinecap="round"
+                            initial={{ strokeDasharray: "0 1", opacity: 0 }}
+                            animate={{
+                              strokeDasharray: `${
+                                pathLength - 50
+                              } ${pathLength}`,
+                              opacity: 1,
+                            }}
+                            exit={{ opacity: 0, strokeDasharray: "0 1" }}
+                            transition={{ duration: 0.5 }}
+                          />
+                        </g>
+                      </AnimatePresence>
                     );
-                  const endAngle = startAngle + angle;
-
-                  const startX = centerX + radius * Math.cos(startAngle);
-                  const startY = centerY + radius * Math.sin(startAngle);
-                  const endX = centerX + radius * Math.cos(endAngle);
-                  const endY = centerY + radius * Math.sin(endAngle);
-
-                  const pathLength = radius * (endAngle - startAngle); // Arc length of the path
-
-                  return (
-                    <g key={index}>
-                      <motion.path
-                        d={`M ${startX} ${startY} A ${radius} ${radius} 0 0 1 ${endX} ${endY}`}
-                        fill="none"
-                        stroke={
-                          day.subscription?.companies
-                            ? generateGradient(day.subscription.companies)
-                            : "none"
-                        }
-                        strokeWidth={30}
-                        strokeLinecap="round"
-                        initial={{ strokeDasharray: "0 1" }}
-                        animate={{
-                          strokeDasharray: `${pathLength - 50} ${pathLength}`,
-                        }}
-                        transition={{ duration: 0.5 }} // Increase duration for visibility
-                      />
-                    </g>
-                  );
-                })}
+                  })}
+                </AnimatePresence>
               </svg>
+
               <motion.button
                 className="absolute top-0 left-0 right-0 bottom-0 w-fit m-auto h-fit"
                 layoutId="expenditure"
@@ -570,6 +576,36 @@ function Modal(props: { active: boolean; onClick: () => void }) {
               >
                 $500
               </motion.button>
+              <div className="absolute inset-0 flex items-center justify-center">
+                {sortedDays.map((day, dayIndex) => {
+                  return (
+                    <div
+                      key={dayIndex}
+                      className="flex flex-col items-center"
+                      style={{
+                        position: "absolute",
+                        left: `${positions[dayIndex].cx}px`,
+                        top: `${positions[dayIndex].cy}px`,
+                        right: "auto",
+                        transform: "translate(-50%, -50%)", // Center the items on the position
+                      }}
+                    >
+                      {day.subscription?.companies.map(
+                        (comapany, companyIndex) => (
+                          <motion.div
+                            layoutId={`company-${comapany.name}`}
+                            key={companyIndex}
+                            style={{
+                              backgroundColor: comapany.color,
+                            }}
+                            className="w-6 h-6 rounded-full" // Set background to white
+                          ></motion.div>
+                        )
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </motion.div>
         )}

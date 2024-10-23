@@ -148,6 +148,10 @@ export const Index: Record<string, any> = {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/inputs/password-strength-zod")),
   },
+  "validity-inputs": {
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/fg/inputs/validity")),
+  },
   "circular-menu": {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/menu/circular")),
