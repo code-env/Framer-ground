@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   authors: [
     {
       name: "bossadizenith",
-      url: "https://bossadizenith.vercel.app",
+      url: "https://bossadizenith.me",
     },
   ],
   openGraph: {
