@@ -5,8 +5,8 @@ import Link from "next/link";
 
 const Templates = () => {
   return (
-    <div className="min-h-screen py-10 ">
-      <div className="lg:h-[calc(100vh-40rem)] center flex-col">
+    <div className="min-h-screen py-10 flex flex-col gap-10">
+      <div className="center flex-col pt-40">
         <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl flex gap-3  gradient-text py-3 dark:from-neutral-200 dark:to-neutral-500">
           Ground. Templates.
         </h1>
@@ -16,25 +16,21 @@ const Templates = () => {
           TailwindCSS, Framer Motion and Typescript.
         </p>
       </div>
-      <div className="max-w-sm mx-auto">
-        <div className="sticky top-16 -mt-10 pt-4">
-          <div className="sticky top-16 -mt-10 h-[calc(100vh-3.5rem)] py-12">
-            <div className="border p-10 center flex-col gap-4 rounded-xl">
-              <h2 className="text-center">
-                New templates are coming be the first to know. Join our discord
-              </h2>
-              <Link
-                className={buttonVariants({
-                  variant: "outline",
-                  className: "flex items-center gap-3",
-                })}
-                href={siteConfig.links.discord}
-              >
-                <DiscordLogoIcon />
-                <span>Discord</span>
-              </Link>
-            </div>
-          </div>
+      <div className="max-w-sm mx-auto  h-fit">
+        <div className="border p-10 center flex-col gap-4 rounded-xl">
+          <h2 className="text-center">
+            New templates are coming be the first to know. Join our discord
+          </h2>
+          <Link
+            className={buttonVariants({
+              variant: "outline",
+              className: "flex items-center gap-3",
+            })}
+            href={siteConfig.links.discord}
+          >
+            <DiscordLogoIcon />
+            <span>Discord</span>
+          </Link>
         </div>
       </div>
     </div>
