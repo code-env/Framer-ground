@@ -39,7 +39,6 @@ const DocsSidebar = ({ items }: DocsSidebarNavProps) => {
     <div className="w-full">
       {items.map((item, index) => {
         const isOpen = !closed.has(item.href ?? item.title);
-        const Icon = item.icon && Icons[item.icon as keyof typeof Icons];
 
         const toggle = () => {
           setClosed((prev) => {
@@ -57,20 +56,9 @@ const DocsSidebar = ({ items }: DocsSidebarNavProps) => {
 
         return (
           <div key={index} className="z-0 ">
-            <div className="cursor-pointer z-50" onClick={toggle}>
-              <h4 className="mb-1 flex items-center gap-1 rounded-md py-1 pr-2 text-sm font-semibold">
-                {Icon ? (
-                  <Icon className="w-4" />
-                ) : (
-                  <ChevronDown
-                    className={cn(
-                      "w-4 transform transition-all hover:opacity-50",
-                      {
-                        "-rotate-90": !isOpen,
-                      }
-                    )}
-                  />
-                )}
+            <div className="z-50 cursor-pointer pl-3" onClick={toggle}>
+              <h4 className="mb-1 flex items-center gap-1 rounded-md py-1 text-sm font-semibold">
+                <span className="size-2 bg-primary rounded-[2px] rotate-45 mr-1" />
                 {item.title}
                 {Boolean(item.items?.length || item.label) &&
                   index >= specialHeaderCount && (
@@ -82,7 +70,7 @@ const DocsSidebar = ({ items }: DocsSidebarNavProps) => {
             </div>
             {!!item?.items?.length && (
               <div
-                className={cn("pb-3 pl-3 relative", {
+                className={cn("pb-3 pl-4 relative", {
                   hidden: !isOpen,
                 })}
               >
@@ -90,7 +78,7 @@ const DocsSidebar = ({ items }: DocsSidebarNavProps) => {
               </div>
             )}
             {index === specialHeaderCount - 1 && (
-              <div className="mb-1 mt-2 pl-4 text-xs font-semibold uppercase text-muted-foreground">
+              <div className="mb-1 mt-2 text-xs font-semibold uppercase text-muted-foreground">
                 COMPONENTS
               </div>
             )}
@@ -116,7 +104,7 @@ export function DocsSidebarNavItems({
     height: 0,
   });
   const [activeState, setActiveState] = useState<NavState>({
-    opacity: 1,
+    opacity: 0,
     top: 0,
     height: 0,
   });
@@ -126,19 +114,27 @@ export function DocsSidebarNavItems({
   const itemRefs = useRef<(HTMLAnchorElement | null)[]>([]);
 
   useEffect(() => {
-    const currentIndex = items.findIndex(
-      (item) => item.href === pathname || item.title === active
-    );
+    setActiveState({
+      opacity: 0,
+      top: 0,
+      height: 0,
+    });
 
-    if (itemRefs.current[currentIndex]) {
-      const { offsetTop, offsetHeight } = itemRefs.current[currentIndex];
-      setActiveState({
-        opacity: 1,
-        top: offsetTop,
-        height: offsetHeight,
-      });
-    }
-  }, [active, pathname, items]);
+    const timer = setTimeout(() => {
+      const currentIndex = items.findIndex((item) => item.href === pathname);
+
+      if (itemRefs.current[currentIndex]) {
+        const { offsetTop, offsetHeight } = itemRefs.current[currentIndex];
+        setActiveState({
+          opacity: 1,
+          top: offsetTop,
+          height: offsetHeight,
+        });
+      }
+    }, 0);
+
+    return () => clearTimeout(timer);
+  }, [pathname, items]);
 
   const handleMouseEnter = (index: number) => {
     if (!itemRefs.current[index]) return;

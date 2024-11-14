@@ -1,0 +1,61 @@
+---
+title: Hamburger
+description: An animated hamburger menu built with Framer Motion
+author: code-env
+date: 2024-11-12
+---
+
+<ComponentPreview name="hamburger-menu" height={100} />
+
+## Installation
+
+<Steps>
+
+<Step>Run the following command</Step>
+
+It will create a new file `Hamburger.tsx` inside the `components/menu/Hamburger.tsx` directory.
+
+```bash
+mkdir -p components/menu && touch components/menu/Hamburger.tsx
+```
+
+<Step>Paste the code</Step>
+
+Open the newly created file and paste the following code:
+
+```tsx file=<rootDir>/fg/menu/hamburger.tsx
+// Your hamburger component code here
+```
+
+</Steps>
+
+## Props
+
+| Prop        | Type              | Default  | Description                                    |
+| ----------- | ----------------- | -------- | ---------------------------------------------- |
+| isActive    | boolean           | required | Controls the menu's open/closed state          |
+| setIsActive | function          | required | Function to toggle the menu state              |
+| direction   | 'left' \| 'right' | 'left'   | Direction the middle bar slides when activated |
+
+## Usage
+
+```tsx
+import { useState } from "react";
+import { Hamburger } from "@/components/menu/Hamburger";
+
+export default function Example() {
+  const [isActive, setIsActive] = useState(false);
+
+  return (
+    <Hamburger
+      isActive={isActive}
+      setIsActive={setIsActive}
+      direction="right"
+    />
+  );
+}
+```
+
+## Credits
+
+Built by [Bossadi Zenith](https://github.com/code-env)

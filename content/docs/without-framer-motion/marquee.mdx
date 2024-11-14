@@ -1,0 +1,156 @@
+---
+title: Marquee
+description: A customizable marquee effect for scrolling content horizontally or vertically
+author: code-env
+date: 2024-11-12
+---
+
+{/* <ComponentPreview name="marquee-demo" height={100} /> */}
+
+## Installation
+
+<Steps>
+
+<Step>Run the following command</Step>
+
+It will create a new file `Marquee.tsx` inside the `components/effects` directory.
+
+```bash
+mkdir -p components/effects && touch components/effects/Marquee.tsx
+```
+
+<Step>Paste the code</Step>
+
+Open the newly created file and paste the following code:
+
+```tsx file=<rootDir>/fg/without-framer-motion/marquee.tsx
+// Your marquee component code here
+```
+
+<Step>Add the required CSS animations</Step>
+
+You can add the animations in one of two ways:
+
+**Option 1: Global CSS**
+
+Add these animations to your global CSS file:
+
+```css
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+  }
+}
+
+.animate-marquee {
+  animation: marquee var(--duration) linear infinite;
+}
+
+.animate-marquee-vertical {
+  animation: marquee-vertical var(--duration) linear infinite;
+}
+```
+
+**Option 2: Tailwind Config**
+Add these keyframes to your `tailwind.config.js`:
+
+```js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  theme: {
+    extend: {
+      keyframes: {
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(calc(-100% - var(--gap)))" },
+        },
+        "marquee-vertical": {
+          from: { transform: "translateY(0)" },
+          to: { transform: "translateY(calc(-100% - var(--gap)))" },
+        },
+      },
+      animation: {
+        marquee: "marquee var(--duration) linear infinite",
+        "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
+      },
+    },
+  },
+  // ... rest of your config
+};
+```
+
+</Steps>
+
+## Props
+
+| Prop         | Type            | Default   | Description                           |
+| ------------ | --------------- | --------- | ------------------------------------- |
+| className    | string          | undefined | Additional CSS classes to apply       |
+| reverse      | boolean         | false     | Reverses the scroll direction         |
+| pauseOnHover | boolean         | false     | Pauses the animation when hovering    |
+| vertical     | boolean         | false     | Switches to vertical scrolling        |
+| repeat       | number          | 4         | Number of times to repeat the content |
+| children     | React.ReactNode | required  | Content to be scrolled                |
+
+## CSS Variables
+
+| Variable   | Default | Description                   |
+| ---------- | ------- | ----------------------------- |
+| --duration | 40s     | Animation duration            |
+| --gap      | 1rem    | Gap between repeated elements |
+
+## Usage
+
+```tsx
+import { Marquee } from "@/components/effects/Marquee";
+
+export default function Example() {
+  return (
+    <Marquee className="bg-muted" pauseOnHover>
+      <span className="px-4">Item 1</span>
+      <span className="px-4">Item 2</span>
+      <span className="px-4">Item 3</span>
+    </Marquee>
+  );
+}
+```
+
+### Vertical Marquee
+
+```tsx
+import { Marquee } from "@/components/effects/Marquee";
+
+export default function Example() {
+  return (
+    <Marquee vertical className="h-[300px]">
+      <span className="py-4">Item 1</span>
+      <span className="py-4">Item 2</span>
+      <span className="py-4">Item 3</span>
+    </Marquee>
+  );
+}
+```
+
+### Custom Speed
+
+You can adjust the animation speed by modifying the `--duration` CSS variable:
+
+```tsx
+<Marquee className="[--duration:20s]">{/* Content */}</Marquee>
+```
+
+## Credits
+
+Built by [Bossadi Zenith](https://github.com/code-env)

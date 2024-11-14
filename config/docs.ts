@@ -164,6 +164,10 @@ const sidebarNav: SidebarNavItem[] = [
     title: "Carousel",
     items: createLinks("carousel"),
   },
+  {
+    title: "Without Framer Motion",
+    items: createLinks("without-framer-motion"),
+  },
 ]
   .filter((category) => Boolean(category.items?.length || category.label))
   .sort((a, b) => {

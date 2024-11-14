@@ -1,0 +1,108 @@
+---
+title: "Mode toggle"
+description: "Mode toogle button with smooth sliding animations"
+date: 2024-11-14
+---
+
+<ComponentPreview name="mode-toggle-menu" />
+
+## Overview
+
+`ModeToggle` is a React component that allows users to toggle between light and dark themes for a web application. It utilizes Framer Motion for animations, `next-themes` for theme management, and custom hooks to handle mounting state.
+
+## Features
+
+- **Theme Toggle**: Switches between `light` and `dark` themes.
+- **Smooth Animation**: Utilizes Framer Motion for animated transitions between themes.
+- **Responsive**: Button adapts to the current theme with smooth visual transitions and updates the button's background and indicator accordingly.
+
+## Dependencies
+
+- `framer-motion`: For handling animations.
+- `next-themes`: To manage the theme switching between light and dark.
+- `useMounted`: A custom hook to detect whether the component has been mounted.
+
+## Installation
+
+Make sure to install the necessary dependencies:
+
+Here's the documentation for the `ModeToggle` component in markdown format:
+
+```bash
+npm install framer-motion next-themes
+```
+
+## Usage
+
+```tsx
+import ModeToggle from "@/components/ModeToggle";
+
+function App() {
+  return (
+    <div>
+      <ModeToggle />
+    </div>
+  );
+}
+```
+
+Place the `<ModeToggle />` component where you want the theme toggle button to appear.
+
+## Code Breakdown
+
+### 1. **Imports**
+
+- **`useMounted`**: A custom hook that ensures the component only renders once the client-side environment is mounted (solving issues with SSR).
+- **`AnimatePresence` and `MotionConfig` from Framer Motion**: Used to handle transitions and animations of the button.
+- **`useTheme` from next-themes**: Provides access to the current theme (`light` or `dark`) and a method to set the theme.
+
+### 2. **State Management**
+
+The component uses the `useTheme` hook from `next-themes` to access the current theme and update it. The `setTheme` function is used to toggle between light and dark modes based on the current state.
+
+### 3. **Theme Toggle Button**
+
+The button changes its alignment, background color, and other styles based on the current theme:
+
+- **Background Color**: Light theme has a white background, while dark theme has a dark background.
+- **Button Positioning**: The position of the "slider" inside the button changes based on the active theme.
+- **Text**: The words "light" and "dark" are animated to adjust their colors when the theme changes.
+
+### 4. **Animations**
+
+The component uses `motion.button` and `motion.div` elements to animate the theme switch:
+
+- **Button Animation**: The background color transitions smoothly based on the current theme.
+- **Slider Animation**: A circular slider moves between the left (light mode) and right (dark mode).
+- **Text and Shadow Effects**: The text and shadow effects are adjusted to reflect the active theme.
+
+### 5. **Mounted Check**
+
+To avoid errors on the server-side rendering (SSR), the component first checks if it is mounted on the client side using the `mounted` state from the `useMounted` hook. If it is not mounted, the component will not render anything.
+
+### 6. **Motion Transitions**
+
+The button and the sliding circle have smooth transitions and effects defined using `MotionConfig` and `AnimatePresence`, such as:
+
+- **Duration and Ease**: The transition duration is set to 0.4s with an "easeInOut" easing.
+- **Initial State**: The component uses `initial={false}` for `AnimatePresence` to prevent the animation from running when first mounted.
+
+## Props
+
+| Prop       | Type              | Default | Description                                                          |
+| ---------- | ----------------- | ------- | -------------------------------------------------------------------- |
+| `mounted`  | boolean           | `false` | Ensures the component is mounted before rendering.                   |
+| `theme`    | 'light' \| 'dark' | 'light' | The current theme (light or dark). Controls the button's appearance. |
+| `setTheme` | function          | N/A     | Function to update the theme (light or dark).                        |
+
+## Styling
+
+This component uses Tailwind CSS classes for styling, including:
+
+- `rounded-[14px]`: Applies rounded corners to the outer button container.
+- `justify-end` and `justify-start`: These classes position the inner circle slider depending on the active theme.
+- Various other Tailwind classes for padding, borders, and positioning.
+
+## Credits
+
+Built by [Bossadi Zenith](https://github.com/code-env)

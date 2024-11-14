@@ -67,7 +67,7 @@ const OverviewStacked = () => {
   const [stacked, setStacked] = useState<boolean>(false);
 
   return (
-    <div className="h-full w-full relative border-t flex items-center justify-center">
+    <div className="h-full w-full relative flex items-center justify-center">
       <motion.div
         layout
         className="w-full flex flex-col items-center gap-10 max-w-md relative h-auto"

@@ -156,9 +156,27 @@ export const Index: Record<string, any> = {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/inputs/google")),
   },
+  "verifier-inputs": {
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/fg/inputs/verifier")),
+  },
+  "hamburger-menu": {
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/fg/menu/hamburger")),
+  },
   "circular-menu": {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/menu/circular")),
+  },
+  "mode-toggle-menu": {
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/fg/menu/mode-toggle")),
+  },
+  "marquee-demo": {
+    registryDependencies: undefined,
+    component: React.lazy(
+      () => import("@/fg/without-framer-motion/marquee-demo")
+    ),
   },
 };
 
