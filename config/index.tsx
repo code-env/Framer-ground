@@ -124,6 +124,10 @@ export const Index: Record<string, any> = {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/cards/call")),
   },
+  "counter-cards": {
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/fg/cards/counter")),
+  },
   "one-carousel": {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/carousel/one")),

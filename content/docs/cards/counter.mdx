@@ -1,0 +1,113 @@
+---
+title: "Counter"
+description: "nothing for now"
+date: 2024-11-14
+---
+
+<ComponentPreview name="counter-cards" />
+
+## Overview
+
+The `Counter` component is a simple counter that allows users to increase or decrease a number between 0 and 20. It features smooth animations for the number changes and shake animations when the user tries to increase or decrease beyond the allowed range (0 or 20). The component uses `framer-motion` for animations and includes controls with plus and minus buttons.
+
+## Features
+
+- **Increment/Decrement**: Increase or decrease the number displayed, from 0 to 20.
+- **Smooth Animations**: The number smoothly transitions with an animation when the counter changes.
+- **Shake Effect**: The counter shakes when the user attempts to go below 0 or above 20.
+- **Customizable Button Styles**: Buttons are designed using Tailwind CSS and are responsive with hover and active states.
+
+## Dependencies
+
+- `framer-motion`: For handling animations.
+- `lucide-react`: For the icons used in the counter (Plus and Minus).
+- `cn`: A utility function for conditional class names (from the `@/lib/utils` directory).
+
+## Installation
+
+Install the necessary dependencies:
+
+```bash
+npm install framer-motion lucide-react
+```
+
+```tsx file=<rootDir>/fg/cards/counter.tsx
+// Your hamburger component code here
+```
+
+## Usage
+
+```tsx
+import Counter from "@/components/Counter";
+
+function App() {
+  return (
+    <div>
+      <Counter />
+    </div>
+  );
+}
+```
+
+<Steps>
+
+### State Management
+
+The component uses two state variables:
+
+- **`num`**: The current value of the counter.
+- **`direction`**: Tracks the direction of the counter change (either incrementing or decrementing).
+
+### Animation Variants
+
+The `animation` constant defines the motion for the number changes:
+
+- **`hidden`**: The initial state for the number (before it animates into view).
+- **`visible`**: The visible state after the number is animated in.
+- **`exit`**: The state when the number exits (used for smooth transitions when the value is updated).
+
+Each variant animates the position (`y`), opacity, and applies a blur effect to create a smooth transition.
+
+### Button Actions
+
+- **Decrease**: The "Minus" button decreases the `num` state by 1, unless it is at 0. If the number is already 0, it triggers a shake effect instead of decreasing.
+- **Increase**: The "Plus" button increases the `num` state by 1, unless it is at 20. If the number is already 20, it triggers a shake effect instead of increasing.
+
+### Shake Effect
+
+When the user tries to go below 0 or above 20, the counter shakes using the `animate` function from `framer-motion`. The `x` position of the counter element is animated back and forth to create the shake effect.
+
+### Rendering the Number
+
+The number is split into individual digits, and each digit is wrapped in a `motion.span` element that is animated using the `animation` variants. The `AnimatePresence` component handles the entrance and exit of the digits smoothly when the number changes.
+
+### Button Styling
+
+Buttons are styled using Tailwind CSS, and conditional classes are added:
+
+- **Active State**: The buttons scale down when clicked, creating an active button effect.
+- **Opacity**: When the counter reaches 0 or 20, the respective button's opacity is reduced to indicate that the action is not possible.
+
+### Max Limit
+
+The component displays a message below the counter indicating that 20 is the maximum number.
+
+</Steps>
+## Props
+
+This component does not accept any props but relies on its internal state to manage the counter.
+
+## Styling
+
+The component uses Tailwind CSS for styling. Some key classes:
+
+- `bg-box`: Defines the background color of the buttons.
+- `h-14 w-14`: Sets the size of the buttons.
+- `rounded-full`: Makes the buttons circular.
+- `text-xl`: Sets the text size for the button icons.
+- `active:scale-90`: Creates a scale effect when the button is pressed.
+- `text-muted-2`: Provides a muted color for the max limit message.
+
+## Credits
+
+Built by [Bossadi Zenith](https://github.com/code-env)
