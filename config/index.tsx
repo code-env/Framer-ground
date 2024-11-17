@@ -128,6 +128,7 @@ export const Index: Record<string, any> = {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/cards/counter")),
   },
+
   "one-carousel": {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/carousel/one")),
@@ -181,6 +182,14 @@ export const Index: Record<string, any> = {
     component: React.lazy(
       () => import("@/fg/without-framer-motion/marquee-demo")
     ),
+  },
+  "grid-to-flex-layouts": {
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/fg/layouts/grid-to-flex")),
+  },
+  "scroll-count-layouts": {
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/fg/layouts/scroll-count")),
   },
 };
 

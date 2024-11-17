@@ -1,0 +1,162 @@
+---
+title: Grid to Flex
+description: Convert a grid layout to a flex layout.
+date: 2024-11-14
+---
+
+<ComponentPreview name="grid-to-flex-layouts" height={500} />
+
+## Overview
+
+The `App` component allows users to toggle between a **Grid View** and a **List View** for displaying items. The component persists the selected view in `localStorage` and includes smooth animations for layout changes using `framer-motion`.
+
+## Features
+
+- **Grid/List Toggle**: Users can switch between two display modes.
+- **Persisted State**: The selected view is saved to `localStorage` and loaded on subsequent visits.
+- **Smooth Animations**: Transitions between views are animated.
+- **Reusable Subcomponents**: Components for items, avatars, and options are provided.
+
+## Dependencies
+
+- **`framer-motion`**: For animation.
+- **`lucide-react`**: For icons (`LayoutGrid`, `List`, and `Trash2`).
+- **`cn` Utility**: For conditional class names.
+
+## Installation
+
+Install the required dependencies:
+
+```bash
+npm install framer-motion lucide-react
+```
+
+## Usage
+
+```tsx
+import App from "@/components/App";
+
+function MyApp() {
+  return <App />;
+}
+```
+
+<Steps>
+
+<Step>Run the following command</Step>
+
+It will create a new file `Hamburger.tsx` inside the `components/menu/Hamburger.tsx` directory.
+
+```bash
+mkdir -p components/layouts && touch components/layouts/grid-to-flex.tsx
+```
+
+<Step>Paste the code</Step>
+
+Open the newly created file and paste the following code:
+
+```tsx file=<rootDir>/fg/layouts/grid-to-flex.tsx
+// Your grid to flex component code here
+```
+
+</Steps>
+
+## Code Breakdown
+
+### 1. **`App` Component**
+
+The main component initializes the view state (`grid` or `list`) and handles its persistence in `localStorage`.
+
+#### Key Features:
+
+- **`useEffect`**: Loads the saved view from `localStorage` on mount.
+- **`handleViewChange`**: Updates the view state and saves it to `localStorage`.
+
+### 2. **`Header` Component**
+
+Displays the title and view toggle buttons.
+
+#### Props:
+
+- **`view`**: Current view mode (`grid` or `list`).
+- **`onViewChange`**: Callback to update the view.
+
+#### Features:
+
+- **Toggle Buttons**: Uses `motion.div` for animated transitions of the active button highlight.
+
+### 3. **`GridView` and `ListView` Components**
+
+Render the items in their respective layouts.
+
+- **`GridView`**: Displays items in a 3-column grid.
+- **`ListView`**: Displays items in a single column list.
+
+### 4. **`Item` Component**
+
+A container for individual items with animations.
+
+#### Props:
+
+- **`index`**: Unique index for layout animations.
+- **`children`**: Content of the item.
+- **`className`**: Additional CSS classes.
+
+### 5. **`Avatar` Component**
+
+Displays an avatar with placeholder user information.
+
+#### Props:
+
+- **`index`**: Unique index for layout animations.
+
+### 6. **`Options` Component**
+
+Provides action buttons for each item, including a delete button.
+
+#### Props:
+
+- **`index`**: Unique index for layout animations.
+
+### 7. **`Other` Component**
+
+Renders additional UI elements for each item.
+
+#### Props:
+
+- **`index`**: Unique index for layout animations.
+
+## Styling
+
+The component uses **Tailwind CSS** for styling. Key classes include:
+
+- `size-full`: Full width/height container.
+- `bg-muted`: Background for muted sections.
+- `rounded-lg`: Rounded corners.
+- `shadow-md`, `hover:shadow-lg`: Box shadow for elevation.
+
+## Animations
+
+### Layout Animations
+
+`framer-motion` is used for:
+
+- **Layout Changes**: Smooth transitions when toggling between views.
+- **Item Animations**: Animations for avatars, options, and other item elements.
+
+### Highlight Animation
+
+The active toggle button is highlighted using an animated `motion.div`.
+
+## Customization
+
+- **Extendable Items**: Modify `Item`, `Avatar`, `Options`, and `Other` components for custom content.
+- **Custom Animations**: Tweak animation settings by adjusting `motion` props.
+
+## Limitations
+
+- **Hardcoded Animation Values**: The highlight animation uses hardcoded `x` values for simplicity. These can be calculated dynamically for a more flexible layout.
+
+## Credits
+
+Built by [Bossadi Zenith](https://github.com/code-env)

@@ -90,7 +90,7 @@ const sidebarNav: SidebarNavItem[] = [
     items: createLinks("image"),
   },
   {
-    title: "Layout",
+    title: "Layouts",
     items: createLinks("layout"),
   },
   {
