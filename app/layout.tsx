@@ -105,7 +105,7 @@ export default function RootLayout({
         <body className={cn(satoshi.className, "z-0")}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <CommandMenuProvider>
-              {/* <Navbar /> */}
+              <Navbar />
               {children}
               <Footer />
               <CommandMenu />
