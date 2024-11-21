@@ -1,62 +1,76 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { z } from "zod";
 import { cn } from "@/lib/utils";
-import { Check, X } from "lucide-react";
+
+const formSchema = z
+  .object({
+    password: z.string().min(6, "Password must be at least 6 characters"),
+    confirmPassword: z.string(),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords must match",
+    path: ["confirmPassword"], // Show the error on confirmPassword field
+  });
 
 const Verifier = () => {
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [formData, setFormData] = useState({
+    password: "",
+    confirmPassword: "",
+  });
+
+  const [formErrors, setFormErrors] = useState<{ [key: string]: string }>({});
   const [shake, setShake] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
 
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
-  const handleConfirmPasswordChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    if (
-      confirmPassword.length >= password.length &&
-      e.target.value.length > confirmPassword.length
-    ) {
-      setShake(true);
-    } else {
-      setConfirmPassword(e.target.value);
+  const validateForm = () => {
+    try {
+      formSchema.parse(formData);
+      setFormErrors({});
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        const errors: { [key: string]: string } = {};
+        error.errors.forEach((err) => {
+          if (err.path[0]) errors[err.path[0] as string] = err.message;
+        });
+        setFormErrors(errors);
+      }
     }
   };
-
-  useEffect(() => {
-    if (shake) {
-      const timer = setTimeout(() => setShake(false), 500);
-      return () => clearTimeout(timer);
-    }
-  }, [shake]);
-
-  const getLetterStatus = (letter: string, index: number) => {
-    if (!confirmPassword[index]) return "";
-    return confirmPassword[index] === letter
-      ? "bg-green-500/30"
-      : "bg-red-500/30";
-  };
-
-  const passwordsMatch = password === confirmPassword && password.length > 0;
 
   const bounceAnimation = {
     x: shake ? [-10, 10, -10, 10, 0] : 0,
     transition: { duration: 0.5 },
   };
 
+  const getLetterStatus = (letter: string, index: number) => {
+    if (!formData.confirmPassword[index]) return "";
+    return formData.confirmPassword[index] === letter
+      ? "bg-green-500/30"
+      : "bg-red-500/30";
+  };
+
   const matchAnimation = {
-    // scale: passwordsMatch ? [1, 1.05, 1] : 1,
+    scale: formData.password === formData.confirmPassword ? [1, 1.05, 1] : 1,
     transition: { duration: 0.3 },
   };
 
   const borderAnimation = {
-    borderColor: passwordsMatch ? "#22c55e" : "",
+    borderColor:
+      formData.password === formData.confirmPassword ? "#10B981" : "",
     transition: { duration: 0.3 },
+  };
+
+  const handleBlur = () => {
+    validateForm();
   };
 
   return (
@@ -64,14 +78,17 @@ const Verifier = () => {
       <div className="z-10 flex w-full flex-col items-center">
         <div className="mx-auto flex h-full w-full max-w-lg flex-col items-center justify-center gap-8 p-16">
           <div className="relative flex w-full flex-col items-start justify-center gap-4">
+            {/* Password input */}
             <div className="w-full">
               {!showConfirm ? (
                 <motion.input
                   className="h-[52px] w-full rounded-xl border-2 px-3.5 py-3 tracking-[.59rem] outline-none placeholder:tracking-widest focus:border-foreground-muted"
                   type="password"
+                  name="password"
                   placeholder="Enter Password"
-                  value={password}
-                  onChange={handlePasswordChange}
+                  value={formData.password}
+                  onChange={handleInputChange}
+                  onBlur={handleBlur}
                 />
               ) : (
                 <motion.div
@@ -86,7 +103,7 @@ const Verifier = () => {
                 >
                   <div className="relative h-full w-fit overflow-hidden rounded-lg ">
                     <div className="z-10 flex h-full items-center justify-center px-0 py-1">
-                      {password.split("").map((_, index) => (
+                      {formData.password.split("").map((_, index) => (
                         <div
                           key={index}
                           className="flex h-full w-4 shrink-0 items-center justify-center"
@@ -97,7 +114,7 @@ const Verifier = () => {
                     </div>
 
                     <div className="absolute bottom-0 left-0 top-0 z-0 flex h-full w-full items-center justify-start">
-                      {password.split("").map((letter, index) => (
+                      {formData.password.split("").map((letter, index) => (
                         <motion.div
                           key={index}
                           className={cn(
@@ -106,10 +123,10 @@ const Verifier = () => {
                           )}
                           style={{
                             left: `${index * 16}px`,
-                            scaleX: confirmPassword[index] ? 1 : 0,
+                            scaleX: formData.confirmPassword[index] ? 1 : 0,
                             transformOrigin: "left",
                           }}
-                        />
+                        ></motion.div>
                       ))}
                     </div>
                   </div>
@@ -117,38 +134,37 @@ const Verifier = () => {
               )}
             </div>
 
+            {/* Confirm password input */}
             <motion.div
-              className="h-[52px] w-full overflow-hidden rounded-xl relative"
+              className="h-[52px] w-full overflow-hidden rounded-xl"
               animate={matchAnimation}
             >
               <motion.input
                 className={cn(
-                  "h-full w-full rounded-xl border-2 px-3.5 py-3 tracking-[.59rem] outline-none placeholder:tracking-widest focus:border-foreground-muted"
+                  "h-full w-full rounded-xl border-2 px-3.5 py-3 tracking-[.59rem] outline-none placeholder:tracking-widest focus:border-foreground-muted",
+                  {
+                    "border-red-500": formErrors.confirmPassword,
+                    "border-green-500":
+                      formData.confirmPassword &&
+                      formData.password === formData.confirmPassword,
+                    "border-gray-300":
+                      !formErrors.confirmPassword &&
+                      (!formData.confirmPassword ||
+                        formData.password !== formData.confirmPassword),
+                  }
                 )}
                 type="password"
+                name="confirmPassword"
                 placeholder="Confirm Password"
-                value={confirmPassword}
-                onChange={handleConfirmPasswordChange}
+                value={formData.confirmPassword}
+                onChange={handleInputChange}
                 onFocus={() => setShowConfirm(true)}
-                onBlur={() => {
-                  if (!passwordsMatch) setShowConfirm(false);
-                }}
-                animate={borderAnimation}
+                onBlur={handleBlur} // Trigger validation on blur
               />
-              <AnimatePresence>
-                {passwordsMatch && (
-                  <motion.div
-                    className="absolute right-2 top-0 bottom-0 my-auto size-6 flex items-center justify-center rounded-full bg-green-500"
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {<Check className="size-4 text-green-500" />}
-                  </motion.div>
-                )}
-              </AnimatePresence>
             </motion.div>
+            {formErrors.confirmPassword && (
+              <p className="text-red-500">{formErrors.confirmPassword}</p>
+            )}
           </div>
         </div>
       </div>

@@ -60,7 +60,7 @@ const Verifier = () => {
   };
 
   return (
-    <main className="relative flex size-full w-full items-start justify-center px-4 py-10 md:items-center">
+    <main className="relative flex min-h-screen w-full items-start justify-center px-4 py-10 md:items-center">
       <div className="z-10 flex w-full flex-col items-center">
         <div className="mx-auto flex h-full w-full max-w-lg flex-col items-center justify-center gap-8 p-16">
           <div className="relative flex w-full flex-col items-start justify-center gap-4">
@@ -144,7 +144,7 @@ const Verifier = () => {
                     exit={{ opacity: 0, scale: 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    {<Check className="size-4 text-green-500" />}
+                    <Check className="size-4 text-white" />
                   </motion.div>
                 )}
               </AnimatePresence>

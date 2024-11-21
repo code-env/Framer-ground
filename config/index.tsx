@@ -165,6 +165,10 @@ export const Index: Record<string, any> = {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/inputs/verifier")),
   },
+  "verifier-with-zod-inputs": {
+    registryDependencies: undefined,
+    component: React.lazy(() => import("@/fg/inputs/verifier-with-zod")),
+  },
   "hamburger-menu": {
     registryDependencies: undefined,
     component: React.lazy(() => import("@/fg/menu/hamburger")),

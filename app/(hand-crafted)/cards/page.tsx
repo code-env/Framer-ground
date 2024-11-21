@@ -28,10 +28,11 @@ import Call from "@/components/cards/call";
 import Calendar from "@/components/cards/calendar";
 import CalendarSubscriptions from "@/components/cards/calendar-subcriptions";
 import Options from "@/components/cards/option";
-
+import Loader from "@/components/cards/loader";
 const Cards = () => {
   return (
     <div className="min-h-screen flex-col center overflow-x-hidden">
+      <Loader />
       <Options />
       <CalendarSubscriptions />
       <Calendar />

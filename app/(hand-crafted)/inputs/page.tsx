@@ -2,6 +2,8 @@ import Apple from "@/components/inputs/apple";
 import GoogleInput from "@/components/inputs/google";
 import PasswordStrength from "@/components/inputs/password-strength";
 import InputVerification from "@/components/inputs/validity";
+import Verifier from "@/components/inputs/verifier";
+import VerifierWithZod from "@/components/inputs/verifier-with-zod";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -16,6 +18,8 @@ const Inputs = () => {
       <PasswordStrength />
       <GoogleInput label="Email address" />
       <InputVerification />
+      <Verifier />
+      <VerifierWithZod />
     </div>
   );
 };

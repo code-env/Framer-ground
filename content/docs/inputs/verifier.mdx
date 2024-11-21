@@ -1,8 +1,155 @@
 ---
 title: Verifier
-description: A customizable verifier component for verifying user input
+description: A comprehensive guide to using the Verifier component for password validation with interactive feedback and animations.
 author: code-env
 date: 2024-11-12
 ---
 
 <ComponentPreview name="verifier-inputs" height={100} />
+
+## Installation
+
+<Steps>
+
+<Step>Run the following command</Step>
+
+```bash
+mkdir -p components/inputs && touch components/inputs/verifier.tsx
+```
+
+<Step>Paste the code</Step>{" "}
+
+Open the newly created file and paste the following code:
+
+```jsx file=<rootDir>/fg/inputs/verifier.tsx
+
+```
+
+</Steps>
+
+### Features
+
+- **Real-time Validation**: Users get immediate feedback on password confirmation.
+- **Animations**: Includes smooth animations for shaking and scaling using `framer-motion`.
+- **Dynamic Visual Feedback**: Password matching and mismatch are visually indicated with color changes.
+- **Focus Management**: Automatically toggles focus to guide the user during input.
+
+## Usage
+
+To integrate the `Verifier` component into your project:
+
+### Installation
+
+Make sure you have the necessary dependencies installed:
+
+```bash
+npm install framer-motion
+```
+
+or with `pnpm`:
+
+```bash
+pnpm add framer-motion
+```
+
+### Component Setup
+
+Import and use the `Verifier` component in your application:
+
+```tsx
+"use client";
+
+import Verifier from "./Verifier";
+
+const App = () => {
+  return (
+    <div className="app">
+      <Verifier />
+    </div>
+  );
+};
+
+export default App;
+```
+
+### How It Works
+
+1. The user types their password in the first input.
+2. When the second (confirm password) input is focused, a div with visual placeholders shows the password pattern.
+3. As the user types in the confirmation field:
+   - Matching letters are highlighted in green.
+   - Mismatched letters are highlighted in red.
+   - A "shake" animation is triggered if the user enters additional characters when the passwords don't match.
+4. If the passwords match, the border of the input turns green, indicating success.
+
+## Improvements You Can Make
+
+Here are some ways to extend and improve the `Verifier` component:
+
+### 1. **With Zod**
+
+<ComponentPreview name="verifier-with-zod-inputs" height={100} />
+
+```tsx file=<rootDir>/fg/inputs/verifier-with-zod.tsx
+
+```
+
+### 2. **Add Password Strength Indicator**
+
+- Show the strength of the password using a progress bar or color gradient.
+- Example:
+  ```tsx
+  const getPasswordStrength = (password) => {
+    if (password.length < 6) return "Weak";
+    if (password.length < 10) return "Medium";
+    return "Strong";
+  };
+  ```
+
+### 3. **Password Visibility Toggle**
+
+- Add an icon/button to toggle between showing and hiding the password.
+- Example:
+  ```tsx
+  const [showPassword, setShowPassword] = useState(false);
+  <button onClick={() => setShowPassword(!showPassword)}>👁</button>;
+  ```
+
+### 4. **Accessibility Enhancements**
+
+- Add `aria-live` regions for error feedback.
+
+## Conclusion
+
+The `Verifier` component provides an engaging way to handle password confirmation with dynamic animations and validation. It's an excellent starting point for enhancing user experience in forms, and with the suggested improvements, you can take it to the next level!
+
+- Use `aria-invalid` on the confirm password field when there's a mismatch.
+
+### 4. **Improved Error Messaging**
+
+- Display specific error messages (e.g., "Passwords do not match" or "Password too short").
+
+### 5. **Responsive Design**
+
+- Use `em` or `rem` units for better adaptability to various screen sizes.
+- Test on different devices to ensure a smooth experience.
+
+### 6. **Add Form Submission**
+
+- Incorporate a submission handler to process the form data after successful validation.
+- Example:
+  ```tsx
+  const handleSubmit = () => {
+    if (passwordsMatch) {
+      console.log("Passwords match! Submitting form...");
+    } else {
+      console.log("Fix errors before submitting.");
+    }
+  };
+  ```
+
+## Credits
+
+Built by [Bossadi Zenith](https://github.com/code-env)
+
+inspired by [Ln-ui](https://ui.lndev.me/components/assisted-password-confirmation) and [Preet](https://x.com/preet)

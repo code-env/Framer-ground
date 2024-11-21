@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { ChevronDown, User, X } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const options = [
   {
@@ -41,8 +42,8 @@ const Options = () => {
         {isOpen || isHovered ? (
           <motion.div
             layoutId="option-container"
-            style={{ borderRadius: 22 }}
-            className="tracking-tight p-5 border"
+            style={{ borderRadius: 22, width: 400 }}
+            className="tracking-tight p-5 border flex flex-col gap-4"
           >
             <div className="flex w-full items-center justify-between">
               <motion.span className="relative">Choose Model</motion.span>
@@ -78,7 +79,7 @@ const Options = () => {
                 </motion.button>
               </div>
             </div>
-            <div className="flex flex-col gap-5 overflow-clip">
+            <div className="flex flex-col  overflow-clip">
               {options.map((option, index) => (
                 <motion.div
                   key={index}
@@ -86,26 +87,9 @@ const Options = () => {
                     setStatus("iddle");
                     setActive(index);
                   }}
-                  className="flex items-center gap-20 cursor-pointer"
+                  className="flex items-center  cursor-pointer"
                 >
-                  <div className="flex items-center gap-4">
-                    <motion.div
-                      layoutId={`active-profile-${option.name}`}
-                      className="size-14 border rounded-full"
-                    ></motion.div>
-                    <div className="flex flex-col">
-                      <motion.p
-                        layoutId={`active-profile-name-${option.name}`}
-                        className="text-primary"
-                      >
-                        {option.name}
-                      </motion.p>
-                      <span className="text-muted-foreground">
-                        {option.description}
-                      </span>
-                    </div>
-                  </div>
-                  <div></div>
+                  <Option option={option} active={false} />
                 </motion.div>
               ))}
             </div>
@@ -115,26 +99,65 @@ const Options = () => {
             layoutId="option-container"
             style={{
               borderRadius: 10,
+              width: 250,
             }}
-            className="border p-2 flex items-center gap-20 cursor-pointer"
+            className="border p-2 flex items-center cursor-pointer"
             onClick={() => setStatus("open")}
           >
-            <div className="flex items-center gap-4">
+            <div className="w-full flex items-center justify-between">
+              <Option option={options[active]} active={true} />
               <motion.div
-                layoutId={`active-profile-${options[active].name}`}
-                className="size-10 border rounded-full"
-              ></motion.div>
-              <motion.p
-                layoutId={`active-profile-name-${options[active].name}`}
+                animate={{ rotate: isOpen ? 180 : 0 }}
+                transition={{ ...transition, delay: 0.15 }}
+                layoutId={`active-profile-icon-${options[active].name}`}
               >
-                {options[active].name}
-              </motion.p>
+                <ChevronDown className="size-4 text-secondary-foreground" />
+              </motion.div>
             </div>
-            <ChevronDown className="size-4" />
           </motion.div>
         )}
       </AnimatePresence>
     </div>
+  );
+};
+
+const Option = ({
+  option,
+  active,
+}: {
+  option: (typeof options)[number];
+  active: boolean;
+}) => {
+  return (
+    <motion.div
+      className={cn(
+        "flex items-center gap-2 w-full",
+        !active && "hover:bg-muted/30 p-2 rounded-lg"
+      )}
+    >
+      <motion.div
+        layoutId={`active-profile-${option.name}`}
+        className="size-12 border rounded-full center"
+      >
+        <option.icon className="size-4" />
+      </motion.div>
+      <div>
+        <motion.p
+          layoutId={`active-profile-name-${option.name}`}
+          className="text-base font-semibold"
+        >
+          {option.name}
+        </motion.p>
+        {!active && (
+          <motion.p
+            layoutId={`active-profile-description-${option.name}`}
+            className="text-muted-foreground text-sm"
+          >
+            {option.description}
+          </motion.p>
+        )}
+      </div>
+    </motion.div>
   );
 };
 
