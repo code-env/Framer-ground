@@ -19,18 +19,10 @@ const Vercel = () => {
   const ref = useRef<HTMLLIElement | null>(null);
 
   const routes = [
-    {
-      name: "Home",
-    },
-    {
-      name: "About us",
-    },
-    {
-      name: "Contact us",
-    },
-    {
-      name: "Zenith noble",
-    },
+    { name: "Home" },
+    { name: "About us" },
+    { name: "Contact us" },
+    { name: "Zenith noble" },
   ];
 
   const handleMouseEnter = (event: React.MouseEvent<HTMLLIElement>) => {
@@ -56,7 +48,7 @@ const Vercel = () => {
     <div className="center text-white h-full w-full">
       <div className="w-fit h-14 rounded bg-primary  mx-auto border border-border">
         <nav className="p-1 h-full">
-          <ul className="flex h-full items-center gap-2 relative ">
+          <ul className="flex h-full items-center gap-2 relative">
             {routes.map((route, index) => {
               return (
                 <li

@@ -1,24 +1,12 @@
-import LiquidMorph from "@/components/navbar/liquid-morph";
-import ScrollReveal from "@/components/navbar/scroll-reveal";
-import Vercel from "@/components/navbar/vercel";
-import NotchBar from "@/components/navbar/notch-bar";
+import Toolbar from "@/components/navbar/toolbar";
 import React from "react";
-import Chevron from "@/components/navbar/chevron";
-import DimensionNavbar from "@/components/navbar/dimension";
 
-const Navbars = () => {
+const Page = () => {
   return (
-    <div>
-      {/* <ScrollReveal /> */}
-      <DimensionNavbar />
-      {/* <LiquidMorph />
-      <Vercel />
-      <NotchBar />
-      <Chevron /> */}
-
-      <div className="h-[300vh]"></div>
+    <div className="min-h-screen center">
+      <Toolbar />
     </div>
   );
 };
 
-export default Navbars;
+export default Page;

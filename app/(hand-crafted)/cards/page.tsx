@@ -29,9 +29,14 @@ import Calendar from "@/components/cards/calendar";
 import CalendarSubscriptions from "@/components/cards/calendar-subcriptions";
 import Options from "@/components/cards/option";
 import Loader from "@/components/cards/loader";
+import { CashflowProvider } from "@/providers/cash-flow";
+import CashflowHeatmap from "@/fg/cards/cashflow-heatmap";
 const Cards = () => {
   return (
     <div className="min-h-screen flex-col center overflow-x-hidden">
+      <CashflowProvider>
+        <CashflowHeatmap />
+      </CashflowProvider>
       <Loader />
       <Options />
       <CalendarSubscriptions />
