@@ -143,7 +143,7 @@ export default function ScrollCount() {
             width: open ? 420 : 280,
             borderRadius: open ? 22 : 11,
           }}
-          className="bg-background relative cursor-pointer overflow-hidden text-white"
+          className="bg-background relative cursor-pointer overflow-hidden"
           style={{ borderRadius: 22 }}
         >
           <header
