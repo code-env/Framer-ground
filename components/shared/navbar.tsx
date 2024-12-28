@@ -54,7 +54,7 @@ const Navbar = () => {
   return (
     <header
       className={cn(
-        "fixed w-full z-40 h-16 top-0 left-0 right-0 backdrop-blur-lg border-b border-transparent",
+        "sticky w-full z-40 h-16 top-0 backdrop-blur-lg border-b border-transparent",
         {
           "bg-background/80 border-border/40": isScrolled,
         }
