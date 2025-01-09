@@ -9,7 +9,6 @@ import Footer from "@/components/shared/footer";
 import "@/styles/mdx.css";
 import "@/styles/globals.css";
 import { ThemeProvider } from "@/components/providers";
-import Navbar from "@/components/shared/navbar";
 import { CommandMenuProvider } from "@/context/command-menu";
 import { CommandMenu } from "@/components/ui/command-menu";
 import Link from "next/link";
@@ -106,20 +105,7 @@ export default function RootLayout({
         <body className={cn(satoshi.className, "z-0")}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <CommandMenuProvider>
-              <Link
-                href="https://pro.bossadizenith.me"
-                className="h-12 border-b bg-muted flex items-center"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <div className="mx-auto w-full max-w-3xl flex items-center justify-center">
-                  🎉 Exciting News! 🎉. Ground Pro is now available. Animations
-                  build for performance. performance
-                </div>
-              </Link>
-              <Navbar />
               {children}
-              <Footer />
               <CommandMenu />
             </CommandMenuProvider>
             <Analytics />

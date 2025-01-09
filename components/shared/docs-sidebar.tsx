@@ -3,12 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
-
 import { cn } from "@/lib/utils";
-import { NavState, SidebarNavItem } from "@/types";
-import { Icons } from "./icons";
+import { SidebarNavItem } from "@/types";
 
 export interface DocsSidebarNavProps {
   items: SidebarNavItem[];
@@ -55,30 +52,24 @@ const DocsSidebar = ({ items }: DocsSidebarNavProps) => {
         const specialHeaderCount = 2; // Getting started & contributing;
 
         return (
-          <div key={index} className="z-0 ">
-            <div className="z-50 cursor-pointer pl-3" onClick={toggle}>
+          <div key={index} className="z-">
+            <div className="z-50 cursor-pointer " onClick={toggle}>
               <h4 className="mb-1 flex items-center gap-1 rounded-md py-1 text-sm font-semibold">
-                <span className="size-2 bg-primary rounded-[2px] rotate-45 mr-1" />
                 {item.title}
-                {Boolean(item.items?.length || item.label) &&
-                  index >= specialHeaderCount && (
-                    <span className="flex aspect-square items-center justify-center rounded-full bg-gray-200 px-1 py-0.5 text-[10px] leading-none text-[#000000] no-underline">
-                      {item.label || item.items?.length}
-                    </span>
-                  )}
               </h4>
             </div>
             {!!item?.items?.length && (
               <div
-                className={cn("pb-3 pl-4 relative", {
+                className={cn("relative", {
                   hidden: !isOpen,
                 })}
               >
                 <DocsSidebarNavItems items={item.items} pathname={pathname} />
+                <div className="absolute top-0 left-2 w-[1px] h-full bg-accent" />
               </div>
             )}
             {index === specialHeaderCount - 1 && (
-              <div className="mb-1 mt-2 text-xs font-semibold uppercase text-muted-foreground">
+              <div className="mb-1 mt-4 text-xs font-semibold uppercase text-muted-foreground">
                 COMPONENTS
               </div>
             )}
@@ -98,62 +89,7 @@ export function DocsSidebarNavItems({
   items,
   pathname,
 }: DocsSidebarNavItemsProps) {
-  const [hoverState, setHoverState] = useState<NavState>({
-    opacity: 0,
-    top: 0,
-    height: 0,
-  });
-  const [activeState, setActiveState] = useState<NavState>({
-    opacity: 0,
-    top: 0,
-    height: 0,
-  });
-  const [active, setActive] = useState<string | null>(null); // Now a string (title or href)
-  const [isHovering, setIsHovering] = useState(false);
-
   const itemRefs = useRef<(HTMLAnchorElement | null)[]>([]);
-
-  useEffect(() => {
-    setActiveState({
-      opacity: 0,
-      top: 0,
-      height: 0,
-    });
-
-    const timer = setTimeout(() => {
-      const currentIndex = items.findIndex((item) => item.href === pathname);
-
-      if (itemRefs.current[currentIndex]) {
-        const { offsetTop, offsetHeight } = itemRefs.current[currentIndex];
-        setActiveState({
-          opacity: 1,
-          top: offsetTop,
-          height: offsetHeight,
-        });
-      }
-    }, 0);
-
-    return () => clearTimeout(timer);
-  }, [pathname, items]);
-
-  const handleMouseEnter = (index: number) => {
-    if (!itemRefs.current[index]) return;
-    const { offsetTop, offsetHeight } = itemRefs.current[index];
-    setHoverState({
-      opacity: 1,
-      top: offsetTop,
-      height: offsetHeight,
-    });
-    setIsHovering(true);
-  };
-
-  const handleMouseLeave = () => {
-    setHoverState((prev) => ({
-      ...prev,
-      opacity: 0,
-    }));
-    setIsHovering(false);
-  };
 
   return items?.length ? (
     <div className="grid grid-flow-row auto-rows-max text-sm gap-1 relative">
@@ -165,14 +101,10 @@ export function DocsSidebarNavItems({
               itemRefs.current[index] = el;
             }}
             href={item.href}
-            onMouseEnter={() => handleMouseEnter(index)}
-            onMouseLeave={handleMouseLeave}
-            onClick={() => setActive(item.href || item.title)}
+            // onClick={() => setActive(item.href || item.title)}
             className={cn(
-              "group flex w-full items-center rounded-md border border-transparent px-2 py-1 capitalize z-10",
-              pathname === item.href
-                ? "bg-muted font-normal text-foreground"
-                : "text-muted-foreground"
+              "group flex w-full items-center rounded-md border border-transparent px-4 py-1 capitalize z-10 relative text-muted-foreground transition-all duration-300 hover:bg-muted/50",
+              { "text-primary bg-muted/50": item.href === pathname }
             )}
             target={item.external ? "_blank" : ""}
             rel={item.external ? "noreferrer" : ""}
@@ -183,13 +115,19 @@ export function DocsSidebarNavItems({
                 {item.label}
               </span>
             )}
+            {item.href === pathname && (
+              <motion.div
+                layoutId="active-route-indicator"
+                className="absolute top-0 left-[5px] bg-primary w-1 rounded-xl h-full"
+              />
+            )}
           </Link>
         ) : (
           <span
             key={index}
             className={cn(
               "flex w-full cursor-not-allowed items-center rounded-md p-2 text-muted-foreground hover:underline",
-              item.disabled && "cursor-not-allowed opacity-60"
+              item.disabled && "cursor-not-allowed opacity-60",
             )}
           >
             {item.title}
@@ -199,23 +137,8 @@ export function DocsSidebarNavItems({
               </span>
             )}
           </span>
-        )
+        ),
       )}
-      <motion.div
-        animate={isHovering ? hoverState : activeState}
-        className="absolute bg-muted rounded z-0 h-full  left-0"
-        transition={{
-          duration: 0.3,
-          type: "spring",
-          stiffness: 300,
-          damping: 30,
-        }}
-        style={{
-          top: hoverState.top,
-          height: hoverState.height,
-          width: "100%",
-        }}
-      />
     </div>
   ) : null;
 }
