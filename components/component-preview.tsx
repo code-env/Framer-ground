@@ -78,7 +78,7 @@ export function ComponentPreview({
   }, [name]);
 
   return (
-    <div className={cn("group relative bg-muted/10", className)} {...props}>
+    <div className={cn("group relative bg-muted/20", className)} {...props}>
       <div
         className={cn(
           "preview relative w-full max-w-full border rounded-xl p-2"

@@ -169,7 +169,7 @@ const FeedbackForm = ({ setOpen }: FeedbackFormProps) => {
                   <FormControl>
                     <Input
                       {...field}
-                      className="border-white/20 bg-muted/10"
+                      className="border-white/20 bg-muted/20"
                       type="text"
                       placeholder="Enter your name"
                       disabled={isSubmitting}
@@ -186,7 +186,7 @@ const FeedbackForm = ({ setOpen }: FeedbackFormProps) => {
                 <FormItem>
                   <Input
                     {...field}
-                    className="border-white/20 bg-muted/10"
+                    className="border-white/20 bg-muted/20"
                     placeholder="Enter your email"
                     disabled={isSubmitting}
                   />
@@ -201,7 +201,7 @@ const FeedbackForm = ({ setOpen }: FeedbackFormProps) => {
                 <FormItem>
                   <Textarea
                     {...field}
-                    className="border-white/20 bg-muted/10 resize-none"
+                    className="border-white/20 bg-muted/20 resize-none"
                     placeholder="Enter your message"
                     disabled={isSubmitting}
                   />

@@ -50,7 +50,7 @@ export function CopyButton({
       size="icon"
       variant={variant}
       className={cn(
-        "relative z-10 h-6 w-6 bg-muted/10 hover:bg-muted/5 !text-white [&_svg]:size-3",
+        "relative z-10 h-6 w-6 dark:bg-muted/30 dark:hover:bg-muted/50 bg-muted/20 hover:bg-muted/5 !text-white [&_svg]:size-3",
         className
       )}
       onClick={() => {
@@ -113,7 +113,7 @@ export function CopyWithClassNames({
           size="icon"
           variant="ghost"
           className={cn(
-            "relative z-10 h-6 w-6 !text-white bg-muted/10 hover:bg-muted/5 [&_svg]:size-3",
+            "relative z-10 h-6 w-6 !text-white dark:bg-muted/30 dark:hover:bg-muted/50 bg-muted/20 hover:bg-muted/5 [&_svg]:size-3",
             className
           )}
         >
@@ -178,7 +178,7 @@ export function CopyTouchCommandButton({
           size="icon"
           variant="ghost"
           className={cn(
-            "relative z-10 h-6 w-6 hover:bg-zinc-700 hover:text-zinc-50 !text-white bg-muted/10 hover:bg-muted/5 [&_svg]:size-3",
+            "relative z-10 h-6 w-6 hover:bg-zinc-700 hover:text-zinc-dark:50 !text-white dark:bg-muted/30 dark:hover:bg-muted/50 bg-muted/20 hover:bg-muted/5 [&_svg]:size-3",
             className
           )}
         >
@@ -193,6 +193,8 @@ export function CopyTouchCommandButton({
       <DropdownMenuContent align="end">
         <DropdownMenuItem
           onClick={() => copyCommand(commands.__unix__, "macOS/Linux")}
+
+
         >
           macOS/Linux
         </DropdownMenuItem>

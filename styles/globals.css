@@ -131,7 +131,7 @@
     }
 
     .dark pre {
-        @apply !bg-code/10
+        @apply !bg-code/20
     }
 
     ::-webkit-scrollbar {
