@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import DocsSidebar from "@/components/shared/docs-sidebar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { docsConfig } from "@/config/docs";
+import ThemeSwitcher from "@/components/shared/theme-switcher";
 
 const DocsLayout = ({ children }: { children: ReactNode }) => {
   return (
@@ -12,6 +13,7 @@ const DocsLayout = ({ children }: { children: ReactNode }) => {
         <ScrollArea className="h-screen p-5 bg-muted/20">
           <DocsSidebar items={docsConfig.sidebarNav} />
         </ScrollArea>
+        <ThemeSwitcher />
       </aside>
       <div className="container">{children}</div>
     </div>

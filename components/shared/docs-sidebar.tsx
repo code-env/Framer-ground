@@ -73,6 +73,7 @@ const DocsSidebar = ({ items }: DocsSidebarNavProps) => {
                 COMPONENTS
               </div>
             )}
+
           </div>
         );
       })}
