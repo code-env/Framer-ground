@@ -50,7 +50,7 @@ export function CopyButton({
       size="icon"
       variant={variant}
       className={cn(
-        "relative z-10 h-6 w-6 bg-zinc-500 text-zinc-50 [&_svg]:size-3",
+        "relative z-10 h-6 w-6 bg-muted/10 hover:bg-muted/5 !text-white [&_svg]:size-3",
         className
       )}
       onClick={() => {
@@ -64,12 +64,12 @@ export function CopyButton({
           value,
           event
             ? {
-                name: event,
-                properties: {
-                  code: value,
-                  proxyId: proxyId ?? "",
-                },
-              }
+              name: event,
+              properties: {
+                code: value,
+                proxyId: proxyId ?? "",
+              },
+            }
             : undefined
         );
         setHasCopied(true);
