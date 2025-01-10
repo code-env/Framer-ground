@@ -12,6 +12,8 @@ import { ThemeProvider } from "@/components/providers";
 import { CommandMenuProvider } from "@/context/command-menu";
 import { CommandMenu } from "@/components/ui/command-menu";
 import Link from "next/link";
+import { Toaster } from "sonner"
+import Feedback from "@/components/shared/feeback";
 
 export const metadata: Metadata = {
   title: {
@@ -109,6 +111,8 @@ export default function RootLayout({
               <CommandMenu />
             </CommandMenuProvider>
             <Analytics />
+            <Toaster />
+            <Feedback />
           </ThemeProvider>
         </body>
       </GlobalProvider>

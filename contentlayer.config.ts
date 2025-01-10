@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // contentlayer.config.ts
+
+import { getHighlighter } from "@shikijs/compat"
 import {
   ComputedFields,
   defineDocumentType,
@@ -49,21 +51,21 @@ const computedFields: ComputedFields = {
   structuredData: {
     type: "json",
     resolve: (doc: any) =>
-      ({
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        headline: doc.title,
-        datePublished: doc.date,
-        dateModified: doc.date,
-        description: doc.summary || doc.description,
-        image: doc.image,
-        url: `${siteConfig.url}/${doc._raw.flattenedPath}`,
-        author: {
-          "@type": "Person",
-          name: doc.author,
-          url: `https://twitter.com/${doc.author}`,
-        },
-      } as WithContext<BlogPosting>),
+    ({
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: doc.title,
+      datePublished: doc.date,
+      dateModified: doc.date,
+      description: doc.summary || doc.description,
+      image: doc.image,
+      url: `${siteConfig.url}/${doc._raw.flattenedPath}`,
+      author: {
+        "@type": "Person",
+        name: doc.author,
+        url: `https://twitter.com/${doc.author}`,
+      },
+    } as WithContext<BlogPosting>),
   },
 };
 
@@ -204,7 +206,7 @@ export default makeSource({
         rehypePrettyCode,
         {
           theme: "github-dark",
-
+          getHighlighter,
           onVisitLine(node: any) {
             // Prevent lines from collapsing in `display: grid` mode, and allow empty
             // lines to be copy/pasted
