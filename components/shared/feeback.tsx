@@ -98,7 +98,7 @@ const FeedbackForm = ({ setOpen }: FeedbackFormProps) => {
       .join("\n");
 
     const response = await fetch(
-      "https://discordapp.com/api/webhooks/1322343958843494498/Xlq9ff8X3Sv0pRyQmcp5RmImsSbZEQJ8CzaF_2aA2YsDt-8nCeFzpvCADxPNBY7VqvBQ",
+      process.env.NEXT_PUBLIC_DISCORD_WEBHOOK_URL as string,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

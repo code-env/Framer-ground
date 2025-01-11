@@ -143,7 +143,7 @@ export default function ScrollCount() {
             width: open ? 420 : 280,
             borderRadius: open ? 22 : 11,
           }}
-          className="bg-background relative cursor-pointer overflow-hidden"
+          className="bg-primary relative cursor-pointer overflow-hidden text-primary-foreground"
           style={{ borderRadius: 22 }}
         >
           <header
@@ -155,9 +155,10 @@ export default function ScrollCount() {
             <ScrollPercentage containerRef={containerRef} />
           </header>
           <div className="mt-2 flex flex-col gap-2 px-4 pb-4">
-            {initialValues.map((item) => (
+            {initialValues.map((item, index) => (
               <Link
-                className="text-natural-400 hover:text-natural-200 whitespace-nowrap text-sm"
+                key={index + item.title}
+                className="hover:text-primary-foreground/80 whitespace-nowrap text-sm"
                 href={item.link}
                 onClick={() => {
                   setOpen(false);
@@ -217,7 +218,7 @@ const Sections = memo(
     return (
       <div
         ref={containerRef}
-        className="bg-muted p-10 rounded-lg relative size-full overflow-y-auto"
+        className="p-10 rounded-lg relative size-full overflow-y-auto"
       >
         {initialValues.map((item) => (
           <motion.div
@@ -236,8 +237,8 @@ const Sections = memo(
             }}
           >
             <h1 className="mb-4 text-2xl font-bold">{item.title}</h1>
-            {item.description.map((description) => (
-              <p className="mb-4">{description}</p>
+            {item.description.map((description, index) => (
+              <p className="mb-4" key={index}>{description}</p>
             ))}
           </motion.div>
         ))}
@@ -245,6 +246,8 @@ const Sections = memo(
     );
   }
 );
+
+Sections.displayName = "Sections"
 
 function useScroll(containerRef: React.RefObject<HTMLDivElement>) {
   const [scrollPercentage, setScrollPercentage] = useState(0);
@@ -273,9 +276,9 @@ function ProgressCircle({
 }: {
   containerRef: React.RefObject<HTMLDivElement>;
 }) {
-  const percentage = useScroll(containerRef);
+  // const percentage = useScroll(containerRef);
 
-  return <div className="h-7 w-7 bg-red-500 rounded-full"></div>;
+  return <div className="size-5 bg-red-500 rounded-full" />;
 }
 
 function ScrollPercentage({
@@ -289,8 +292,8 @@ function ScrollPercentage({
     <>
       <NumberFlow
         value={percentage}
-        format={{ style: "percent" }} // Intl.NumberFormat options
-        locales="en-US" // Intl.NumberFormat locales
+        format={{ style: "percent" }}
+        locales="en-US"
       />
     </>
   );

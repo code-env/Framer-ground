@@ -29,7 +29,7 @@ const Hero = ({ stars }: { stars: string }) => {
           >
             <motion.h1
               variants={fadeIn}
-              className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl flex gap-3 2xl:text-8xl gradient-text py-3 dark:from-neutral-200 dark:to-neutral-500"
+              className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl flex gap-3 2xl:text-8xl gradient-text py-3 dark:from-neutral-200 dark:to-neutral-500 group"
             >
               <span>Copy.</span>
               <span>Paste.</span>
@@ -40,7 +40,7 @@ const Hero = ({ stars }: { stars: string }) => {
                     src={think}
                     alt={`${siteConfig.name} thinking image`}
                     fill
-                    className="w-full object-cover grayscale hover:grayscale-0 duration-150 transition-all cursor-pointer"
+                    className="w-full object-cover grayscale group-hover:grayscale-0 duration-150 transition-all cursor-pointer"
                   />
                 </div>
                 mate.
@@ -80,4 +80,11 @@ const Hero = ({ stars }: { stars: string }) => {
   );
 };
 
+const NewHero = () => {
+  return (
+    <div className="py-40 container">
+      <h1 className="text-3xl font-semibold">Nothing </h1>
+    </div>
+  )
+}
 export default Hero;

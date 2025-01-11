@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { Maximize, Minimize } from "lucide-react";
 
 import { CopyButton } from "@/components/copy-button";
 import { Icons } from "@/components/icons";
@@ -55,7 +56,9 @@ export function ComponentPreview({
   height,
   ...props
 }: ComponentPreviewProps) {
+  const ref = React.useRef<HTMLDivElement>(null);
   const [minHeight] = React.useState<number>(350);
+  const [isFullScreen, setIsFullScreen] = React.useState<boolean>(false);
 
   const Preview = React.useMemo(() => {
     const Component = Index[name]?.component;
@@ -77,11 +80,38 @@ export function ComponentPreview({
     return <Component />;
   }, [name]);
 
+  const toggleFullScreen = () => {
+    const element = ref.current;
+    if (!element) return;
+
+    if (!document.fullscreenElement) {
+      element
+        .requestFullscreen()
+        .then(() => {
+          setIsFullScreen(true);
+        })
+        .catch((err) => {
+          console.error(`Error attempting to enable full-screen mode: ${err}`);
+        });
+    } else {
+      document.exitFullscreen();
+      setIsFullScreen(false);
+    }
+  };
+
   return (
-    <div className={cn("group relative bg-muted/20", className)} {...props}>
+    <div
+      ref={ref}
+      className={cn(
+        "group relative size-full flex items-center justify-center bg-background",
+        className,
+      )}
+      {...props}
+    >
       <div
         className={cn(
-          "preview relative w-full max-w-full border rounded-xl p-2"
+          "preview relative w-full max-w-[1000px]  bg-muted/20 border rounded-xl p-2 overflow-clip",
+
         )}
         style={{
           height: `${Math.max(100, height ? minHeight + height : minHeight)}px`,
@@ -97,6 +127,12 @@ export function ComponentPreview({
         >
           {Preview}
         </React.Suspense>
+        <button
+          onClick={toggleFullScreen}
+          className="size-10 absolute bottom-0 bg-muted/40 flex items-center justify-center right-0 rounded-tl-xl"
+        >
+          {isFullScreen ? <Minimize className="size-4" /> : <Maximize className="size-4" />}
+        </button>
       </div>
     </div>
   );

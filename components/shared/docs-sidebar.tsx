@@ -119,7 +119,7 @@ export function DocsSidebarNavItems({
             {item.href === pathname && (
               <motion.div
                 layoutId="active-route-indicator"
-                className="absolute top-0 left-[5px] bg-primary w-1 rounded-xl h-full"
+                className="absolute top-0 left-[6px] bg-primary w-[3px] rounded-xl h-full"
               />
             )}
           </Link>
