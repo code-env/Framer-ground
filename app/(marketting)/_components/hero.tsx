@@ -4,13 +4,14 @@ import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import AnimatedArrow from "@/app/(hand-crafted)/icons/animated-arrow";
 import { buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import { fadeIn, projectUrl, stagger } from "@/constants";
 import think from "@/public/think.jpg";
+// import { Icons } from "@/components/icons";
 
 const Hero = ({ stars }: { stars: string }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -81,10 +82,75 @@ const Hero = ({ stars }: { stars: string }) => {
 };
 
 const NewHero = () => {
+  const words = ["COPY", "PASTE", "ANIMATE"];
+  const [index, setIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % words.length);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="py-40 container">
-      <h1 className="text-3xl font-semibold">Nothing </h1>
+    <div className="py-40 container flex items-center justify-center flex-col">
+      <div className="flex items-center justify-center flex-col max-w-md gap-4">
+        <h1 className="text-4xl font-bold flex items-center">
+          {words.map((word, idx) => (
+            <span key={idx} className="flex items-center relative px-2 py-1">
+              {word}
+              {idx === index && (
+                <motion.span
+                  layoutId="active-word-indicator"
+                  className="absolute  inset-0 -z-10 border"
+                >
+                  <motion.span
+                    layoutId="active-indicator-top-left"
+                    className="absolute -top-1 -left-1 size-2 bg-border rounded-full"
+                  />
+                  <motion.span
+                    layoutId="active-indicator-top-right"
+                    className="absolute -top-1 -right-1 size-2 bg-border rounded-full"
+                  />
+                  <motion.span
+                    layoutId="active-indicator-bottom-left"
+                    className="absolute -bottom-1 -left-1 size-2 bg-border rounded-full"
+                  />
+                  <motion.span
+                    layoutId="active-indicator-bottom-right"
+                    className="absolute -bottom-1 -right-1 size-2 bg-border rounded-full"
+                  />
+                </motion.span>
+              )}
+            </span>
+          ))}
+        </h1>
+        <p className="text-center text-muted-foreground text-lg">
+          Handcrafted animated modern components build for performance and ready
+          to use in your app.
+        </p>
+        <div className="flex items-center gap-4">
+          <Link
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            className={buttonVariants()}
+            href="/docs/components"
+          >
+            <span>View Components</span>
+            <AnimatedArrow isHovered={isHovered} />
+          </Link>
+          <Link
+            className={buttonVariants({ variant: "outline" })}
+            href={projectUrl}
+            target="_blank"
+          >
+            <Icons.gitHub className="size-4" />
+            <span className="mr-2">Star on GitHub</span>
+          </Link>
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 export default Hero;

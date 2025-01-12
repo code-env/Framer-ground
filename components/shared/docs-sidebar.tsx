@@ -19,7 +19,7 @@ const DocsSidebar = ({ items }: DocsSidebarNavProps) => {
     setClosed((current) => {
       const next = new Set(current);
       // Open the current section if one of the child pages is active
-      const path = "/docs/" + pathname.split("/")[1];
+      const path = "/docs/components" + pathname.split("/")[1];
       if (next.has(path)) {
         next.delete(path);
       }
@@ -73,7 +73,6 @@ const DocsSidebar = ({ items }: DocsSidebarNavProps) => {
                 COMPONENTS
               </div>
             )}
-
           </div>
         );
       })}
@@ -128,7 +127,7 @@ export function DocsSidebarNavItems({
             key={index}
             className={cn(
               "flex w-full cursor-not-allowed items-center rounded-md p-2 text-muted-foreground hover:underline",
-              item.disabled && "cursor-not-allowed opacity-60",
+              item.disabled && "cursor-not-allowed opacity-60"
             )}
           >
             {item.title}
@@ -138,7 +137,7 @@ export function DocsSidebarNavItems({
               </span>
             )}
           </span>
-        ),
+        )
       )}
     </div>
   ) : null;

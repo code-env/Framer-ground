@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "Framer ground",
+  name: "Ground",
   url: "https://ground.bossadizenith.me",
   ogImage: "https://ground.bossadizenith.me/og.png",
   description:

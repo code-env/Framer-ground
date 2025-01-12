@@ -1,64 +1,14 @@
-import { Combine, RectangleHorizontal, TableCellsSplit } from "lucide-react";
+import {
+  Combine,
+  RectangleHorizontal,
+  Snail,
+  TableCellsSplit,
+} from "lucide-react";
 
 type IconProps = React.HTMLAttributes<SVGElement>;
 
 export const Icons = {
-  logo: (props: IconProps) => (
-    <svg viewBox="0 0 132.292 132.292" xmlns="http://www.w3.org/2000/svg" {...props}>
-      <g fill="#d4aa00" transform="translate(.617 -5.527)">
-        <rect
-          fill="#d4aa00"
-          width="15.875"
-          height="89.958"
-          x="-76.052"
-          y="51.638"
-          ry="10.238"
-          transform="scale(-1 1) rotate(17.213)"
-          rx="7.938"
-        />
-        <rect
-          fill="#d4aa00"
-          width="15.875"
-          height="89.958"
-          x="71.653"
-          y="-48.84"
-          ry="7.938"
-          transform="rotate(51.226)"
-          rx="7.938"
-        />
-        <path
-          fill="#d4aa00"
-          d="M100.778 69.553a49.995 49.995 0 0 1-23.928 4.418c-25.89-1.6-35.298-20.516-41.123-20.876a7.937 7.937 0 0 0-8.412 7.432c-.077 1.888.457 3.884 1.635 5.389 11.252 13.618 27.898 22.724 46.92 23.9 11.199.692 20.37-.765 29.912-5.114l7.41-12.201z"
-        />
-      </g>
-      <g fill="#fc0" transform="translate(.617 -5.527)">
-        <rect
-          fill="#fc0"
-          width="15.875"
-          height="89.958"
-          x="-77.96"
-          y="51.678"
-          ry="10.238"
-          transform="scale(-1 1) rotate(17.213)"
-          rx="7.938"
-        />
-        <rect
-          fill="#fc0"
-          width="15.875"
-          height="89.958"
-          x="72.392"
-          y="-50.599"
-          ry="7.938"
-          transform="rotate(51.226)"
-          rx="7.938"
-        />
-        <path
-          fill="#fc0"
-          d="M102.613 69.028a49.995 49.995 0 0 1-23.928 4.418c-25.89-1.601-35.3-20.516-41.124-20.877a7.937 7.937 0 0 0-8.412 7.433c-.077 1.888.457 3.884 1.635 5.388 11.252 13.619 27.898 22.724 46.921 23.9 11.198.693 20.369-.764 29.911-5.114l7.41-12.2z"
-        />
-      </g>
-    </svg>
-  ),
+  logo: (props: IconProps) => <Snail {...props} />,
   bento: (props: IconProps) => <TableCellsSplit {...props} />,
   button: (props: IconProps) => <RectangleHorizontal {...props} />,
   widget: (props: IconProps) => <Combine {...props} />,
@@ -119,7 +69,12 @@ export const Icons = {
     </svg>
   ),
   nextJS: (props: IconProps) => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="18" {...props}>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 180 180"
+      width="18"
+      {...props}
+    >
       <mask
         height="180"
         id=":r8:mask0_408_134"
@@ -137,7 +92,13 @@ export const Icons = {
           d="M149.508 157.52L69.142 54H54V125.97H66.1136V69.3836L139.999 164.845C143.333 162.614 146.509 160.165 149.508 157.52Z"
           fill="url(#:r8:paint0_linear_408_134)"
         ></path>
-        <rect fill="url(#:r8:paint1_linear_408_134)" height="72" width="12" x="115" y="54"></rect>
+        <rect
+          fill="url(#:r8:paint1_linear_408_134)"
+          height="72"
+          width="12"
+          x="115"
+          y="54"
+        ></rect>
       </g>
       <defs>
         <linearGradient
@@ -283,7 +244,12 @@ export const Icons = {
     </svg>
   ),
   framerMotion: (props: IconProps) => (
-    <svg xmlns="http:www.w3.org/2000/svg" viewBox="0 0 14 21" role="presentation" {...props}>
+    <svg
+      xmlns="http:www.w3.org/2000/svg"
+      viewBox="0 0 14 21"
+      role="presentation"
+      {...props}
+    >
       <path d="M0 0h14v7H7zm0 7h7l7 7H7v7l-7-7z" fill="currentColor"></path>
     </svg>
   ),

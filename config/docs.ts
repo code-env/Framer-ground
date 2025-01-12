@@ -12,7 +12,23 @@ const sortAlphabetically = (a: SidebarNavItem, b: SidebarNavItem) => {
     .localeCompare((b.sortId ?? b.title).toLowerCase());
 };
 
-const createLinks = (category: string) => {
+const createComponentsLink = (category: string) => {
+  return allDocs
+    .filter(
+      (doc) =>
+        doc.slug.startsWith(`/docs/components/${category}`) && doc.published
+    )
+    .map((doc) => ({
+      // Make sure the index page is the first item
+      title: doc.title,
+      sortId: doc.slug === `/docs/${category}` ? "000" : doc.title,
+      href: doc.slug,
+      items: [],
+    }))
+    .sort(sortAlphabetically);
+};
+
+const createLink = (category: string) => {
   return allDocs
     .filter((doc) => doc.slug.startsWith(`/docs/${category}`) && doc.published)
     .map((doc) => ({
@@ -78,95 +94,39 @@ const sidebarNav: SidebarNavItem[] = [
     ],
   },
   {
-    title: "Text",
-    items: createLinks("text"),
-  },
-  {
-    title: "Background",
-    items: createLinks("background"),
-  },
-  {
-    title: "Image",
-    items: createLinks("image"),
-  },
-  {
-    title: "Layouts",
-    items: createLinks("layout"),
-  },
-  {
-    title: "List",
-    items: createLinks("list"),
-  },
-  {
-    title: "Container",
-    items: createLinks("container"),
-  },
-  {
-    title: "Cards",
-    items: createLinks("cards"),
-  },
-  {
-    title: "Icon",
-    items: createLinks("icon"),
-  },
-  {
-    title: "Progress",
-    items: createLinks("progress"),
-  },
-  {
-    title: "Graphs & charts",
-    items: createLinks("graphs"),
-  },
-  {
-    title: "Overlay",
-    items: createLinks("overlay"),
-  },
-  {
     icon: "buttons",
     title: "Button",
-    label: -1 + createLinks("button").length + "",
-    href: "/docs/button",
-    items: createLinks("button"),
+    label: -1 + createComponentsLink("button").length + "",
+    href: "/docs/components/button",
+    items: createComponentsLink("button"),
   },
   {
     title: "Menu",
-    label: createLinks("menu").length + "",
+    label: createComponentsLink("menu").length + "",
     href: "/docs/menu",
-    items: createLinks("menu"),
+    items: createComponentsLink("menu"),
   },
   {
     title: "Navbars",
-    label: createLinks("navbars").length + "",
-    href: "/docs/navbars/liquid",
-    items: createLinks("navbars"),
+    label: createComponentsLink("navbars").length + "",
+    href: "/docs/components/navbars/liquid",
+    items: createComponentsLink("navbars"),
   },
   {
     title: "Gallery",
-    label: createLinks("gallery").length + "",
-    href: "/docs/gallery/one",
-    items: createLinks("gallery"),
+    label: createComponentsLink("gallery").length + "",
+    href: "/docs/components/gallery/one",
+    items: createComponentsLink("gallery"),
   },
   {
     title: "Inputs",
-    label: createLinks("inputs").length + "",
-    href: "/docs/inputs/iMessage",
-    items: createLinks("inputs"),
-  },
-  {
-    title: "Hero",
-    items: createLinks("hero"),
-  },
-  {
-    title: "Scroll",
-    items: createLinks("scroll"),
-  },
-  {
-    title: "Carousel",
-    items: createLinks("carousel"),
+    label: createComponentsLink("inputs").length + "",
+    href: "/docs/components/inputs/iMessage",
+    items: createComponentsLink("inputs"),
   },
   {
     title: "Without Framer Motion",
-    items: createLinks("without-framer-motion"),
+    items: createLink("without-framer-motion"),
   },
 ]
   .filter((category) => Boolean(category.items?.length || category.label))
