@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion, MotionConfig, type Transition } from "framer-motion";
@@ -43,7 +43,7 @@ const Feedback = () => {
   return (
     <MotionConfig transition={TRANSITION}>
       <div
-        className=" fixed bottom-10 right-10 text-primary-foreground z-[999]"
+        className="fixed lg:bottom-10 bottom-6 lg:right-10 right-6 text-primary-foreground z-[999]"
         ref={ref}
       >
         {open ? (
@@ -67,7 +67,7 @@ const Feedback = () => {
               strokeLinecap="round"
               strokeLinejoin="round"
               className="text size-5"
-            //   layoutId="feedback-icon"
+              //   layoutId="feedback-icon"
             >
               <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
             </motion.svg>

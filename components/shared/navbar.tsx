@@ -41,7 +41,7 @@ const Navbar = () => {
       )}
     >
       <nav className="mx-auto max-w-[1350px] px-4 flex items-center justify-between gap-6 h-full">
-        <Logo />
+        <Logo withText />
         <div>
           <AnimateEnter
             delay={0.2}

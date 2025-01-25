@@ -109,7 +109,7 @@ export function DocsSidebarNavItems({
             href={item.href}
             // onClick={() => setActive(item.href || item.title)}
             className={cn(
-              "group flex w-full items-center rounded-md border border-transparent px-4 py-1 capitalize z-10 relative text-muted-foreground transition-all duration-300 hover:bg-muted/50",
+              "group flex w-full items-center rounded border border-transparent px-4 py-1 capitalize z-10 relative text-muted-foreground transition-all duration-300 hover:bg-muted/50",
               { "text-primary bg-muted/50": item.href === pathname }
             )}
             target={item.external ? "_blank" : ""}
