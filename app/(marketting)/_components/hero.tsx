@@ -11,7 +11,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import { fadeIn, projectUrl, stagger } from "@/constants";
 import think from "@/public/think.jpg";
-// import { Icons } from "@/components/icons";
+import { Icons } from "@/components/icons";
 
 const Hero = ({ stars }: { stars: string }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -94,7 +94,7 @@ const NewHero = () => {
   }, []);
 
   return (
-    <div className="py-40 container flex items-center justify-center flex-col">
+    <div className="pt-40 container flex items-center justify-center flex-col">
       <div className="flex items-center justify-center flex-col max-w-md gap-4">
         <h1 className="text-4xl font-bold flex items-center">
           {words.map((word, idx) => (
@@ -103,23 +103,23 @@ const NewHero = () => {
               {idx === index && (
                 <motion.span
                   layoutId="active-word-indicator"
-                  className="absolute  inset-0 -z-10 border"
+                  className="absolute  inset-0 -z-10 border border-neutral-500/20 dark:bg-muted/20 bg-muted/50"
                 >
                   <motion.span
                     layoutId="active-indicator-top-left"
-                    className="absolute -top-1 -left-1 size-2 bg-border rounded-full"
+                    className="absolute -top-1 -left-1 size-2 bg-neutral-500/20 rounded-full"
                   />
                   <motion.span
                     layoutId="active-indicator-top-right"
-                    className="absolute -top-1 -right-1 size-2 bg-border rounded-full"
+                    className="absolute -top-1 -right-1 size-2 bg-neutral-500/20 rounded-full"
                   />
                   <motion.span
                     layoutId="active-indicator-bottom-left"
-                    className="absolute -bottom-1 -left-1 size-2 bg-border rounded-full"
+                    className="absolute -bottom-1 -left-1 size-2 bg-neutral-500/20 rounded-full"
                   />
                   <motion.span
                     layoutId="active-indicator-bottom-right"
-                    className="absolute -bottom-1 -right-1 size-2 bg-border rounded-full"
+                    className="absolute -bottom-1 -right-1 size-2 bg-neutral-500/20 rounded-full"
                   />
                 </motion.span>
               )}
@@ -153,4 +153,4 @@ const NewHero = () => {
     </div>
   );
 };
-export default Hero;
+export default NewHero;

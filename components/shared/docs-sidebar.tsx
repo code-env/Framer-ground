@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { SidebarNavItem } from "@/types";
+import Logo from "./logo";
 
 export interface DocsSidebarNavProps {
   items: SidebarNavItem[];
@@ -33,49 +34,54 @@ const DocsSidebar = ({ items }: DocsSidebarNavProps) => {
   }, [pathname]);
 
   return items.length ? (
-    <div className="w-full">
-      {items.map((item, index) => {
-        const isOpen = !closed.has(item.href ?? item.title);
+    <div className="w-full flex flex-col gap-3">
+      <div className="h-12 flex items-center justify-start">
+        <Logo />
+      </div>
+      <div>
+        {items.map((item, index) => {
+          const isOpen = !closed.has(item.href ?? item.title);
 
-        const toggle = () => {
-          setClosed((prev) => {
-            const next = new Set(prev);
-            if (isOpen) {
-              next.add(item.href ?? item.title);
-            } else {
-              next.delete(item.href ?? item.title);
-            }
-            return next;
-          });
-        };
+          const toggle = () => {
+            setClosed((prev) => {
+              const next = new Set(prev);
+              if (isOpen) {
+                next.add(item.href ?? item.title);
+              } else {
+                next.delete(item.href ?? item.title);
+              }
+              return next;
+            });
+          };
 
-        const specialHeaderCount = 2; // Getting started & contributing;
+          const specialHeaderCount = 2; // Getting started & contributing;
 
-        return (
-          <div key={index} className="z-">
-            <div className="z-50 cursor-pointer " onClick={toggle}>
-              <h4 className="mb-1 flex items-center gap-1 rounded-md py-1 text-sm font-semibold">
-                {item.title}
-              </h4>
+          return (
+            <div key={index} className="z-">
+              <div className="z-50 cursor-pointer " onClick={toggle}>
+                <h4 className="mb-1 flex items-center gap-1 rounded-md py-1 text-sm font-semibold">
+                  {item.title}
+                </h4>
+              </div>
+              {!!item?.items?.length && (
+                <div
+                  className={cn("relative", {
+                    hidden: !isOpen,
+                  })}
+                >
+                  <DocsSidebarNavItems items={item.items} pathname={pathname} />
+                  <div className="absolute top-0 left-2 w-[1px] h-full bg-accent" />
+                </div>
+              )}
+              {index === specialHeaderCount - 1 && (
+                <div className="mb-1 mt-4 text-xs font-semibold uppercase text-muted-foreground">
+                  COMPONENTS
+                </div>
+              )}
             </div>
-            {!!item?.items?.length && (
-              <div
-                className={cn("relative", {
-                  hidden: !isOpen,
-                })}
-              >
-                <DocsSidebarNavItems items={item.items} pathname={pathname} />
-                <div className="absolute top-0 left-2 w-[1px] h-full bg-accent" />
-              </div>
-            )}
-            {index === specialHeaderCount - 1 && (
-              <div className="mb-1 mt-4 text-xs font-semibold uppercase text-muted-foreground">
-                COMPONENTS
-              </div>
-            )}
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   ) : null;
 };

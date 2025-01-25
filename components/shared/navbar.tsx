@@ -9,7 +9,7 @@ import { AnimateEnter } from "@/components/shared/animate-enter";
 import { Icons } from "@/components/shared/icons";
 import Logo from "@/components/shared/logo";
 import { cn } from "@/lib/utils";
-import MoodToogle from "../mode-toggle";
+import ModeToggle from "../mode-toggle";
 import { useProvider } from "@/context/command-menu";
 import { siteConfig } from "@/config/site";
 
@@ -45,11 +45,11 @@ const Navbar = () => {
         <div>
           <AnimateEnter
             delay={0.2}
-            className="flex flex-1 items-center justify-end gap-4"
+            className="flex flex-1 items-center justify-end "
           >
             <div
               onClick={() => setShowCommandMenu(true)}
-              className="max-sm:flex-1 w-auto flex items-center justify-between gap-6 sm:w-56 px-3 py-1.5 rounded-lg border text-sm  duration-300 hover:bg-accent cursor-pointer"
+              className="hidden max-sm:flex-1 w-auto  items-center justify-between gap-6 sm:w-56 px-3 py-1.5 rounded-lg border text-sm  duration-300 hover:bg-accent cursor-pointer md:flex"
             >
               <span className="flex items-center gap-2 text-neutral-500">
                 <SearchIcon size={12} />
@@ -60,7 +60,7 @@ const Navbar = () => {
                 <span>K</span>
               </span>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 md:ml-4">
               <Link
                 href={siteConfig.links.github}
                 target="_blank"
@@ -78,7 +78,7 @@ const Navbar = () => {
                 <Icons.twitter className="w-3.5 h-3.5" />
               </Link>
             </div>
-            <MoodToogle />
+            <ModeToggle />
           </AnimateEnter>
         </div>
       </nav>

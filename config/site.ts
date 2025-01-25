@@ -10,6 +10,7 @@ export const siteConfig = {
     discord: "https://discord.gg/BE3TPK8jVH",
     linkedin: "https://linkedin.com/in/codeenv",
     ghuser: "https://github.com/code-env",
+    pro: "https://pro.bossadizenith.me",
   },
 };
 

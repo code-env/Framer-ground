@@ -12,7 +12,7 @@ import { ThemeProvider } from "@/components/providers";
 import { CommandMenuProvider } from "@/context/command-menu";
 import { CommandMenu } from "@/components/ui/command-menu";
 import Link from "next/link";
-import { Toaster } from "sonner"
+import { Toaster } from "sonner";
 import Feedback from "@/components/shared/feeback";
 
 export const metadata: Metadata = {
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     creator: "@framer-ground",
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/logo.svg",
     shortcut: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png",
   },

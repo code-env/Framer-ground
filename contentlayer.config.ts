@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // contentlayer.config.ts
 
-import { getHighlighter } from "@shikijs/compat"
+import { getHighlighter } from "@shikijs/compat";
 import {
   ComputedFields,
   defineDocumentType,
@@ -11,6 +11,7 @@ import {
 import fs from "node:fs";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode from "rehype-pretty-code";
+import rehypePrism from "rehype-prism-plus";
 import rehypeSlug from "rehype-slug";
 import { codeImport } from "remark-code-import";
 import remarkGfm from "remark-gfm";
@@ -51,21 +52,21 @@ const computedFields: ComputedFields = {
   structuredData: {
     type: "json",
     resolve: (doc: any) =>
-    ({
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      headline: doc.title,
-      datePublished: doc.date,
-      dateModified: doc.date,
-      description: doc.summary || doc.description,
-      image: doc.image,
-      url: `${siteConfig.url}/${doc._raw.flattenedPath}`,
-      author: {
-        "@type": "Person",
-        name: doc.author,
-        url: `https://twitter.com/${doc.author}`,
-      },
-    } as WithContext<BlogPosting>),
+      ({
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: doc.title,
+        datePublished: doc.date,
+        dateModified: doc.date,
+        description: doc.summary || doc.description,
+        image: doc.image,
+        url: `${siteConfig.url}/${doc._raw.flattenedPath}`,
+        author: {
+          "@type": "Person",
+          name: doc.author,
+          url: `https://twitter.com/${doc.author}`,
+        },
+      } as WithContext<BlogPosting>),
   },
 };
 

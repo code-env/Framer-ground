@@ -1,10 +1,11 @@
 import React from "react";
 import { CallToAction, Stack, Hero } from "./_components";
+import Testimonials from "./_components/testimonials";
 
 async function getGitHubStars(): Promise<string | null> {
   try {
     const response = await fetch(
-      "https://api.github.com/repos/code-env/framer-ground",
+      "https://api.github.com/repos/code-env/framer-ground/collaborators",
       {
         headers: {
           Accept: "application/vnd.github+json",
@@ -20,22 +21,24 @@ async function getGitHubStars(): Promise<string | null> {
       return null;
     }
 
-    const json = await response.json();
+    const data = await response.json();
 
-    return parseInt(json["stargazers_count"]).toLocaleString();
+    return data;
   } catch (error) {
     return null;
   }
 }
 
 const LandingPage = async () => {
-  const stars = await getGitHubStars();
-  console.log(stars);
+  const data = await getGitHubStars();
+
+  console.log(data);
 
   return (
-    <div className="relative w-full">
-      <Hero stars={stars || "0"} />
-      <Stack />
+    <div className="relative w-full container flex flex-col gap-40">
+      <Hero />
+      <Testimonials />
+      {/* <Stack /> */}
       <CallToAction />
     </div>
   );

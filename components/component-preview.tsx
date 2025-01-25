@@ -104,14 +104,13 @@ export function ComponentPreview({
       ref={ref}
       className={cn(
         "group relative size-full flex items-center justify-center bg-background",
-        className,
+        className
       )}
       {...props}
     >
       <div
         className={cn(
-          "preview relative w-full max-w-[1000px]  bg-muted/20 border rounded-xl p-2 overflow-clip",
-
+          "preview relative w-full max-w-[1000px]  bg-muted/20 border rounded-xl p-2 overflow-clip"
         )}
         style={{
           height: `${Math.max(100, height ? minHeight + height : minHeight)}px`,
@@ -129,9 +128,13 @@ export function ComponentPreview({
         </React.Suspense>
         <button
           onClick={toggleFullScreen}
-          className="size-10 absolute bottom-0 bg-muted/40 flex items-center justify-center right-0 rounded-tl-xl"
+          className="size-10 absolute bottom-0 bg-muted/40 flex items-center justify-center right-0 rounded-tl-xl border border-r-0 border-b-0"
         >
-          {isFullScreen ? <Minimize className="size-4" /> : <Maximize className="size-4" />}
+          {isFullScreen ? (
+            <Minimize className="size-4" />
+          ) : (
+            <Maximize className="size-4" />
+          )}
         </button>
       </div>
     </div>

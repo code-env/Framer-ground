@@ -12,9 +12,9 @@ const MarkettingLayout = ({ children }: { children: ReactNode }) => {
         target="_blank"
         rel="noreferrer"
       >
-        <div className="mx-auto w-full max-w-3xl flex items-center justify-center">
-          🎉 Exciting News! 🎉. Ground v1 is now available. Animations
-          build for performance.
+        <div className="mx-auto w-full max-w-3xl flex items-center justify-center text-center text-sm p-2">
+          🎉 Exciting News! 🎉. Ground v1 is now available. Animations build for
+          performance.
         </div>
       </Link>
       <Navbar />
