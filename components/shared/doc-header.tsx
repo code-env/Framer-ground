@@ -11,7 +11,7 @@ import Logo from "./logo";
 
 const routes = [
   { name: "Blog", path: "/blog" },
-  { name: "Changelog", path: "/changelog" },
+  { name: "Changelog", path: "/docs/changelog" },
 ];
 
 const DocsHeader = () => {
@@ -36,7 +36,12 @@ const DocsHeader = () => {
         <ul className="md:flex hidden items-center gap-3 ">
           {routes.map((route, idx) => (
             <li key={idx}>
-              <Link href={route.path}>{route.name}</Link>
+              <Link
+                className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300"
+                href={route.path}
+              >
+                {route.name}
+              </Link>
             </li>
           ))}
         </ul>
