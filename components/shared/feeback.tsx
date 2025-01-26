@@ -67,9 +67,9 @@ const Feedback = () => {
               strokeLinecap="round"
               strokeLinejoin="round"
               className="text size-5"
-              //   layoutId="feedback-icon"
+              layoutId="feedback-message-icon"
             >
-              <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+              <motion.path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
             </motion.svg>
           </motion.button>
         )}
@@ -141,7 +141,7 @@ const FeedbackForm = ({ setOpen }: FeedbackFormProps) => {
           onClick={() => setOpen(false)}
           layoutId="feedback-icon"
         >
-          <svg
+          <motion.svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="none"
@@ -152,7 +152,7 @@ const FeedbackForm = ({ setOpen }: FeedbackFormProps) => {
             className="size-5"
           >
             <path d="M6 18L18 6M6 6l12 12" />
-          </svg>
+          </motion.svg>
         </motion.button>
       </div>
       <Form {...form}>

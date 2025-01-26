@@ -4,9 +4,9 @@ import { useProvider } from "@/context/command-menu";
 import { ExternalLink, Search } from "lucide-react";
 import Link from "next/link";
 import React from "react";
-import MoodToogle from "../mode-toggle";
+import MoodToogle from "@/components/mode-toggle";
 import { siteConfig } from "@/config/site";
-import { buttonVariants } from "../ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import Logo from "./logo";
 
 const routes = [
@@ -35,14 +35,18 @@ const DocsHeader = () => {
       <div className="flex items-center gap-6 h-full">
         <ul className="md:flex hidden items-center gap-3 ">
           {routes.map((route, idx) => (
-            <li>
+            <li key={idx}>
               <Link href={route.path}>{route.name}</Link>
             </li>
           ))}
         </ul>
         <div className="h-1/2 my-auto w-[2px] bg-border hidden md:block" />
         <MoodToogle showBorder />
-        <Link href={siteConfig.links.pro} className={buttonVariants()}>
+        <Link
+          href={siteConfig.links.pro}
+          className={buttonVariants()}
+          target="_blank"
+        >
           <span>Go pro</span>
           <ExternalLink className="size-4" />
         </Link>

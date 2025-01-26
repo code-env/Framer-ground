@@ -50,7 +50,7 @@ const MarkettingNavbar = () => {
         }}
         className="px-2.5 h-16 flex items-center fixed top-5 left-0 right-0 z-50 mx-auto lg:w-full w-[90%] lg:max-w-5xl bg-black/50 backdrop-blur border border-neutral-500/20 rounded-lg"
       >
-        <Logo home />
+        <Logo />
         <nav className="hidden md:flex items-center space-x-6 mx-auto text-white">
           {MarkettingNavbarRoutes.map((route, index) => (
             <Link

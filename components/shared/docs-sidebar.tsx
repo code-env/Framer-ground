@@ -36,7 +36,7 @@ const DocsSidebar = ({ items }: DocsSidebarNavProps) => {
   return items.length ? (
     <div className="w-full flex flex-col gap-3">
       <div className="h-12 flex items-center justify-start">
-        <Logo />
+        <Logo withText />
       </div>
       <div>
         {items.map((item, index) => {

@@ -1,19 +1,18 @@
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Analytics } from "@vercel/analytics/react";
 
-import { cn } from "@/lib/utils";
-import { siteConfig } from "@/config/site";
-import GlobalProvider from "@/providers/global";
-import Footer from "@/components/shared/footer";
-import "@/styles/mdx.css";
-import "@/styles/globals.css";
 import { ThemeProvider } from "@/components/providers";
-import { CommandMenuProvider } from "@/context/command-menu";
-import { CommandMenu } from "@/components/ui/command-menu";
-import Link from "next/link";
-import { Toaster } from "sonner";
 import Feedback from "@/components/shared/feeback";
+import { CommandMenu } from "@/components/ui/command-menu";
+import { siteConfig } from "@/config/site";
+import { CommandMenuProvider } from "@/context/command-menu";
+import { cn } from "@/lib/utils";
+import GlobalProvider from "@/providers/global";
+import "@/styles/globals.css";
+import "@/styles/mdx.css";
+import { Toaster } from "sonner";
+import { GeistMono } from "geist/font/mono";
 
 export const metadata: Metadata = {
   title: {
@@ -104,7 +103,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head />
       <GlobalProvider>
-        <body className={cn(satoshi.className, "z-0")}>
+        <body className={cn(satoshi.className, GeistMono.variable, "z-0")}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <CommandMenuProvider>
               {children}

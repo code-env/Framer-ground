@@ -5,9 +5,18 @@ import Link from "next/link";
 import React from "react";
 import { Icons } from "@/components/icons";
 
-const Logo = ({ link, withText }: { link?: string; withText?: boolean }) => {
+interface LogoProps {
+  className?: string;
+  link?: string;
+  withText?: boolean;
+}
+
+const Logo = ({ link, withText, className }: LogoProps) => {
   return (
-    <Link className="flex items-center gap-2" href={link ? link : "/"}>
+    <Link
+      className={cn("flex items-center gap-2", className)}
+      href={link ? link : "/"}
+    >
       <Icons.logo />{" "}
       {withText && <span className="font-semibold">{siteConfig.name}</span>}
     </Link>
