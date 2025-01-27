@@ -1,6 +1,12 @@
 "use client";
 import React from "react";
-import { ExternalLink, Globe, MoreHorizontal, Search } from "lucide-react";
+import {
+  BadgeCheck,
+  ExternalLink,
+  Globe,
+  MoreHorizontal,
+  Search,
+} from "lucide-react";
 
 import Logo from "./logo";
 import { Button } from "@/components/ui/button";
@@ -30,6 +36,11 @@ const links = [
     item: "GitHub",
     url: siteConfig.links.ghuser,
     icon: Icons.gitHub,
+  },
+  {
+    item: "Go pro",
+    url: siteConfig.links.pro,
+    icon: BadgeCheck,
   },
 ];
 
