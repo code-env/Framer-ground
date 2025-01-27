@@ -49,16 +49,14 @@ const Navbar = () => {
           >
             <div
               onClick={() => setShowCommandMenu(true)}
-              className="hidden max-sm:flex-1 w-auto  items-center justify-between gap-6 sm:w-56 px-3 py-1.5 rounded-lg border text-sm  duration-300 hover:bg-accent cursor-pointer md:flex"
+              className="hidden !max-w-lg md:flex w-full  border py-1 pl-4 pr-1 items-center justify-between rounded-lg"
             >
               <span className="flex items-center gap-2 text-neutral-500">
-                <SearchIcon size={12} />
-                Search...
+                <SearchIcon className="size-4" />
+                Find something...
               </span>
-              <span className="border border-border px-1.5 rounded-md text-[10px] flex items-center gap-0.5 max-sm:hidden">
-                <CommandIcon size={10} />
-                <span>K</span>
-              </span>
+
+              <span className="border rounded-sm text-sm py-1 px-2">cmd+k</span>
             </div>
             <div className="flex items-center gap-4 md:ml-4">
               <Link

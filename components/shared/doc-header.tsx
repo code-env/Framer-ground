@@ -23,7 +23,7 @@ const DocsHeader = () => {
         <Logo />
       </div>
       <div
-        className="flex rounded-md items-center gap-2 border py-1 pl-4 pr-1 cursor-pointer lg:mstagram from my phone so I can't do thatax-w-sm w-full max-w-md justify-between bg-background"
+        className="flex rounded-md items-center gap-2 border py-1 pl-4 pr-1 cursor-pointer lg:max-w-sm w-full max-w-md justify-between bg-background"
         onClick={() => setShowCommandMenu((prev) => !prev)}
       >
         <p className="text-muted-foreground flex items-center gap-2">

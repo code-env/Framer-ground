@@ -42,7 +42,7 @@ const Footer = () => {
         <div className="flex max-md:flex-col gap-10 md:justify-between">
           <div className="flex flex-col gap-5">
             <AnimateEnter>
-              <Logo />
+              <Logo withText />
             </AnimateEnter>
 
             <AnimateEnter delay={0.1} className="flex flex-col gap-4">
