@@ -52,7 +52,7 @@ const DocsActions = () => {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="start" className="w-56">
             {links.map((link, idx) => (
-              <DropdownMenuItem asChild className="py-2">
+              <DropdownMenuItem asChild className="py-2" key={idx}>
                 <Link
                   href={link.url}
                   target="_blank"
