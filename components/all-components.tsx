@@ -20,10 +20,10 @@ const AllComponents = ({ category }: AllComponentsProps) => {
           <Link
             href={item.href}
             key={idx}
-            className="p-1 border border-border/50 rounded-xl bg-muted/10"
+            className="p-1 border border-border/50 transition-colors duration-300 rounded-xl hover:bg-muted/10 group"
           >
-            <div className="bg-muted/20 border rounded-lg h-40 flex items-end p-5">
-              {item.title}
+            <div className="group-hover:bg-muted/20 transition-colors duration-300 border rounded-lg h-32 flex items-end p-5">
+              <h3 className="text-sm font-medium">{item.title}</h3>
             </div>
           </Link>
         ))}

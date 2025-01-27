@@ -35,9 +35,6 @@ const DocsSidebar = ({ items }: DocsSidebarNavProps) => {
 
   return items.length ? (
     <div className="w-full flex flex-col gap-3">
-      <div className="h-12 flex items-center justify-start">
-        <Logo withText />
-      </div>
       <div>
         {items.map((item, index) => {
           const isOpen = !closed.has(item.href ?? item.title);

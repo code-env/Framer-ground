@@ -35,7 +35,7 @@ const Imessage = () => {
           <motion.div
             key={message.id}
             layout="position"
-            className="z-10 mt-2 max-w-[250px] break-words rounded  border bg-background"
+            className="z-10 mt-2 max-w-[250px] break-words rounded  border border-border/50 bg-background"
             layoutId={`container-[${messages.length - 1}]`}
             transition={transitionDebug}
           >
@@ -51,9 +51,7 @@ const Imessage = () => {
             type="text"
             onChange={(e) => setNewMessage(e.target.value)}
             value={newMessage}
-            className="py- relative h-9 w-[250px] flex-grow rounded border text-neutral-200 border-neutral-300/50 px-3 text-[15px] outline-none placeholder:text-gray-400 focus-visible:ring-0
-             bg-neutral-600 dark:text-gray-100 placeholder-gray-400
-            "
+            className="py- relative w-[250px] flex-grow rounded border bg-primary p-2 text-primary-foreground outline-none"
             placeholder="Type your message"
           />
           <motion.div
@@ -66,14 +64,11 @@ const Imessage = () => {
             animate={{ opacity: 0.6, zIndex: -1 }}
             exit={{ opacity: 1, zIndex: 1 }}
           >
-            <div className="px-3 py-2 text-[15px] leading-[15px] text-gray-900 dark:text-gray-100">
-              {newMessage}
-            </div>
+            <div className="">{newMessage}</div>
           </motion.div>
           <button
             type="submit"
-            className="ml-2 flex h-9 w-9 items-center justify-center rounded bg-neutral-600 text-white
-            dark:bg-gray-800"
+            className="ml-2 flex size-10 items-center justify-center rounded bg-primary text-primary-foreground"
           >
             <PlusIcon className="h-5 w-5" />
           </button>

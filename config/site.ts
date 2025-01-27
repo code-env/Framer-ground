@@ -11,6 +11,7 @@ export const siteConfig = {
     linkedin: "https://linkedin.com/in/codeenv",
     ghuser: "https://github.com/code-env",
     pro: "https://pro.bossadizenith.me",
+    user: "https://bossadizenith.me",
   },
 };
 
