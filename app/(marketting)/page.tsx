@@ -1,5 +1,4 @@
-import React from "react";
-import { CallToAction, Stack, Hero } from "./_components";
+import { CallToAction, Hero } from "./_components";
 import Testimonials from "./_components/testimonials";
 
 async function getGitHubStars(): Promise<string | null> {

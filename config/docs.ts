@@ -12,7 +12,7 @@ const sortAlphabetically = (a: SidebarNavItem, b: SidebarNavItem) => {
     .localeCompare((b.sortId ?? b.title).toLowerCase());
 };
 
-const createComponentsLink = (category: string) => {
+export const createComponentsLink = (category: string) => {
   return allDocs
     .filter(
       (doc) =>
@@ -95,13 +95,18 @@ const sidebarNav: SidebarNavItem[] = [
   },
   {
     icon: "buttons",
-    title: "Button",
+    title: "Buttons",
     label: -1 + createComponentsLink("button").length + "",
     href: "/docs/components/button",
     items: createComponentsLink("button"),
   },
   {
-    title: "Menu",
+    title: "Cards",
+    href: "/docs/menu",
+    items: createComponentsLink("card"),
+  },
+  {
+    title: "Menus",
     label: createComponentsLink("menu").length + "",
     href: "/docs/menu",
     items: createComponentsLink("menu"),
@@ -113,7 +118,7 @@ const sidebarNav: SidebarNavItem[] = [
     items: createComponentsLink("navbars"),
   },
   {
-    title: "Gallery",
+    title: "Galleries",
     label: createComponentsLink("gallery").length + "",
     href: "/docs/components/gallery/one",
     items: createComponentsLink("gallery"),

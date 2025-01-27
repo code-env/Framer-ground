@@ -33,6 +33,7 @@ import { Event } from "@/lib/events";
 import { cn } from "@/lib/utils";
 
 import { baseComponents } from "./mdx-base-components";
+import AllComponents from "./all-components";
 
 const components = {
   Accordion,
@@ -43,6 +44,14 @@ const components = {
   AlertTitle,
   AlertDescription,
   PreviewContainer,
+  Image,
+  Modal,
+  Callout,
+  ComponentPreview,
+  ComponentExample,
+  ComponentSource,
+  AspectRatio,
+  AllComponents,
   ...baseComponents,
   pre: ({
     className,
@@ -129,13 +138,7 @@ const components = {
       {...props}
     />
   ),
-  Image,
-  Modal,
-  Callout,
-  ComponentPreview,
-  ComponentExample,
-  ComponentSource,
-  AspectRatio,
+
   CodeBlockWrapper: ({ ...props }) => (
     <CodeBlockWrapper className="rounded-md border" {...props} />
   ),
