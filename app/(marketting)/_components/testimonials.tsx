@@ -87,16 +87,11 @@ const TESTIMONIALS: Testimonial[] = [
     quote: "So good!",
   },
   {
-    name: "bytefer",
-    avatar:
-      "https://lh3.googleusercontent.com/a-/AFdZucqlbOI8UzgORH9IT5mtLClCpRPYl-bBI9zaDVVd=s100",
-    handle: "@bytefer",
+    name: "threehymns",
+    avatar: "https://avatars.githubusercontent.com/u/70611435?v=4",
+    handle: "@threehymns",
     quote:
-      "It’s so cool how easy it’s become to use animations. I’ve added it to",
-    link: {
-      name: "Awesome ShadCn UI",
-      url: "https://shadcn.batchtool.com/animations",
-    },
+      "Wow, this has me tempted to break down and learn React/Next.js and Motion instead of just Astro.js. ",
   },
   {
     name: "Richard Raphael A",
