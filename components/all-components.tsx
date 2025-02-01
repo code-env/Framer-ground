@@ -22,7 +22,7 @@ const AllComponents = ({ category }: AllComponentsProps) => {
             key={idx}
             className="p-1 border border-border/50 transition-colors duration-300 rounded-xl hover:bg-muted/10 group"
           >
-            <div className="group-hover:bg-muted/20 transition-colors duration-300 border rounded-lg h-32 flex items-end p-5">
+            <div className="group-hover:bg-muted/20 transition-colors duration-300 border rounded-sm h-32 flex items-end p-5">
               <h3 className="text-sm font-medium">{item.title}</h3>
             </div>
           </Link>
