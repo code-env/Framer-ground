@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, delay, type Variants } from "framer-motion";
 import {
   Menu,
   Home,
@@ -34,7 +34,7 @@ const CircularMenu = () => {
   };
 
   // Variants for individual menu items
-  const menuItemVariants = {
+  const menuItemVariants: Variants = {
     hidden: {
       x: 0,
       y: 0,
@@ -46,6 +46,7 @@ const CircularMenu = () => {
       y: Math.sin((index * (2 * Math.PI)) / 6) * 150,
       opacity: 1,
       scale: 1,
+      delay: index * 0.25,
       transition: { type: "spring", stiffness: 300, damping: 20 },
     }),
     exit: {

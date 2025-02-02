@@ -1,12 +1,7 @@
 "use client";
 
 import { useProvider } from "@/context/command-menu";
-import { ExternalLink, Search } from "lucide-react";
-import Link from "next/link";
-import React from "react";
-import MoodToogle from "@/components/mode-toggle";
-import { siteConfig } from "@/config/site";
-import { buttonVariants } from "@/components/ui/button";
+import { Search } from "lucide-react";
 import Logo from "./logo";
 
 const routes = [

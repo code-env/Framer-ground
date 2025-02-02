@@ -130,6 +130,11 @@ const sidebarNav: SidebarNavItem[] = [
     items: createComponentsLink("inputs"),
   },
   {
+    title: "Layouts",
+    href: "/docs/components/inputs/iMessage",
+    items: createComponentsLink("layouts"),
+  },
+  {
     title: "Without Framer Motion",
     items: createLink("without-framer-motion"),
   },

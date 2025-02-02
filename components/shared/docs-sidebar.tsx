@@ -71,9 +71,12 @@ const DocsSidebar = ({ items }: DocsSidebarNavProps) => {
                 </div>
               )}
               {index === specialHeaderCount - 1 && (
-                <div className="mb-1 mt-4 text-xs font-semibold uppercase text-muted-foreground">
+                <Link
+                  href="/docs/components"
+                  className="my-6 mt-4 text-xs font-semibold uppercase text-muted-foreground"
+                >
                   COMPONENTS
-                </div>
+                </Link>
               )}
             </div>
           );
