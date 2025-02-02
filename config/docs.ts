@@ -16,7 +16,9 @@ export const createComponentsLink = (category: string) => {
   return allDocs
     .filter(
       (doc) =>
-        doc.slug.startsWith(`/docs/components/${category}`) && doc.published
+        doc.slug.startsWith(`/docs/components/${category}`) &&
+        doc.published &&
+        doc._raw.sourceFileName !== "index.mdx"
     )
     .map((doc) => ({
       // Make sure the index page is the first item
