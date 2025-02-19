@@ -454,8 +454,8 @@ function Modal(props: { active: boolean; onClick: () => void }) {
   const angleStep = (2 * Math.PI) / sortedDays.length;
 
   const positions = sortedDays.map((_, index) => ({
-    cx: 250 + radius * Math.cos(angleStep * index),
-    cy: 250 + radius * Math.sin(angleStep * index),
+    cx: centerX + radius * Math.cos(angleStep * index),
+    cy: centerY + radius * Math.sin(angleStep * index),
   }));
 
   function generateGradient(companies: Company[]) {
@@ -467,14 +467,25 @@ function Modal(props: { active: boolean; onClick: () => void }) {
       <AnimatePresence>
         {!!props.active && (
           <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             className="fixed inset-0 z-10 flex flex-col items-center justify-center bg-background"
             onClick={props.onClick}
           >
-            <div className="w-full max-w-lg relative flex">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="w-full max-w-lg relative flex"
+            >
               <svg width={500} height={500} viewBox="0 0 500 500">
                 <defs>
                   {sortedDays.map((day, index) => {
                     const gradientId = `gradient-${day.subscription?.companies[0]?.name}`;
+                    const color = generateGradient(
+                      day.subscription?.companies as Company[]
+                    );
                     return (
                       <linearGradient
                         id={gradientId}
@@ -483,6 +494,7 @@ function Modal(props: { active: boolean; onClick: () => void }) {
                         y1="0%"
                         x2="100%"
                         y2="0%"
+                        gradientTransform={color}
                       >
                         {day.subscription?.companies.map(
                           (company, companyIndex) => (
@@ -508,7 +520,7 @@ function Modal(props: { active: boolean; onClick: () => void }) {
                   r={radius}
                   fill="none"
                   stroke="none"
-                  strokeWidth={20}
+                  strokeWidth={40}
                 />
 
                 <AnimatePresence>
@@ -516,7 +528,6 @@ function Modal(props: { active: boolean; onClick: () => void }) {
                     const subscriptionCount =
                       day.subscription?.companies.length || 0;
 
-                    // Calculate the proportion of the circle this day should cover
                     const proportion = subscriptionCount / totalSubscriptions;
                     const angle = proportion * 2 * Math.PI;
 
@@ -547,7 +558,7 @@ function Modal(props: { active: boolean; onClick: () => void }) {
                           <motion.path
                             d={`M ${startX} ${startY} A ${radius} ${radius} 0 0 1 ${endX} ${endY}`}
                             fill="none"
-                            stroke="white"
+                            stroke="orange"
                             strokeWidth={30}
                             strokeLinecap="round"
                             initial={{ strokeDasharray: "0 1", opacity: 0 }}
@@ -568,7 +579,7 @@ function Modal(props: { active: boolean; onClick: () => void }) {
               </svg>
 
               <motion.button
-                className="absolute top-0 left-0 right-0 bottom-0 w-fit m-auto h-fit"
+                className="absolute top-0 left-0 right-0 bottom-0 w-fit m-auto h-fit cursor-pointer"
                 layoutId="expenditure"
                 transition={{
                   delay: 0.1,
@@ -581,13 +592,13 @@ function Modal(props: { active: boolean; onClick: () => void }) {
                   return (
                     <div
                       key={dayIndex}
-                      className="flex flex-col items-center"
+                      className="flex"
                       style={{
                         position: "absolute",
                         left: `${positions[dayIndex].cx}px`,
                         top: `${positions[dayIndex].cy}px`,
-                        right: "auto",
-                        transform: "translate(-50%, -50%)", // Center the items on the position
+                        // right: "auto",
+                        transform: "translate(-50%, -50%)",
                       }}
                     >
                       {day.subscription?.companies.map(
@@ -598,7 +609,7 @@ function Modal(props: { active: boolean; onClick: () => void }) {
                             style={{
                               backgroundColor: comapany.color,
                             }}
-                            className="w-6 h-6 rounded-full" // Set background to white
+                            className="w-6 h-6 rounded-full"
                           ></motion.div>
                         )
                       )}
@@ -606,7 +617,7 @@ function Modal(props: { active: boolean; onClick: () => void }) {
                   );
                 })}
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

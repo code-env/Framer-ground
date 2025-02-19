@@ -21,7 +21,6 @@ export const createComponentsLink = (category: string) => {
         doc._raw.sourceFileName !== "index.mdx"
     )
     .map((doc) => ({
-      // Make sure the index page is the first item
       title: doc.title,
       sortId: doc.slug === `/docs/${category}` ? "000" : doc.title,
       href: doc.slug,
@@ -34,7 +33,6 @@ const createLink = (category: string) => {
   return allDocs
     .filter((doc) => doc.slug.startsWith(`/docs/${category}`) && doc.published)
     .map((doc) => ({
-      // Make sure the index page is the first item
       title: doc.title,
       sortId: doc.slug === `/docs/${category}` ? "000" : doc.title,
       href: doc.slug,
@@ -98,38 +96,39 @@ const sidebarNav: SidebarNavItem[] = [
   {
     icon: "buttons",
     title: "Buttons",
-    label: -1 + createComponentsLink("button").length + "",
     href: "/docs/components/button",
     items: createComponentsLink("button"),
   },
   {
     title: "Cards",
-    href: "/docs/menu",
+    href: "/docs/cards",
     items: createComponentsLink("card"),
   },
   {
+    title: "Carousel",
+    href: "/docs/carousel",
+    items: createComponentsLink("carousel"),
+  },
+  {
     title: "Menus",
-    label: createComponentsLink("menu").length + "",
     href: "/docs/menu",
     items: createComponentsLink("menu"),
   },
   {
     title: "Navbars",
-    label: createComponentsLink("navbars").length + "",
     href: "/docs/components/navbars/liquid",
     items: createComponentsLink("navbars"),
   },
   {
     title: "Galleries",
-    label: createComponentsLink("gallery").length + "",
     href: "/docs/components/gallery/one",
     items: createComponentsLink("gallery"),
   },
   {
     title: "Inputs",
-    label: createComponentsLink("inputs").length + "",
     href: "/docs/components/inputs/iMessage",
     items: createComponentsLink("inputs"),
+    label: "nothing",
   },
   {
     title: "Layouts",
