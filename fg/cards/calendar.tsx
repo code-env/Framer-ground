@@ -43,7 +43,7 @@ const Calendar = () => {
     // Add days from the previous month if the month doesn't start on Sunday
     if (startDayOfMonth > 0) {
       for (let i = startDayOfMonth - 1; i >= 0; i--) {
-        daysArray.unshift({
+        daysArray.push({
           day: daysInPreviousMonth - i,
           currentMonth: false, // mark as previous month
         });
